@@ -159,8 +159,8 @@ const SendMsgForm = () => {
         .build();
 
       connection.on("ReceiveMessage", (user, message) => {
-     
-        setMessages((messages) => [...messages, { user, message }]);
+         //store in redux persistance here
+        setMessages((messages) => [...messages, { user, message } ]);
       });
 
      
