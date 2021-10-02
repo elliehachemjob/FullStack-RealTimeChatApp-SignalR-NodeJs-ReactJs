@@ -2,11 +2,24 @@ import React, { useState,useRef,useEffect } from "react";
 import { HubConnectionBuilder } from "@microsoft/signalr";
 import axios from "axios"
 import "./App.css";
+import { useSelector, useDispatch } from 'react-redux';
+import {
+  messageSave,
+  selectCount,
+} from './messagesReducer';
 
 const App = () => {
   const [connection, setConnection] = useState();
   const [messages, setMessages] = useState([]);
   const [users, setUsers] = useState([]);
+
+  const reduxMessages = useSelector(selectCount);
+  const dispatch = useDispatch();
+
+
+
+  // console.log(`count is ${count}`)
+
 
   const Chat = () => <div>
   <div>
@@ -17,7 +30,6 @@ const App = () => {
       <SendMsgForm/>
   </div>
 </div>
-
 
 
 
@@ -55,6 +67,8 @@ const SendMsgForm = () => {
     const [room, setRoom] = useState("AllClients");
     const [password, setPassword] = useState("hi");
     const [sendEmailVerification ,setSendEmailVerification] = useState()
+
+    
 
 
 
@@ -139,6 +153,7 @@ const SendMsgForm = () => {
 
     return (
           <div className="form">
+            <button onClick={()=>{dispatch(messageSave())}}/>
             <input className="css-input1"placeholder="email" onChange={e => setUser(e.target.value)} />
             <input className="css-input2"placeholder="Password" onChange={e => setPassword(e.target.value)} />
             <input className="css-input3" placeholder="email" onChange={e => setUser(e.target.value)} />
@@ -160,7 +175,8 @@ const SendMsgForm = () => {
 
       connection.on("ReceiveMessage", (user, message) => {
          //store in redux persistance here
-        setMessages((messages) => [...messages, { user, message } ]);
+        setMessages((messages) => [...messages, { user, message } ])
+        // dispatch(messageSave([...reduxMessages, { user, message } ]))
       });
 
      
@@ -168,7 +184,6 @@ const SendMsgForm = () => {
       connection.onclose((e) => {
   
         setConnection();
-        setMessages([]);
         setUsers([]);
       });
 
