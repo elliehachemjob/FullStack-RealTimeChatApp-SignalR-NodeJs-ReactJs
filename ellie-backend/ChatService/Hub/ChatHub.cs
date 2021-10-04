@@ -95,7 +95,7 @@ namespace SignalRChat.Hubs
             {
 
                 //method to recieve and send message to all conencted users in the room
-                await Clients.Client(user).SendAsync("ReceiveMessage", message);
+                await Clients.Client(user).SendAsync("ReceiveMessage", userConnection.User, message);
             }
 
         }
