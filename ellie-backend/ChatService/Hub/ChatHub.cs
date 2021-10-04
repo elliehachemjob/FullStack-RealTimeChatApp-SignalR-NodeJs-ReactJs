@@ -15,7 +15,7 @@ namespace SignalRChat.Hubs
         private readonly IDictionary<string, UserConnection> _connections;
 
 
-        //we saved the isntance of botuser and connections here 
+        //we saved the isntance of botuser and connections here
         public ChatHub(IDictionary<string, UserConnection> connections)
         {
             _botUser = "Sent By ellieBot";
@@ -35,7 +35,7 @@ namespace SignalRChat.Hubs
                 _connections.Remove(Context.ConnectionId);
 
                 //To show that user left the room
-                Clients.Group(userConnection.Room).SendAsync("ReceiveMessage", _botUser, $"{userConnection.User} has left");
+                Clients.All.SendAsync("ReceiveMessage", _botUser, $"{userConnection.User} has left");
             }
 
             //comes along with overide class
@@ -57,7 +57,6 @@ namespace SignalRChat.Hubs
             {
 
                 //wait for id and room and then add them    
-                await Groups.AddToGroupAsync(Context.ConnectionId, userConnection.Room);
 
 
                 //keeping track of id when user join the room
@@ -65,7 +64,7 @@ namespace SignalRChat.Hubs
                 //This method is a handler in the frontend connection.on 
                 //we could use Clients.Send.All to negate room but later we would do room for support 
                 //clients stay in solo room until the support accept his request then he changes room 
-                await Clients.Group(userConnection.Room).SendAsync("ReceiveMessage", _botUser, $"{userConnection.User} has joined");
+                await Clients.All.SendAsync("ReceiveMessage", _botUser, $"{userConnection.User} has joined");
 
             }
         }
@@ -79,7 +78,7 @@ namespace SignalRChat.Hubs
             {
 
                 //method to recieve and send message to all conencted users in the room
-                await Clients.Group(userConnection.Room).SendAsync("ReceiveMessage", userConnection.User, message);
+                await Clients.All.SendAsync("ReceiveMessage", userConnection.User, message);
             }
         }
     }

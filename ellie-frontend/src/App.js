@@ -72,7 +72,6 @@ const SendMsgForm = () => {
   const SignUpForm = () => {
 
     const [user, setUser] = useState();
-    const [room, setRoom] = useState("AllClients");
     const [password, setPassword] = useState("hi");
     const [sendEmailVerification ,setSendEmailVerification] = useState()
 
@@ -106,7 +105,7 @@ const SendMsgForm = () => {
         console.log(` data is ${res.data}`)  
         if(res.data===1){
           alert("register success")
-          joinRoom(user, room)
+          joinRoom(user)
         }   
         else{
          alert("email already exist")
@@ -144,7 +143,7 @@ const SendMsgForm = () => {
       
           if(res.data===1){
             alert("sucess ")
-            joinRoom(user, room)
+            joinRoom(user)
           }
           else{
             alert("email is not found ")
@@ -167,14 +166,14 @@ const SendMsgForm = () => {
             <input className="css-input3" placeholder="email" onChange={e => setUser(e.target.value)} />
             <input className="css-input4" placeholder="Password" onChange={e => setPassword(e.target.value)} />
             <input className="css-input5" placeholder="Send Email Veirifcation" onChange={e => setSendEmailVerification(e.target.value)} />
-        <button  className="btn1"  onClick ={signUpHandler}  variant="primary" type="submit" disabled={!user || !room || !sendEmailVerification}>Sign Up</button>
-        <button   className="btn2" onClick={loginHandler}  variant="primary" type="submit" disabled={!user || !room }>Login</button>
+        <button  className="btn1"  onClick ={signUpHandler}  variant="primary" type="submit" disabled={!user || !password || !sendEmailVerification}>Sign Up</button>
+        <button   className="btn2" onClick={loginHandler}  variant="primary" type="submit" disabled={!user || !password }>Login</button>
         </div>
     )
     
 }
 
-  const joinRoom = async (user, room) => {
+  const joinRoom = async (user) => {
     try {
     
       const connection = new HubConnectionBuilder()
@@ -201,7 +200,7 @@ const SendMsgForm = () => {
 
 
       await connection.start();
-      await connection.invoke("JoinRoom", { user, room }); 
+      await connection.invoke("JoinRoom", { user }); 
       setConnection(connection);
     } catch (e) {
       console.log(e);
