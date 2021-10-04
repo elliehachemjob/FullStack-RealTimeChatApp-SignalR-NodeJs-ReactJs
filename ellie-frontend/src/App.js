@@ -45,11 +45,24 @@ const App = () => {
 
 const MessageBox = () => {
  
-   
+  
+    const messageRef = useRef();
+
+    useEffect(() => {
+
+        if (messageRef && messageRef.current) {
+            const { scrollHeight, clientHeight } = messageRef.current;
+            messageRef.current.scrollTo({ left: 0, top: scrollHeight - clientHeight});
+        }
+    }, [messages]);
   
   
 
-  return <div className='message-box' >
+
+
+  
+
+  return <div ref={messageRef} className='message-box' >
       {reduxMessages.map((m) =>
           <div  className='user-message'>
               <div className='message bg-primary'>{m.message}</div>
