@@ -63,7 +63,7 @@ const MessageBox = () => {
       )}
 
 {reduxMessages.length===1?
- <div> </div>:   <div> {JSON.stringify(reduxMessages[1].id)}</div> }
+ <div> </div>:   <div className="from-user1"> Your ID {JSON.stringify(reduxMessages[1].id)}</div> }
 
 
 

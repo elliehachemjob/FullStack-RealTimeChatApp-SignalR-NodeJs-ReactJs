@@ -373,3 +373,15 @@ hr.line {
     position:relative;
     left:50px
 }
+
+.from-user1 {
+    font-size: small;
+    position:absolute;
+    right:295px;
+    bottom:30px;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+
+
+}
