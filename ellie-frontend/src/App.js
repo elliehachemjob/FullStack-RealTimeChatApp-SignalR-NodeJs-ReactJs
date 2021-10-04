@@ -46,7 +46,6 @@ const App = () => {
 const MessageBox = () => {
  
    
-  const  id =  JSON.stringify(reduxMessages)
   
   
 
