@@ -35,7 +35,7 @@ namespace SignalRChat.Hubs
                 _connections.Remove(Context.ConnectionId);
 
                 //To show that user left the room
-                Clients.All.SendAsync("ReceiveMessage", _botUser, $"{userConnection.User} has left");
+                Clients.All.SendAsync("ReceiveMessage", _botUser, $"{userConnection.User}  has left");
             }
 
             //comes along with overide class
@@ -53,8 +53,7 @@ namespace SignalRChat.Hubs
             var New_users = users.Count();
 
             //id by default from the context object of the hubclass
-            if (New_users < 2)
-            {
+           
 
                 //wait for id and room and then add them    
 
@@ -66,22 +65,46 @@ namespace SignalRChat.Hubs
                 //clients stay in solo room until the support accept his request then he changes room 
                 await Clients.All.SendAsync("ReceiveMessage", _botUser, $"{userConnection.User} has joined");
 
-            }
+            
         }
         //This method wil recieve a string message 
         public async Task SendMessage(string message)
-            //_connection is dictionary 
-            //codition  that tryes to get the  value  of connectionID as a key 
-            //out is used to get(return) variables/properties of the id which is the user and room  as a value
+        //_connection is dictionary 
+        //codition  that tryes to get the  value  of connectionID as a key 
+        //out is used to get(return) variables/properties of the id which is the user and room  as a value
+        {
+            if (_connections.TryGetValue(Context.ConnectionId, out UserConnection userConnection))
+            {
+                userConnection.Id = Context.ConnectionId;
+
+
+               //method to recieve and send message to all conencted users in the room
+                await Clients.All.SendAsync("ReceiveMessage", userConnection.User, message,userConnection.Id);
+            }
+        }
+
+
+   
+
+        public async Task SendPrivateMessage(string user, string message)
+        //_connection is dictionary 
+        //codition  that tryes to get the  value  of connectionID as a key 
+        //out is used to get(return) variables/properties of the id which is the user and room  as a value
         {
             if (_connections.TryGetValue(Context.ConnectionId, out UserConnection userConnection))
             {
 
                 //method to recieve and send message to all conencted users in the room
-                await Clients.All.SendAsync("ReceiveMessage", userConnection.User, message);
+                await Clients.Client(user).SendAsync("ReceiveMessage", message);
             }
+
         }
     }
 }
+
+
+
+
+
 
     

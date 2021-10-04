@@ -367,3 +367,9 @@ hr.line {
     margin-bottom: 3px;
     margin-right: 5px;
 }
+
+.from-user {
+    font-size: small;
+    position:relative;
+    left:50px
+}

@@ -14,7 +14,10 @@ const App = () => {
   const [users, setUsers] = useState([]);
 
   const reduxMessages = useSelector(selectCount);
-  console.log(reduxMessages)
+  const newInfo = JSON.stringify(reduxMessages)
+  const Id = newInfo[8]
+  console.log(` the new id is ${Id}`)
+  console.log(`okay the value ${JSON.stringify(reduxMessages)}`)
   const dispatch = useDispatch();
 
 
@@ -33,6 +36,7 @@ const App = () => {
   <div className='chat'>
       <MessageBox/>
       <SendMsgForm/>
+      <SendPrivateMsgForm/>
   </div>
 </div>
 
@@ -42,15 +46,36 @@ const App = () => {
 const MessageBox = () => {
  
 
+  const id = JSON.stringify(reduxMessages)
+  
 
   return <div className='message-box' >
       {reduxMessages.map((m) =>
           <div  className='user-message'>
               <div className='message bg-primary'>{m.message}</div>
               <div className='from-user'>{m.user}</div>
+
           </div>
+
+
+    
       )}
+
+ <div>{JSON.stringify(reduxMessages[1].id)}</div>
+    
+
+
+<div> 
+
+{/* {reduxMessages.map((m) =>
+  <div>{m.id}</div>
+        
+      )} */}
+</div>
+
   </div>
+
+
 }
 
 
@@ -68,6 +93,26 @@ const SendMsgForm = () => {
               </div>
               )
 }
+
+
+const SendPrivateMsgForm = () => {
+  const [message, setMessage] = useState('');
+  const [user, setUser] = useState("")
+
+
+  return(
+         <div>
+
+          <input className="css-input6" type="user" placeholder="Send Private Message..."
+              onChange={e => setMessage(e.target.value)} value={message} />
+               <input className="css-input6" type="user" placeholder="message to which user Provide User's Id?..."
+              onChange={e => setUser(e.target.value)} value={user} />
+              <button  className="btn3" onClick={()=>{  sendPrivateMessage(user,message); setMessage(''); setUser('');   }} variant="primary" type="submit" disabled={!message}> Send </button>
+              
+              </div>
+              )
+}
+
 
   const SignUpForm = () => {
 
@@ -173,21 +218,53 @@ const SendMsgForm = () => {
     
 }
 
+
+
+
+
   const joinRoom = async (user) => {
+
+    axios
+    .post(
+      `https://localhost:44382/chat/negotiate?negotiateVersion=1`,
+
+    )
+    .then((res) => {
+       const data = JSON.stringify(res)
+      console.log(`this is the id ${data}`)
+    
+    })
+    .catch((e) => {
+
+      console.log(e);
+    });
+
+
+
     try {
     
       const connection = new HubConnectionBuilder()
         .withUrl("https://localhost:44382/chat") 
         .build();
 
-      connection.on("ReceiveMessage", (user, message) => {
+        
+         
+
+
+
+
+        
+
+
+      connection.on("ReceiveMessage", (user, message,id) => {
+
 
 
          //store in redux persistance here
         // setMessages((messages) => [...messages, { user, message } ])
       // dispatch(messageSave([...messages, { user, message } ]))
 
-        dispatch(messageSave([...reduxMessages, { user, message } ]))
+        dispatch(messageSave([...reduxMessages, { user, message,id } ]))
       });
 
      
@@ -198,10 +275,22 @@ const SendMsgForm = () => {
         setUsers([]);
       });
 
-
       await connection.start();
-      await connection.invoke("JoinRoom", { user }); 
+      await connection.invoke("JoinRoom", { user }) ; 
+
+
+
+      
+
+
+
+
+
+
       setConnection(connection);
+
+
+
     } catch (e) {
       console.log(e);
     }
@@ -216,6 +305,20 @@ const SendMsgForm = () => {
       console.log(e);
     }
   };
+
+
+  const sendPrivateMessage = async (user,message) => {
+    try {
+      console.log("done ")
+      await connection.invoke("SendPrivateMessage", user, message); 
+      console.log("private message sent ")
+      console.log(user)
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+
 
 
   const closeConnection = async () => {

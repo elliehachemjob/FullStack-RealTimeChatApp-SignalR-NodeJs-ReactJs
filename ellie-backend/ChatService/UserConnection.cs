@@ -5,6 +5,7 @@ namespace ChatService
     {
         //propeties for the object userconnection
         public string User { get; set; }
+        public string Id { get; set; }
        
     }
 }
