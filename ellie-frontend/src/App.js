@@ -45,8 +45,9 @@ const App = () => {
 
 const MessageBox = () => {
  
-
-  const id = JSON.stringify(reduxMessages)
+   
+  const  id =  JSON.stringify(reduxMessages)
+  
   
 
   return <div className='message-box' >
@@ -61,7 +62,11 @@ const MessageBox = () => {
     
       )}
 
- <div>{JSON.stringify(reduxMessages[1].id)}</div>
+{reduxMessages.length===1?
+ <div> </div>:   <div> {JSON.stringify(reduxMessages[1].id)}</div> }
+
+
+
     
 
 
@@ -205,7 +210,6 @@ const SendPrivateMsgForm = () => {
 
     return (
           <div className="form">
-            <button onClick={()=>{dispatch(messageSave())}}/>
             <input className="css-input1"placeholder="email" onChange={e => setUser(e.target.value)} />
             <input className="css-input2"placeholder="Password" onChange={e => setPassword(e.target.value)} />
             <input className="css-input3" placeholder="email" onChange={e => setUser(e.target.value)} />
