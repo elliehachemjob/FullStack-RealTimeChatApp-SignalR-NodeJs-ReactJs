@@ -7,8 +7,8 @@ export const slice = createSlice({
       value:[],
     },
     reducers: {
-      messageSave: state => {
-        return [...state]
+      messageSave: (state, action) => {
+        state.value =[...state.value ,...action.payload]
     
       },
     //   incrementByAmount: (state, action) => {

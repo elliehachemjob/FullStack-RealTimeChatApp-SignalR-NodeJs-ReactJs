@@ -14,6 +14,7 @@ const App = () => {
   const [users, setUsers] = useState([]);
 
   const reduxMessages = useSelector(selectCount);
+  console.log(reduxMessages)
   const dispatch = useDispatch();
 
 
@@ -22,6 +23,10 @@ const App = () => {
 
 
   const Chat = () => <div>
+
+
+
+
   <div>
       <button   className='btn5'  variant='danger' onClick={() => closeConnection()}>Leave Chat</button>
   </div>
@@ -36,8 +41,10 @@ const App = () => {
 
 const MessageBox = () => {
  
+
+
   return <div className='message-box' >
-      {messages.map((m) =>
+      {reduxMessages.map((m) =>
           <div  className='user-message'>
               <div className='message bg-primary'>{m.message}</div>
               <div className='from-user'>{m.user}</div>
@@ -49,6 +56,7 @@ const MessageBox = () => {
 
 const SendMsgForm = () => {
   const [message, setMessage] = useState('');
+
 
 
   return(
@@ -174,9 +182,13 @@ const SendMsgForm = () => {
         .build();
 
       connection.on("ReceiveMessage", (user, message) => {
+
+
          //store in redux persistance here
-        setMessages((messages) => [...messages, { user, message } ])
-        // dispatch(messageSave([...reduxMessages, { user, message } ]))
+        // setMessages((messages) => [...messages, { user, message } ])
+      // dispatch(messageSave([...messages, { user, message } ]))
+
+        dispatch(messageSave([...reduxMessages, { user, message } ]))
       });
 
      
@@ -200,6 +212,7 @@ const SendMsgForm = () => {
   const sendMessage = async (message) => {
     try {
       await connection.invoke("SendMessage", message); 
+      console.log("message sent")
     } catch (e) {
       console.log(e);
     }
