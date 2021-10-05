@@ -14,11 +14,16 @@ export const slice = createSlice({
     //   incrementByAmount: (state, action) => {
     //     state.value += action.payload;
     //   },
+    clearMessages: (state) => {
+      state.value = []
     },
+    },
+    
   });
   
-  export const { messageSave } = slice.actions;
+  export const { messageSave,clearMessages } = slice.actions;
   
-  export const selectCount = state => state.messagesSaved.value;
+  export const storedMessages = state => state.messagesSaved.value;
   
+
   export default slice.reducer;

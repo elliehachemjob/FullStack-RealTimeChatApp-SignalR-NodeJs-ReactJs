@@ -5,7 +5,8 @@ import "./App.css";
 import { useSelector, useDispatch } from 'react-redux';
 import {
   messageSave,
-  selectCount,
+  storedMessages,
+  clearMessages
 } from './messagesReducer';
 
 const App = () => {
@@ -13,23 +14,25 @@ const App = () => {
   const [messages, setMessages] = useState([]);
   const [users, setUsers] = useState([]);
 
-  const reduxMessages = useSelector(selectCount);
+  const reduxMessages = useSelector(storedMessages);
   const newInfo = JSON.stringify(reduxMessages)
-  const Id = newInfo[8]
-  console.log(` the new id is ${Id}`)
-  console.log(`okay the value ${JSON.stringify(reduxMessages)}`)
+  
+  // console.log(` the new id is ${Id}`)
+  // console.log(`okay the value ${JSON.stringify(reduxMessages)}`)
   const dispatch = useDispatch();
 
 
 
-  // console.log(`count is ${count}`)
 
 
   const Chat = () => {
-    let message = "hi"
+    let message = "YOUR ID WONT SHOW TO OTHERS give it to others to recieve messages"
+
+  
   return (
 
 
+    
     
   <div>
 
@@ -38,8 +41,8 @@ const App = () => {
 
   <div>
       <button   className='btn5'  variant='danger' onClick={() => closeConnection()}>Leave Chat</button>
-      <button   className='btn5'  variant='danger' onClick={() => getId(message)}>GetId</button>
-      
+      <button   className='btn6'  variant='danger' onClick={() => getId(message)}>GetId</button>
+      <button   className='btn7'  variant='danger' onClick={()=>{dispatch(clearMessages())}}>Clear Messages</button>
   </div>
   <div className='chat'>
       <MessageBox/>
@@ -81,8 +84,8 @@ const MessageBox = () => {
     
       )}
 
-{reduxMessages.length===1?
- <div> </div>:   <div className="from-user1"> Your ID {JSON.stringify(reduxMessages[1].id)}</div> }
+{/* {reduxMessages.length===1?
+ <div> </div>:   <div className="from-user1"> Your ID {JSON.stringify(reduxMessages[1].id)}</div> } */}
 
 
 
@@ -107,6 +110,8 @@ const SendMsgForm = () => {
   const [message, setMessage] = useState('');
 
 
+  
+       
 
   return(
          <div>
@@ -114,6 +119,7 @@ const SendMsgForm = () => {
           <input className="css-input6" type="user" placeholder="Send your message..."
               onChange={e => setMessage(e.target.value)} value={message} />
               <button  className="btn3" onClick={()=>{  sendMessage(message); setMessage('');}} variant="primary" type="submit" disabled={!message}> Send </button>
+
               </div>
               )
 }
@@ -161,34 +167,36 @@ const SendPrivateMsgForm = () => {
 
     
 
-      axios
-      .post(
-        `http://localhost:5000/register`,
-        {
-          email: user,
-          password:password
-        },
+      // axios
+      // .post(
+      //   `http://localhost:5000/register`,
+      //   {
+      //     email: user,
+      //     password:password
+      //   },
      
-      )
-      .then((res) => {
-        console.log(` data is ${res.data}`)  
-        if(res.data===1){
-          alert("register success")
-          joinRoom(user)
-        }   
-        else{
-         alert("email already exist")
-        }
-      })
-      .catch((e) => {
-        console.log(e)
-        if(e){
-          alert("already exist")
-        }
-      });
+      // )
+      // .then((res) => {
+      //   console.log(` data is ${res.data}`)  
+      //   if(res.data===1){
+      //     alert("register success")
+      //     joinRoom(user)
+      //   }   
+      //   else{
+      //    alert("email already exist")
+      //   }
+      // })
+      // .catch((e) => {
+      //   console.log(e)
+      //   if(e){
+      //     alert("already exist")
+      //   }
+      // });
        }
 
       
+
+
 
 
 

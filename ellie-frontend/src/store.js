@@ -1,14 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
 import messagesReducer from "./messagesReducer";
-import { autoRehydrate, persistStore } from "redux-persist";
+// import { autoRehydrate, persistStore } from "redux-persist";
 
 const store = configureStore({
   reducer: {
     messagesSaved: messagesReducer
   },
-  enhancers: [autoRehydrate()]
+  // enhancers: [autoRehydrate()]
 });
 
-persistStore(store);
+// persistStore(store);
 
 export default store;
