@@ -15,7 +15,7 @@ namespace SignalRChat.Hubs
         private readonly IDictionary<string, UserConnection> _connections;
 
 
-        //we saved the isntance of botuser and connections here
+        //we saved the instance of botuser and connections here
         public ChatHub(IDictionary<string, UserConnection> connections)
         {
             _botUser = "Sent By ellieBot";
@@ -48,9 +48,9 @@ namespace SignalRChat.Hubs
 
         public async Task JoinRoom(UserConnection userConnection) //method that takes userConnection as object and near it is the name 
         {
-            var users = _connections.Values
-                .Select(c => c.User);
-            var New_users = users.Count();
+           // var users = _connections.Values
+              //  .Select(c => c.User);
+           // var New_users = users.Count();
 
             //id by default from the context object of the hubclass
            
@@ -79,7 +79,7 @@ namespace SignalRChat.Hubs
 
 
                //method to recieve and send message to all conencted users in the room
-                await Clients.All.SendAsync("ReceiveMessage", userConnection.User, message,userConnection.Id);
+                await Clients.All.SendAsync("ReceiveMessage", $"sent by { userConnection.User} ", message,userConnection.Id);
             }
         }
 
