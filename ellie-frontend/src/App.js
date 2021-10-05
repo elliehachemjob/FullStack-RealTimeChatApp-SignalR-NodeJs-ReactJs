@@ -8,8 +8,23 @@ import {
   storedMessages,
   clearMessages
 } from './messagesReducer';
+var FileSaver = require('file-saver');
+
+
+
 
 const App = () => {
+
+
+const testButton = ()=>{
+
+ 
+
+
+
+}
+
+
   const [connection, setConnection] = useState();
   const [messages, setMessages] = useState([]);
   const [users, setUsers] = useState([]);
@@ -25,24 +40,48 @@ const App = () => {
 
 
 
+
+
   const Chat = () => {
     let message = "YOUR ID WONT SHOW TO OTHERS give it to others to recieve messages"
 
+
+   
+    
+
   
+    const generateDownload = ()=>{
+
+      const toExport = []
+
+      {reduxMessages.map((m) =>
+    
+        toExport.push(`${m.message} \n ${m.user} \n \n`)
+    
+    )}
+  
+
+      
+    var blob = new Blob([toExport], {type: "text/plain;charset=utf-8"});
+    FileSaver.saveAs(blob, "messages");
+
+    }
+
+
+
   return (
 
 
-    
+
     
   <div>
-
-  
-
 
   <div>
       <button   className='btn5'  variant='danger' onClick={() => closeConnection()}>Leave Chat</button>
-      <button   className='btn6'  variant='danger' onClick={() => getId(message)}>GetId</button>
+      <button   className='btn6'  variant='danger' onClick={() => getId(message)}>Get Id</button>
       <button   className='btn7'  variant='danger' onClick={()=>{dispatch(clearMessages())}}>Clear Messages</button>
+      <button   className='btn8'  variant='danger' onClick={generateDownload}>Download Messages</button>
+      <button   className='btn9'  variant='danger' onClick={testButton}>Test Button</button>
   </div>
   <div className='chat'>
       <MessageBox/>
@@ -55,6 +94,9 @@ const App = () => {
 
 const MessageBox = () => {
  
+
+
+
   
     const messageRef = useRef();
 
@@ -67,6 +109,7 @@ const MessageBox = () => {
     }, [messages]);
   
   
+
 
 
 

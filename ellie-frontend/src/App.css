@@ -219,7 +219,7 @@
     font-size: 20px;
     text-decoration: none;
     position:relative;
-    left:442px;
+    left:545px;
     top:235px
     
  
@@ -247,8 +247,8 @@
     font-size: 20px;
     text-decoration: none;
     position:relative;
-    left:322px;
-    top:165px
+    left:422px;
+    top:70px
     
  
   }
@@ -273,8 +273,8 @@
     font-size: 20px;
     text-decoration: none;
     position:relative;
-    left:257px;
-    top:200px
+    left:357px;
+    top:190px
     
  
   }
@@ -290,6 +290,60 @@
   }
 
 
+
+  
+  .btn8 {
+    background: #db3434;
+    -moz-border-radius: 28;
+    border-radius: 40px;
+    font-family: Arial;
+    color: #ffffff;
+    font-size: 20px;
+    text-decoration: none;
+    position:relative;
+    left:198px;
+    top:104px
+    
+ 
+  }
+
+  .btn8:hover {
+    background: #3cb0fd;
+    background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+    text-decoration: none;
+  }
+
+
+
+
+  .btn9 {
+    background: #db3434;
+    -moz-border-radius: 28;
+    border-radius: 40px;
+    font-family: Arial;
+    color: #ffffff;
+    font-size: 20px;
+    text-decoration: none;
+    position:relative;
+    left:95px;
+    top:35px
+    
+ 
+  }
+
+  .btn9:hover {
+    background: #3cb0fd;
+    background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+    text-decoration: none;
+  }
 
 
   .btn4 {
