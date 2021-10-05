@@ -32,6 +32,9 @@ const testButton = ()=>{
   const reduxMessages = useSelector(storedMessages);
   const newInfo = JSON.stringify(reduxMessages)
   
+  const [chatBox,setChatBox] = useState([<span ></span> ])
+
+
   // console.log(` the new id is ${Id}`)
   // console.log(`okay the value ${JSON.stringify(reduxMessages)}`)
   const dispatch = useDispatch();
@@ -81,19 +84,27 @@ const testButton = ()=>{
       <button   className='btn6'  variant='danger' onClick={() => getId(message)}>Get Id</button>
       <button   className='btn7'  variant='danger' onClick={()=>{dispatch(clearMessages())}}>Clear Messages</button>
       <button   className='btn8'  variant='danger' onClick={generateDownload}>Download Messages</button>
-      <button   className='btn9'  variant='danger' onClick={()=>{setChat(chatBox=>[...chatBox , <Chat/>])}}>Test Button</button>
+      <button   className='btn9'  variant='danger' onClick={()=>{setChatBox(chatBox=>[...chatBox , 
+      <span> chat </span>])}}>Test Button</button>
+      {/* <button   className='btn9'  variant='danger' onClick={()=>{setChat(chatBox=>[...chatBox , <Chat/>])}}>Test Button</button> */}
+      
   </div>
+  
   <div className='chat'>
       <MessageBox/>
       <SendMsgForm/>
       <SendPrivateMsgForm/>
+     
+
   </div>
+  <div className="niceAppend">
+      {chatBox}
+      </div>
 </div>)}
 
 
 
 
-const [chatBox,setChat] = useState(  [<Chat/>])
 
 
 
@@ -179,8 +190,7 @@ const SendPrivateMsgForm = () => {
 
 
   return(
-         <div>
-
+         <div classaName="niceAppend">
           <input className="css-input6" type="user" placeholder="Send Private Message..."
               onChange={e => setMessage(e.target.value)} value={message} />
                <input className="css-input6" type="user" placeholder="message to which user Provide User's Id?..."
@@ -428,9 +438,10 @@ const SendPrivateMsgForm = () => {
         !connection ? (
           <SignUpForm joinRoom={joinRoom} /> 
         ) : (
-          <div>
-           {chatBox}
-           </div>
+          
+                   <Chat/>
+
+          
         ) 
       }
     </div>
