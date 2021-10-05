@@ -95,7 +95,7 @@
     padding: 5px;
     font-size: 13px;
     border-width: 1px;
-    width:150px;
+    width:414px;
     border-color: #CCCCCC;
     background-color: #FFFFFF;
     color: #000000;
@@ -421,8 +421,6 @@ hr.line {
 
 }
 
-
-
 .leave-chat {
     text-align: right;
     margin-bottom: 4px;
@@ -446,8 +444,7 @@ hr.line {
 }
 
 .message-box {
-    height: 150px;
-    width:150px;
+    height: 200px;
     background-color: rgba(231, 26, 26, 0.459);
     overflow: auto;
     border-radius: 5px;
@@ -492,24 +489,3 @@ hr.line {
 
 
 }
-
-
-
-.niceAppend{
-
-   position:absolute;
-   right:100px;
-   top:350px;
-   /* margin-right: 5px; */
-   display: flex;
-   height:30px;
-   width:500px;
-   position:relative;
-   left: 240px;
-   float: left;
-   flex-direction: row;
-   justify-content:  space-between
-}
-
-
-
