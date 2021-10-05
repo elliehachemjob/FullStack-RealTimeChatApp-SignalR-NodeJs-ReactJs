@@ -25,21 +25,28 @@ const App = () => {
   // console.log(`count is ${count}`)
 
 
-  const Chat = () => <div>
+  const Chat = () => {
+    let message = "hi"
+  return (
 
 
+    
+  <div>
+
+  
 
 
   <div>
       <button   className='btn5'  variant='danger' onClick={() => closeConnection()}>Leave Chat</button>
+      <button   className='btn5'  variant='danger' onClick={() => getId(message)}>GetId</button>
+      
   </div>
   <div className='chat'>
       <MessageBox/>
       <SendMsgForm/>
       <SendPrivateMsgForm/>
   </div>
-</div>
-
+</div>)}
 
 
 
@@ -286,7 +293,7 @@ const SendPrivateMsgForm = () => {
      
 
       connection.onclose((e) => {
-  
+        
         setConnection();
         setUsers([]);
       });
@@ -344,6 +351,18 @@ const SendPrivateMsgForm = () => {
       console.log(e);
     }
   };
+
+  
+  const getId = async (message) => {
+    try {
+      await connection.invoke("GetId", message); 
+      console.log(`worked getid ${message}`)
+      
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   return (
     <div className="app">
       <h2>Real Time Chat App</h2>

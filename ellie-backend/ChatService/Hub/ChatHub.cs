@@ -84,7 +84,10 @@ namespace SignalRChat.Hubs
         }
 
 
-   
+      
+
+
+
 
         public async Task SendPrivateMessage(string user, string message)
         //_connection is dictionary 
@@ -99,8 +102,25 @@ namespace SignalRChat.Hubs
             }
 
         }
+        public async Task GetId(string message)
+        //_connection is dictionary 
+        //codition  that tryes to get the  value  of connectionID as a key 
+        //out is used to get(return) variables/properties of the id which is the user and room  as a value
+        {
+            if (_connections.TryGetValue(Context.ConnectionId, out UserConnection userConnection))
+            {
+
+                //method to recieve and send message to all conencted users in the room
+                await Clients.Client(Context.ConnectionId).SendAsync("ReceiveMessage", message, Context.ConnectionId);
+            }
+
+        }
     }
 }
+
+
+
+
 
 
 
