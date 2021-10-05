@@ -81,7 +81,7 @@ const testButton = ()=>{
       <button   className='btn6'  variant='danger' onClick={() => getId(message)}>Get Id</button>
       <button   className='btn7'  variant='danger' onClick={()=>{dispatch(clearMessages())}}>Clear Messages</button>
       <button   className='btn8'  variant='danger' onClick={generateDownload}>Download Messages</button>
-      <button   className='btn9'  variant='danger' onClick={testButton}>Test Button</button>
+      <button   className='btn9'  variant='danger' onClick={()=>{setChat(chatBox=>[...chatBox , <Chat/>])}}>Test Button</button>
   </div>
   <div className='chat'>
       <MessageBox/>
@@ -89,6 +89,11 @@ const testButton = ()=>{
       <SendPrivateMsgForm/>
   </div>
 </div>)}
+
+
+
+
+const [chatBox,setChat] = useState(  [<Chat/>])
 
 
 
@@ -423,12 +428,9 @@ const SendPrivateMsgForm = () => {
         !connection ? (
           <SignUpForm joinRoom={joinRoom} /> 
         ) : (
-          <Chat
-            sendMessage={sendMessage}
-            messages={messages}
-            users={users}
-            closeConnection={closeConnection}
-          />
+          <div>
+           {chatBox}
+           </div>
         ) 
       }
     </div>
