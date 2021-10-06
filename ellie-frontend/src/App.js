@@ -228,31 +228,31 @@ const SendPrivateMsgForm = () => {
 
     
 
-      // axios
-      // .post(
-      //   `http://localhost:5000/register`,
-      //   {
-      //     email: user,
-      //     password:password
-      //   },
+      axios
+      .post(
+        `http://localhost:5000/register`,
+        {
+          email: user,
+          password:password
+        },
      
-      // )
-      // .then((res) => {
-      //   console.log(` data is ${res.data}`)  
-      //   if(res.data===1){
-      //     alert("register success")
-      //     joinRoom(user)
-      //   }   
-      //   else{
-      //    alert("email already exist")
-      //   }
-      // })
-      // .catch((e) => {
-      //   console.log(e)
-      //   if(e){
-      //     alert("already exist")
-      //   }
-      // });
+      )
+      .then((res) => {
+        console.log(` data is ${res.data}`)  
+        if(res.data===1){
+          alert("register success")
+          joinRoom(user)
+        }   
+        else{
+         alert("email already exist")
+        }
+      })
+      .catch((e) => {
+        console.log(e)
+        if(e){
+          alert("already exist")
+        }
+      });
        }
 
       
