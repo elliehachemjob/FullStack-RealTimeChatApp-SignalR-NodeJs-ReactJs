@@ -8,7 +8,7 @@ import {
   storedMessages,
   clearMessages
 } from './messagesReducer';
-import { Widget, addResponseMessage,addUserMessage } from "react-chat-widget";
+import { Widget, addResponseMessage,addUserMessage,renderCustomComponent} from "react-chat-widget";
 import flippedimage from "./flippedImage.png"
 import normalimage from "./normalPlugit.png"
 
@@ -37,10 +37,12 @@ const [isWidget, setisWidget] = useState(false);
 const [isonline, setIsOnline] = useState(false);
 const [ispending, setIsPending] = useState(false);
 const [messges2, setMessages2] = useState([]);
+const [isRender, setIsRender] =useState(false)
 //for widget end 
 
 
 const handleNewUserMessage = (e) => {
+  setIsRender(true)
      sendMessage(e);
     // sending messages worked as for save first and last message is not saved for now but that is okay we will fix that late
       setMessages2([...messges2, e])
@@ -50,14 +52,86 @@ const handleNewUserMessage = (e) => {
    // );
  
 
+  //  messges2.forEach((message) => addUserMessage(message));
+
+
+  
+
+//  console.log(`this is redux messages saved ${JSON.stringify(reduxMessages)}`)
+
+
+
+//  {reduxMessages.map((m) =>
+//   <div  className='user-message'>
+//       <div className='message bg-primary'>{m.message}</div>
+//       <div className='from-user'>{m.user}</div>
+
+//   </div>
+
+
+
+// )}
+
+
+
+
+// reduxMessages.map((m) => {
+//   addUserMessage(m.message)
+// });
+
+
+
+
+
+
+
  };
 
 
- useEffect(() => {
-  messges2.forEach((element) => {
-    addUserMessage(element);
-  });
+
+ const ComponentToRender = () => {
+   
+  return (
+    <div className="App">
+      <h1>hi </h1>
+    </div>
+  );
+};
+
+
+
+
+const CustomMessageBox = () => {
+
+return <div  >
+    {reduxMessages.map((m) =>
+        <div>
+            <div>{m.message}</div>
+        </div>
+
+    )}
+</div>
+}
+
+
+
+
+
+
+
+useEffect(() => {
+  
 }, []);
+
+//  useEffect(() => {
+//   // reduxMessages.map((m) => {
+//   //   addUserMessage(m.message);
+//   // });
+
+  
+
+  
+// }, []);
 
  
 
@@ -241,6 +315,9 @@ const MessageBox = () => {
 
 
 }
+
+
+
 
 
 const SendMsgForm = () => {
