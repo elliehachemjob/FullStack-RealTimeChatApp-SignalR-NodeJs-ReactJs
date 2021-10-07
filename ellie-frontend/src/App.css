@@ -773,9 +773,11 @@ hr.line {
 }
 .rcw-picker-btn,
 .rcw-send {
-  background: #f4f7f9;
+  background: #f9f4f8;
   border: 0;
   cursor: pointer;
+  width:50px;
+
 }
 .rcw-picker-btn .rcw-send-icon,
 .rcw-send .rcw-send-icon {

@@ -9,6 +9,8 @@ import {
   clearMessages
 } from './messagesReducer';
 import { Widget, addResponseMessage } from "react-chat-widget";
+import flippedimage from "./flippedImage.png"
+import normalimage from "./normalPlugit.png"
 
 var FileSaver = require('file-saver');
 
@@ -20,7 +22,6 @@ const App = () => {
 
 const testButton = ()=>{
 
- 
 
 }
 
@@ -32,7 +33,7 @@ const testButton = ()=>{
   const [chatBox,setChatBox] = useState([<span ></span> ])
 
 //for widget
-const [isWidget, setisWidget] = useState(true);
+const [isWidget, setisWidget] = useState(false);
 const [isonline, setIsOnline] = useState(false);
 const [ispending, setIsPending] = useState(false);
 const [message1, setMessage1] = useState([]);
@@ -53,8 +54,8 @@ const getCustomLauncher = (handleToggle) => {
   if (isWidget) {
     return (
       <img
-        src={require("./normalPlugit.png")}
-        alt="new"
+        src={normalimage}
+        alt="imageNot working"
         className="rcw-launcher "
         onClick={() => {
           handleToggle();
@@ -65,8 +66,8 @@ const getCustomLauncher = (handleToggle) => {
   } else {
     return (
       <img
-        src={require("./flippedImage.png")}
-        alt="new"
+      src={flippedimage}
+      alt="imageNot working"
         className="rcw-launcher "
         onClick={() => {
           handleToggle();
