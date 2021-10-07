@@ -8,8 +8,9 @@ import {
   storedMessages,
   clearMessages
 } from './messagesReducer';
-var FileSaver = require('file-saver');
 import { Widget, addResponseMessage } from "react-chat-widget";
+
+var FileSaver = require('file-saver');
 
 
 
@@ -30,6 +31,54 @@ const testButton = ()=>{
   const reduxMessages = useSelector(storedMessages);
   const [chatBox,setChatBox] = useState([<span ></span> ])
 
+//for widget
+const [isWidget, setisWidget] = useState(true);
+const [isonline, setIsOnline] = useState(false);
+const [ispending, setIsPending] = useState(false);
+const [message1, setMessage1] = useState([]);
+const [messges2, setMessages2] = useState([]);
+//for widget end 
+
+
+//for widget 
+const handleNewUserMessage = (e) => {
+  setMessage1(e);
+  setMessages2([...messges2, message1]);
+
+  addResponseMessage(
+    "Please wait patient until our customer support come back"
+  );
+};
+const getCustomLauncher = (handleToggle) => {
+  if (isWidget) {
+    return (
+      <img
+        src={require("./normalPlugit.png")}
+        alt="new"
+        className="rcw-launcher "
+        onClick={() => {
+          handleToggle();
+          setisWidget(false);
+        }}
+      />
+    );
+  } else {
+    return (
+      <img
+        src={require("./flippedImage.png")}
+        alt="new"
+        className="rcw-launcher "
+        onClick={() => {
+          handleToggle();
+          setisWidget(true);
+        }}
+      />
+    );
+  }
+};
+
+
+//for widget end 
 
 
 
@@ -39,6 +88,9 @@ const testButton = ()=>{
   // console.log(` the new id is ${Id}`)
   // console.log(`okay the value ${JSON.stringify(reduxMessages)}`)
   const dispatch = useDispatch();
+
+
+
 
 
 
@@ -442,9 +494,16 @@ const SendPrivateMsgForm = () => {
         !connection ? (
           <SignUpForm joinRoom={joinRoom} /> 
         ) : (
-          
-                   <Chat/>
-
+                 
+                  <div> <Chat/>
+                   <Widget
+                   className="hi"
+                   handleNewUserMessage={handleNewUserMessage}
+                   launcher={(handleToggle) => getCustomLauncher(handleToggle)}
+                   title="Plugit Chat Support"
+                   subtitle="Welcome To Yoonit Customer Service"
+                   senderPlaceHolder="press send button or enter to send a message"
+                 /></div>
           
         ) 
       }
