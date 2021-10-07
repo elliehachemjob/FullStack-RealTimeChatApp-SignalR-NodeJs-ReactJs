@@ -8,7 +8,7 @@ import {
   storedMessages,
   clearMessages
 } from './messagesReducer';
-import { Widget, addResponseMessage } from "react-chat-widget";
+import { Widget, addResponseMessage,addUserMessage } from "react-chat-widget";
 import flippedimage from "./flippedImage.png"
 import normalimage from "./normalPlugit.png"
 
@@ -42,18 +42,22 @@ const [messges2, setMessages2] = useState([]);
 
 const handleNewUserMessage = (e) => {
      sendMessage(e);
-    // sending messages worked as for save first and last message is not saved for now but that is okay we will fix that later
-    setMessages2([...messges2, e])
+    // sending messages worked as for save first and last message is not saved for now but that is okay we will fix that late
+      setMessages2([...messges2, e])
      console.log(` this is ${messges2}`)
-
  //this is where the admin will send back his msgs 
    // addResponseMessage(
-    
    // );
  
+
  };
 
 
+ useEffect(() => {
+  messges2.forEach((element) => {
+    addUserMessage(element);
+  });
+}, []);
 
  
 
@@ -90,6 +94,10 @@ const getCustomLauncher = (handleToggle) => {
     );
   }
 };
+
+
+
+
 
 
 //for widget end 
