@@ -121,7 +121,7 @@ const handleNewUserMessage = (e) => {
 const CustomMessageBox = () => {
 
 return <div  >  
-            <div>{responder}</div>   
+            <div className="rcw-responder">{responder}</div>   
 </div>
 }
 

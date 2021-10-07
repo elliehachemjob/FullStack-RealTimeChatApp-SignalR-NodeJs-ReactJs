@@ -493,6 +493,7 @@ hr.line {
 .rcw-message {
   margin: 10px;
   display: flex;
+
   white-space: pre-wrap;
   word-wrap: break-word;
 }
@@ -513,10 +514,18 @@ hr.line {
   background-color: #e6e6e6;
   border-radius: 10px;
   max-width: 215px;
-  padding: 15px;
+  padding-right: 15px;
+  padding-left:15px;
+  padding-top:15px;
+  padding-bottom: 0px;
   text-align: left;
-  white-space: pre-wrap;
-  word-wrap: break-word;
+}
+.rcw-responder {
+  background-color: #e6e6e6;
+  border-radius: 10px;
+  max-width: 215px;
+  padding: 16px;
+  text-align: left;
 }
 .rcw-client .rcw-timestamp {
   align-self: flex-end;
