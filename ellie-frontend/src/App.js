@@ -120,9 +120,16 @@ const handleNewUserMessage = (e) => {
 
 const CustomMessageBox = () => {
 
-return <div  >  
-            <div className="rcw-responder">{responder}</div>   
-</div>
+//  console.log(`the length is ${ typeof(responder)}`)
+if(responder)
+return (  
+          
+  <div className="rcw-responder">{responder}</div> 
+)
+else{
+  return(
+  <div>{responder}</div> )
+}
 }
 
 
@@ -132,19 +139,25 @@ return <div  >
 
 
 useEffect(() => {
+ 
+
+ 
   renderCustomComponent(CustomMessageBox)
 
-  
+ 
 }, [responder,setResponder]);
 
+
+
+
+  
 //  useEffect(() => {
 //   // reduxMessages.map((m) => {
 //   //   addUserMessage(m.message);
 //   // });
 
-  
 
-  
+
 // }, []);
 
  
@@ -526,6 +539,8 @@ const SendPrivateMsgForm = () => {
         dispatch(messageSave([...reduxMessages, { user, message,id } ]))
          setResponder(message)
         console.log(`this is the message ${message}`)
+
+        
    
       });
 
