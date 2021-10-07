@@ -9,18 +9,17 @@ import {
   clearMessages
 } from './messagesReducer';
 var FileSaver = require('file-saver');
+import { Widget, addResponseMessage } from "react-chat-widget";
+
 
 
 
 
 const App = () => {
 
-
 const testButton = ()=>{
 
  
-
-
 
 }
 
@@ -28,11 +27,13 @@ const testButton = ()=>{
   const [connection, setConnection] = useState();
   const [messages, setMessages] = useState([]);
   const [users, setUsers] = useState([]);
-
   const reduxMessages = useSelector(storedMessages);
-  const newInfo = JSON.stringify(reduxMessages)
-  
   const [chatBox,setChatBox] = useState([<span ></span> ])
+
+
+
+
+
 
 
   // console.log(` the new id is ${Id}`)
