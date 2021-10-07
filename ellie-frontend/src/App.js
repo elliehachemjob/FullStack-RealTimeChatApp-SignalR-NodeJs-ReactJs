@@ -38,18 +38,35 @@ const [isonline, setIsOnline] = useState(false);
 const [ispending, setIsPending] = useState(false);
 const [messges2, setMessages2] = useState([]);
 const [isRender, setIsRender] =useState(false)
+const [responder, setResponder] = useState()
 //for widget end 
 
 
 const handleNewUserMessage = (e) => {
-  setIsRender(true)
+
+
+
+//  console.log(`okay ${JSON.stringify(reduxMessages)}`)
+//  const newStorage = reduxMessages.map((m) =>m.message);
+ 
+//  const messageStringified = JSON.stringify(newStorage)
+
+//  console.log(`okay 2  ${newStorage}`)
+
+    setIsRender(true)
      sendMessage(e);
     // sending messages worked as for save first and last message is not saved for now but that is okay we will fix that late
       setMessages2([...messges2, e])
      console.log(` this is ${messges2}`)
  //this is where the admin will send back his msgs 
-   // addResponseMessage(
-   // );
+
+//  const hi = "hiiii"
+ 
+  //  addResponseMessage(
+    
+  //   responder
+    
+  //  );
  
 
   //  messges2.forEach((message) => addUserMessage(message));
@@ -103,13 +120,8 @@ const handleNewUserMessage = (e) => {
 
 const CustomMessageBox = () => {
 
-return <div  >
-    {reduxMessages.map((m) =>
-        <div>
-            <div>{m.message}</div>
-        </div>
-
-    )}
+return <div  >  
+            <div>{responder}</div>   
 </div>
 }
 
@@ -120,8 +132,10 @@ return <div  >
 
 
 useEffect(() => {
+  renderCustomComponent(CustomMessageBox)
+
   
-}, []);
+}, [responder,setResponder]);
 
 //  useEffect(() => {
 //   // reduxMessages.map((m) => {
@@ -508,7 +522,11 @@ const SendPrivateMsgForm = () => {
         // setMessages((messages) => [...messages, { user, message } ])
       // dispatch(messageSave([...messages, { user, message } ]))
 
+        // dispatch(messageSave([...reduxMessages, { user, message,id } ]))
         dispatch(messageSave([...reduxMessages, { user, message,id } ]))
+         setResponder(message)
+        console.log(`this is the message ${message}`)
+   
       });
 
      
