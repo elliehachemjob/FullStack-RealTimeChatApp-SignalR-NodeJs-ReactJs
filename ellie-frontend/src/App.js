@@ -36,20 +36,33 @@ const testButton = ()=>{
 const [isWidget, setisWidget] = useState(false);
 const [isonline, setIsOnline] = useState(false);
 const [ispending, setIsPending] = useState(false);
-const [message1, setMessage1] = useState([]);
 const [messges2, setMessages2] = useState([]);
 //for widget end 
 
 
-//for widget 
 const handleNewUserMessage = (e) => {
-  setMessage1(e);
-  setMessages2([...messges2, message1]);
+     sendMessage(e);
+    // sending messages worked as for save first and last message is not saved for now but that is okay we will fix that later
+    setMessages2([...messges2, e])
+     console.log(` this is ${messges2}`)
 
-  addResponseMessage(
-    "Please wait patient until our customer support come back"
-  );
-};
+ //this is where the admin will send back his msgs 
+   // addResponseMessage(
+    
+   // );
+ 
+ };
+
+
+
+ 
+
+
+
+
+
+//for widget 
+
 const getCustomLauncher = (handleToggle) => {
   if (isWidget) {
     return (
@@ -498,12 +511,12 @@ const SendPrivateMsgForm = () => {
                  
                   <div> <Chat/>
                    <Widget
-                   className="hi"
                    handleNewUserMessage={handleNewUserMessage}
                    launcher={(handleToggle) => getCustomLauncher(handleToggle)}
                    title="Plugit Chat Support"
                    subtitle="Welcome To Yoonit Customer Service"
                    senderPlaceHolder="press send button or enter to send a message"
+
                  /></div>
           
         ) 
