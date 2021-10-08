@@ -27,7 +27,8 @@ import {
   Checkbox,
   Loader
 } from "rbx";
-import { faCheck, faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
+import "rbx/index.css";
+import { faAddressBook, faArrowRight, faCheck, faEnvelope, faEnvelopeOpenText, faLock, faRegistered, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
@@ -42,91 +43,7 @@ var FileSaver = require('file-saver');
 
 
 
-const LoginForm = ({ onLogin }) => {
-  const [loading, setLoading] = useState(false);
-  const [timer, setTimer] = useState(null);
-  useEffect(
-    () => {
-      // this will clear Timeout when component unmont like in willComponentUnmount
-      return () => {
-        clearTimeout(timer);
-      };
-    },
-    [] //useEffect will run only one time
-  );
-  return (
-    <Level>
-      <Level.Item textAlign="centered">
-        <Container
-          style={{
-            maxWidth: 400,
-            height: "100vh",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center"
-          }}
-        >
-          <Card>
-            <Section backgroundColor="primary">
-              <Title style={{ color: "white" }}>LoginR</Title>
-            </Section>
-            <Card.Content>
-              <Field>
-                <Control iconLeft iconRight>
-                  <Input disabled={loading} type="email" placeholder="Email" />
-                  <Icon size="small" align="left">
-                    <FontAwesomeIcon icon={faEnvelope} />
-                  </Icon>
-                  <Icon size="small" align="right">
-                    <FontAwesomeIcon icon={faCheck} />
-                  </Icon>
-                </Control>
-              </Field>
-              <Field>
-                <Control iconLeft>
-                  <Input
-                    disabled={loading}
-                    type="password"
-                    placeholder="Password"
-                  />
-                  <Icon size="small" align="left">
-                    <FontAwesomeIcon icon={faLock} />
-                  </Icon>
-                </Control>
-              </Field>
-              <Field>
-                <Control>
-                  <Label>
-                    <Checkbox disabled={loading} /> Remember me
-                  </Label>
-                </Control>
-              </Field>
-              <Field>
-                <Control>
-                  <Button
-                    state={loading ? "loading" : undefined}
-                    onClick={() => {
-                      setLoading(true);
-                      setTimer(
-                        setTimeout(
-                          () => (onLogin ? onLogin() : setLoading(false)),
-                          2000
-                        )
-                      );
-                    }}
-                    color="primary"
-                  >
-                    Login
-                  </Button>
-                </Control>
-              </Field>
-            </Card.Content>
-          </Card>
-        </Container>
-      </Level.Item>
-    </Level>
-  );
-};
+
 
 
 
@@ -502,9 +419,13 @@ const SendPrivateMsgForm = () => {
 
 
   const SignUpForm = () => {
+  
 
-    const [user, setUser] = useState();
-    const [password, setPassword] = useState("hi");
+
+    const [user1, setUser1] = useState();
+    const [password1, setPassword1] = useState();
+    const [user2 ,setUser2] = useState();
+    const [password2, setPassword2] = useState();
     const [sendEmailVerification ,setSendEmailVerification] = useState()
 
     
@@ -515,6 +436,205 @@ const SendPrivateMsgForm = () => {
     let lowerCase = /^(?=.*[a-z])/;
     let numbers = /^(?=.*[0-9])/;
     let special = /^(?=.*[$@$!%*#?&])/;
+
+
+
+
+    const LoginForm = ({ onLogin }) => {
+      const [loading, setLoading] = useState(false);
+      const [timer, setTimer] = useState(null);
+      useEffect(
+        () => {
+          // this will clear Timeout when component unmont like in willComponentUnmount
+          return () => {
+            clearTimeout(timer);
+          };
+        },
+        [] //useEffect will run only one time
+      );
+      return (
+        <Level>
+          <Level.Item textAlign="centered">
+            <Container
+              style={{
+                maxWidth: 400,
+                height: "100vh",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center"
+              }}
+            >
+              <Card>
+                <Section backgroundColor="primary">
+                  <Title style={{ color: "white" }}>Plugit Support Login</Title>
+                </Section>
+                <Card.Content>
+                  <Field>
+                    <Control iconLeft iconRight>
+                      <Input disabled={loading} type="email" placeholder="Email" value={user1} onChange={e => setUser1(e.target.value)}/>
+                      <Icon size="small" align="left">
+                        <FontAwesomeIcon icon={faEnvelope} />
+                      </Icon>
+                      <Icon size="small" align="right">
+                        <FontAwesomeIcon icon={faCheck} />
+                      </Icon>
+                    </Control>
+                  </Field>
+                  <Field>
+                    <Control iconLeft>
+                      <Input
+                        disabled={loading}
+                        type="password"
+                        placeholder="Password"
+                        onChange={e => setPassword1(e.target.value)}
+                        value={password1}
+                      />
+                      <Icon size="small" align="left">
+                        <FontAwesomeIcon icon={faLock} />
+                      </Icon>
+                    </Control>
+                  </Field>
+                  <Field>
+                    <Control>
+                      <Label>
+                        <Checkbox disabled={loading} /> Remember me
+                      </Label>
+                    </Control>
+                  </Field>
+                  <Field>
+                    <Control>
+                      <Button
+                        state={loading ? "loading" : undefined}
+                        onClick={() => {
+                          loginHandler()
+                          setLoading(true);
+                          setTimer(
+                            setTimeout(
+                              () => (onLogin ? onLogin() : setLoading(false)),
+                              2000
+                            )
+                          );
+                        }}
+                        color="primary"
+                      >
+                        Login
+                      </Button>
+                    </Control>
+                  </Field>
+                </Card.Content>
+              </Card>
+            </Container>
+          </Level.Item>
+        </Level>
+      );
+    };
+
+
+
+
+    const SignUpForm = ({ onLogin }) => {
+      const [loading, setLoading] = useState(false);
+      const [timer, setTimer] = useState(null);
+      useEffect(
+        () => {
+          // this will clear Timeout when component unmont like in willComponentUnmount
+          return () => {
+            clearTimeout(timer);
+          };
+        },
+        [] //useEffect will run only one time
+      );
+      return (
+        <Level>
+          <Level.Item textAlign="centered">
+            <Container
+              style={{
+                maxWidth: 400,
+                height: "100vh",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center"
+              }}
+            >
+              <Card>
+                <Section backgroundColor="primary">
+                  <Title style={{ color: "white" }}>Plugit Support Sign Up</Title>
+                </Section>
+                <Card.Content>
+                  <Field>
+                    <Control iconLeft iconRight>
+                      <Input disabled={loading} type="email" placeholder="Email" value={user2} onChange={e => setUser2(e.target.value)}/>
+                      <Icon size="small" align="left">
+                        <FontAwesomeIcon icon={faEnvelope} />
+                      </Icon>
+                      <Icon size="small" align="right">
+                        <FontAwesomeIcon icon={faCheck} />
+                      </Icon>
+                    </Control>
+                  </Field>
+                  <Field>
+                    <Control iconLeft>
+                      <Input
+                        disabled={loading}
+                        type="password"
+                        placeholder="Password"
+                        onChange={e => setPassword2(e.target.value)}
+                        value={password2}
+                      />
+                      <Icon size="small" align="left">
+                        <FontAwesomeIcon icon={faLock} />
+                      </Icon>
+                    </Control>
+                  </Field>
+                  <Field>
+                    <Control iconLeft>
+                      <Input
+                        disabled={loading}
+                        type="email"
+                        placeholder="Send Email Verification"
+                        onChange={e => setSendEmailVerification(e.target.value)}
+                        value={sendEmailVerification}
+                      />
+                      <Icon size="small" align="left">
+                        <FontAwesomeIcon icon={faArrowRight} />
+                      </Icon>
+                    </Control>
+                  </Field>
+                  <Field>
+                    <Control>
+                      <Label>
+                        <Checkbox disabled={loading} /> Remember me
+                      </Label>
+                    </Control>
+                  </Field>
+                  <Field>
+                    <Control>
+                      <Button
+                        state={loading ? "loading" : undefined}
+                        onClick={() => {
+                          signUpHandler()
+                          setLoading(true);
+                          setTimer(
+                            setTimeout(
+                              () => (onLogin ? onLogin() : setLoading(false)),
+                              2000
+                            )
+                          );
+                        }}
+                        color="primary"
+                      >
+                        SignUp
+                      </Button>
+                    </Control>
+                  </Field>
+                </Card.Content>
+              </Card>
+            </Container>
+          </Level.Item>
+        </Level>
+      );
+    };
+
 
     const signUpHandler = ()=>{
 
@@ -528,8 +648,8 @@ const SendPrivateMsgForm = () => {
       .post(
         `http://localhost:5000/register`,
         {
-          email: user,
-          password:password
+          email: user2,
+          password:password2
         },
      
       )
@@ -537,7 +657,7 @@ const SendPrivateMsgForm = () => {
         console.log(` data is ${res.data}`)  
         if(res.data===1){
           alert("register success")
-          joinRoom(user)
+          joinRoom(user2)
         }   
         else{
          alert("email already exist")
@@ -568,8 +688,8 @@ const SendPrivateMsgForm = () => {
         .post(
           `http://localhost:5000/login`,
           {
-            email: user,
-            password:password
+            email: user1,
+            password:password1
           },
        
         )
@@ -577,7 +697,7 @@ const SendPrivateMsgForm = () => {
       
           if(res.data===1){
             alert("sucess ")
-            joinRoom(user)
+            joinRoom(user1)
           }
           else{
             alert("email is not found ")
@@ -593,14 +713,11 @@ const SendPrivateMsgForm = () => {
  
 
     return (
-          <div className="form">
-            <input className="css-input1"placeholder="email" onChange={e => setUser(e.target.value)} />
-            <input className="css-input2"placeholder="Password" onChange={e => setPassword(e.target.value)} />
-            <input className="css-input3" placeholder="email" onChange={e => setUser(e.target.value)} />
-            <input className="css-input4" placeholder="Password" onChange={e => setPassword(e.target.value)} />
-            <input className="css-input5" placeholder="Send Email Veirifcation" onChange={e => setSendEmailVerification(e.target.value)} />
-        <button  className="btn1"  onClick ={signUpHandler}  variant="primary" type="submit" disabled={!user || !password || !sendEmailVerification}>Sign Up</button>
-        <button   className="btn2" onClick={loginHandler}  variant="primary" type="submit" disabled={!user || !password }>Login</button>
+          <div>
+              <LoginForm/>
+              <SignUpForm/>
+        {/* <button   className="btn2" onClick={loginHandler}  variant="primary" type="submit" disabled={!user || !password }>Login</button> */}
+      
         </div>
     )
     
@@ -734,6 +851,24 @@ const SendPrivateMsgForm = () => {
     }
   };
 
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
   return (
     <div className="app">
      
@@ -742,7 +877,6 @@ const SendPrivateMsgForm = () => {
      
         !connection ? (
           <div>
-          <LoginForm/>
           <SignUpForm joinRoom={joinRoom} /> 
           </div>
         ) : (
