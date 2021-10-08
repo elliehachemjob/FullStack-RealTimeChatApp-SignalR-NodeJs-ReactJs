@@ -10895,3 +10895,15 @@ label.panel-block {
       padding-left: 2.25em;
 
   }
+
+
+  .Body{
+
+    overflow:"off"
+   
+  }
+
+
+  .loader{
+    display:none
+  }
