@@ -424,8 +424,7 @@ const SendPrivateMsgForm = () => {
 
     const [user1, setUser1] = useState();
     const [password1, setPassword1] = useState();
-    const [user2 ,setUser2] = useState();
-    const [password2, setPassword2] = useState();
+    
     const [sendEmailVerification ,setSendEmailVerification] = useState()
 
     
@@ -536,8 +535,52 @@ const SendPrivateMsgForm = () => {
 
 
     const SignUpForm = ({ onLogin }) => {
+
+
+
+      const signUpHandler = ()=>{
+
+        // if (!password.match(UpperCase) || !password.match(lowerCase) || !password.match(numbers) || !password.match(special) || password.length <= 9 || password === ""  ) {
+        //   alert("password must contain Upper/lower case,Numbers,Special Charachters")}
+  
+  
+      
+  
+        axios
+        .post(
+          `http://localhost:5000/register`,
+          {
+            email: user2,
+            password:password2
+          },
+       
+        )
+        .then((res) => {
+          console.log(` data is ${res.data}`)  
+          if(res.data===1){
+            alert("register success")
+            joinRoom(user2)
+          }   
+          else{
+           alert("email already exist")
+          }
+        })
+        .catch((e) => {
+          console.log(e)
+          if(e){
+            alert("already exist")
+          }
+        });
+         }
+
+
+
+      const [user2 ,setUser2] = useState();
+      const [password2, setPassword2] = useState();
       const [loading, setLoading] = useState(false);
       const [timer, setTimer] = useState(null);
+
+
       useEffect(
         () => {
           // this will clear Timeout when component unmont like in willComponentUnmount
@@ -568,7 +611,7 @@ const SendPrivateMsgForm = () => {
                 <Card.Content>
                   <Field>
                     <Control iconLeft iconRight>
-                      <input  className="special-input" disabled={loading} type="email" placeholder="Email" value={user2} onChange={e => setUser2(e.target.value)}/>
+                      <Input  enabled={loading} type="email" placeholder="Email" onChange={(e)=>{setUser2(e.target.value)}}/>
                       <Icon size="small" align="left">
                         <FontAwesomeIcon icon={faEnvelope} />
                       </Icon>
@@ -579,8 +622,8 @@ const SendPrivateMsgForm = () => {
                   </Field>
                   <Field>
                     <Control iconLeft>
-                      <input
-                       className="special-input"
+                      <Input
+                       
                         type="password"
                         placeholder="Password"
                         onChange={e => setPassword2(e.target.value)}
@@ -593,8 +636,8 @@ const SendPrivateMsgForm = () => {
                   </Field>
                   <Field>
                     <Control iconLeft>
-                      <input
-                       className="special-input"
+                      <Input
+                      
                         type="email"
                         placeholder="Send Email Verification"
                         onChange={e => setSendEmailVerification(e.target.value)}
@@ -641,40 +684,7 @@ const SendPrivateMsgForm = () => {
     };
 
 
-    const signUpHandler = ()=>{
-
-      // if (!password.match(UpperCase) || !password.match(lowerCase) || !password.match(numbers) || !password.match(special) || password.length <= 9 || password === ""  ) {
-      //   alert("password must contain Upper/lower case,Numbers,Special Charachters")}
-
-
     
-
-      axios
-      .post(
-        `http://localhost:5000/register`,
-        {
-          email: user2,
-          password:password2
-        },
-     
-      )
-      .then((res) => {
-        console.log(` data is ${res.data}`)  
-        if(res.data===1){
-          alert("register success")
-          joinRoom(user2)
-        }   
-        else{
-         alert("email already exist")
-        }
-      })
-      .catch((e) => {
-        console.log(e)
-        if(e){
-          alert("already exist")
-        }
-      });
-       }
 
       
 
