@@ -39,12 +39,13 @@ const [ispending, setIsPending] = useState(false);
 const [messges2, setMessages2] = useState([]);
 const [isRender, setIsRender] =useState(false)
 const [responder, setResponder] = useState()
+const [isSending, setIsSending] = useState(false)
 //for widget end 
 
 
 const handleNewUserMessage = (e) => {
 
-
+  setIsSending(false)
 
 //  console.log(`okay ${JSON.stringify(reduxMessages)}`)
 //  const newStorage = reduxMessages.map((m) =>m.message);
@@ -133,16 +134,14 @@ else{
 }
 
 
-
-
-
-
-
 useEffect(() => {
  
 
- 
-  renderCustomComponent(CustomMessageBox)
+ if(isSending==5){
+  renderCustomComponent(CustomMessageBox)}
+  else{
+    renderCustomComponent(CustomMessageBox)
+  }
 
  
 }, [responder,setResponder]);
@@ -619,15 +618,15 @@ const SendPrivateMsgForm = () => {
 
   return (
     <div className="app">
-      <h2>Real Time Chat App</h2>
-      <hr className="line" />
+     
+
       { 
      
         !connection ? (
           <SignUpForm joinRoom={joinRoom} /> 
         ) : (
                  
-                  <div> <Chat/>
+                  <div>
                    <Widget
                    handleNewUserMessage={handleNewUserMessage}
                    launcher={(handleToggle) => getCustomLauncher(handleToggle)}
@@ -635,7 +634,8 @@ const SendPrivateMsgForm = () => {
                    subtitle="Welcome To Yoonit Customer Service"
                    senderPlaceHolder="press send button or enter to send a message"
 
-                 /></div>
+                 /> 
+                 </div>
           
         ) 
       }
