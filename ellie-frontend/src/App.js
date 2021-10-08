@@ -30,6 +30,7 @@ import {
 
 import { faAddressBook, faArrowRight, faCheck, faEnvelope, faEnvelopeOpenText, faLock, faRegistered, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
 
 
 
@@ -421,14 +422,6 @@ const SendPrivateMsgForm = () => {
   const SignUpForm = () => {
   
 
-
-   
-    
-
-    
-
-
-
     let UpperCase = /^(?=.*[A-Z])/;
     let lowerCase = /^(?=.*[a-z])/;
     let numbers = /^(?=.*[0-9])/;
@@ -437,7 +430,7 @@ const SendPrivateMsgForm = () => {
 
 
 
-    const LoginForm = ({ onLogin }) => {
+    const LoginForm = () => {
 
 
       const loginHandler = ()=>{
@@ -480,17 +473,17 @@ const SendPrivateMsgForm = () => {
 
       const [user1, setUser1] = useState();
       const [password1, setPassword1] = useState();
-      const [loading, setLoading] = useState(false);
+      // const [loading, setLoading] = useState(false);
       const [timer, setTimer] = useState(null);
-      useEffect(
-        () => {
-          // this will clear Timeout when component unmont like in willComponentUnmount
-          return () => {
-            clearTimeout(timer);
-          };
-        },
-        [] //useEffect will run only one time
-      );
+      // useEffect(
+      //   () => {
+      //     // this will clear Timeout when component unmont like in willComponentUnmount
+      //     return () => {
+      //       clearTimeout(timer);
+      //     };
+      //   },
+      //   [] //useEffect will run only one time
+      // );
       return (
         <Level>
           <Level.Item textAlign="centered">
@@ -502,7 +495,8 @@ const SendPrivateMsgForm = () => {
                 flexDirection: "column",
                 justifyContent: "center",
                 position:"relative",
-                bottom:250
+                bottom:310,
+                right:50
               }}
             >
               <Card>
@@ -512,7 +506,9 @@ const SendPrivateMsgForm = () => {
                 <Card.Content>
                   <Field>
                     <Control iconLeft iconRight>
-                      <Input disabled={loading} type="email" placeholder="Email" value={user1} onChange={e => setUser1(e.target.value)}/>
+                      <Input
+                      //  disabled={loading}
+                        type="email" placeholder="Email" value={user1} onChange={e => setUser1(e.target.value)}/>
                       <Icon size="small" align="left">
                         <FontAwesomeIcon icon={faEnvelope} />
                       </Icon>
@@ -524,7 +520,7 @@ const SendPrivateMsgForm = () => {
                   <Field>
                     <Control iconLeft>
                       <Input
-                        disabled={loading}
+                        // disabled={loading}
                         type="password"
                         placeholder="Password"
                         onChange={e => setPassword1(e.target.value)}
@@ -539,23 +535,22 @@ const SendPrivateMsgForm = () => {
                   <Field>
                     <Control>
                       <Label>
-                        <Checkbox disabled={loading} /> Remember me
+                        <Checkbox
+                        //  disabled={loading}
+                          /> Remember me
+                      </Label>
+                      <Label>
+                      <Link style={{paddingLeft:175 ,top:120,right:85 ,position:'relative'}} to="/SignUpForm">Create New Account</Link>
                       </Label>
                     </Control>
                   </Field>
                   <Field>
                     <Control>
                       <Button
-                        state={loading ? "loading" : undefined}
+                        // state={loading ? "loading" : undefined}
                         onClick={() => {
                           loginHandler()
-                          setLoading(true);
-                          setTimer(
-                            setTimeout(
-                              () => (onLogin ? onLogin() : setLoading(false)),
-                              2000
-                            )
-                          );
+                          // setLoading(true);
                         }}
                         color="primary"
                       >
@@ -574,7 +569,7 @@ const SendPrivateMsgForm = () => {
 
 
 
-    const SignUpForm = ({ onLogin }) => {
+    const SignUpForm = () => {
 
 
 
@@ -618,19 +613,19 @@ const SendPrivateMsgForm = () => {
       const [user2 ,setUser2] = useState();
       const [password2, setPassword2] = useState();
       const [sendEmailVerification ,setSendEmailVerification] = useState()
-      const [loading, setLoading] = useState(false);
+      // const [loading, setLoading] = useState(false);
       const [timer, setTimer] = useState(null);
 
 
-      useEffect(
-        () => {
-          // this will clear Timeout when component unmont like in willComponentUnmount
-          return () => {
-            clearTimeout(timer);
-          };
-        },
-        [] //useEffect will run only one time
-      );
+      // useEffect(
+      //   () => {
+      //     // this will clear Timeout when component unmont like in willComponentUnmount
+      //     return () => {
+      //       clearTimeout(timer);
+      //     };
+      //   },
+      //   [] //useEffect will run only one time
+      // );
       return (
         <Level>
           <Level.Item textAlign="centered">
@@ -642,7 +637,8 @@ const SendPrivateMsgForm = () => {
                 flexDirection: "column",
                 justifyContent: "center",
                 position:"relative",
-                bottom:800
+                bottom:300,
+                right:50
               }}
             >
               <Card>
@@ -652,7 +648,9 @@ const SendPrivateMsgForm = () => {
                 <Card.Content>
                   <Field>
                     <Control iconLeft iconRight>
-                      <Input  enabled={loading} type="email" placeholder="Email" onChange={(e)=>{setUser2(e.target.value)}}/>
+                      <Input  
+                      // enabled={loading}
+                      type="email" placeholder="Email" onChange={(e)=>{setUser2(e.target.value)}}/>
                       <Icon size="small" align="left">
                         <FontAwesomeIcon icon={faEnvelope} />
                       </Icon>
@@ -692,23 +690,19 @@ const SendPrivateMsgForm = () => {
                   <Field>
                     <Control>
                       <Label>
-                        <Checkbox disabled={loading} /> Remember me
+                        <Checkbox 
+                        // disabled={loading}
+                         /> Remember me
                       </Label>
                     </Control>
                   </Field>
                   <Field>
                     <Control>
                       <Button
-                        state={loading ? "loading" : undefined}
+                        // state={loading ? "loading" : undefined}
                         onClick={() => {
                           signUpHandler()
-                          setLoading(true);
-                          setTimer(
-                            setTimeout(
-                              () => (onLogin ? onLogin() : setLoading(false)),
-                              2000
-                            )
-                          );
+                          // setLoading(true);
                         }}
                         color="primary"
                       >
@@ -727,12 +721,19 @@ const SendPrivateMsgForm = () => {
 
 
     return (
-          <div>
-              <LoginForm/>
-              <SignUpForm/>
-        {/* <button   className="btn2" onClick={loginHandler}  variant="primary" type="submit" disabled={!user || !password }>Login</button> */}
+      <BrowserRouter>
+      <Switch>
+        <Route exact path="/SignUpForm">
+          <SignUpForm/>
+        </Route>
+        <Route exact path="/">
+         <LoginForm/>
+        </Route>
+      </Switch>
+    </BrowserRouter>
+
       
-        </div>
+        
     )
     
 }
