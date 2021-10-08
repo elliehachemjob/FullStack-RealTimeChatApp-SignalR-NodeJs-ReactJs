@@ -27,7 +27,7 @@ import {
   Checkbox,
   Loader
 } from "rbx";
-import "rbx/index.css";
+
 import { faAddressBook, faArrowRight, faCheck, faEnvelope, faEnvelopeOpenText, faLock, faRegistered, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -461,7 +461,9 @@ const SendPrivateMsgForm = () => {
                 height: "100vh",
                 display: "flex",
                 flexDirection: "column",
-                justifyContent: "center"
+                justifyContent: "center",
+                position:"relative",
+                bottom:250
               }}
             >
               <Card>
@@ -489,6 +491,7 @@ const SendPrivateMsgForm = () => {
                         onChange={e => setPassword1(e.target.value)}
                         value={password1}
                       />
+                      
                       <Icon size="small" align="left">
                         <FontAwesomeIcon icon={faLock} />
                       </Icon>
@@ -553,7 +556,9 @@ const SendPrivateMsgForm = () => {
                 height: "100vh",
                 display: "flex",
                 flexDirection: "column",
-                justifyContent: "center"
+                justifyContent: "center",
+                position:"relative",
+                bottom:800
               }}
             >
               <Card>
@@ -563,7 +568,7 @@ const SendPrivateMsgForm = () => {
                 <Card.Content>
                   <Field>
                     <Control iconLeft iconRight>
-                      <Input disabled={loading} type="email" placeholder="Email" value={user2} onChange={e => setUser2(e.target.value)}/>
+                      <input  className="special-input" disabled={loading} type="email" placeholder="Email" value={user2} onChange={e => setUser2(e.target.value)}/>
                       <Icon size="small" align="left">
                         <FontAwesomeIcon icon={faEnvelope} />
                       </Icon>
@@ -574,8 +579,8 @@ const SendPrivateMsgForm = () => {
                   </Field>
                   <Field>
                     <Control iconLeft>
-                      <Input
-                        disabled={loading}
+                      <input
+                       className="special-input"
                         type="password"
                         placeholder="Password"
                         onChange={e => setPassword2(e.target.value)}
@@ -588,8 +593,8 @@ const SendPrivateMsgForm = () => {
                   </Field>
                   <Field>
                     <Control iconLeft>
-                      <Input
-                        disabled={loading}
+                      <input
+                       className="special-input"
                         type="email"
                         placeholder="Send Email Verification"
                         onChange={e => setSendEmailVerification(e.target.value)}
@@ -779,7 +784,6 @@ const SendPrivateMsgForm = () => {
       });
 
      
-
       connection.onclose((e) => {
         
         setConnection();
