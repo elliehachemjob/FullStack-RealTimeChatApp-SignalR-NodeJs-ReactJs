@@ -12,7 +12,125 @@ import { Widget, addResponseMessage,addUserMessage,renderCustomComponent} from "
 import flippedimage from "./flippedImage.png"
 import normalimage from "./normalPlugit.png"
 
+import {
+  Field,
+  Control,
+  Input,
+  Icon,
+  Container,
+  Button,
+  Card,
+  Level,
+  Title,
+  Section,
+  Label,
+  Checkbox,
+  Loader
+} from "rbx";
+import { faCheck, faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+
+
+
+
+
 var FileSaver = require('file-saver');
+
+
+
+
+
+
+const LoginForm = ({ onLogin }) => {
+  const [loading, setLoading] = useState(false);
+  const [timer, setTimer] = useState(null);
+  useEffect(
+    () => {
+      // this will clear Timeout when component unmont like in willComponentUnmount
+      return () => {
+        clearTimeout(timer);
+      };
+    },
+    [] //useEffect will run only one time
+  );
+  return (
+    <Level>
+      <Level.Item textAlign="centered">
+        <Container
+          style={{
+            maxWidth: 400,
+            height: "100vh",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center"
+          }}
+        >
+          <Card>
+            <Section backgroundColor="primary">
+              <Title style={{ color: "white" }}>LoginR</Title>
+            </Section>
+            <Card.Content>
+              <Field>
+                <Control iconLeft iconRight>
+                  <Input disabled={loading} type="email" placeholder="Email" />
+                  <Icon size="small" align="left">
+                    <FontAwesomeIcon icon={faEnvelope} />
+                  </Icon>
+                  <Icon size="small" align="right">
+                    <FontAwesomeIcon icon={faCheck} />
+                  </Icon>
+                </Control>
+              </Field>
+              <Field>
+                <Control iconLeft>
+                  <Input
+                    disabled={loading}
+                    type="password"
+                    placeholder="Password"
+                  />
+                  <Icon size="small" align="left">
+                    <FontAwesomeIcon icon={faLock} />
+                  </Icon>
+                </Control>
+              </Field>
+              <Field>
+                <Control>
+                  <Label>
+                    <Checkbox disabled={loading} /> Remember me
+                  </Label>
+                </Control>
+              </Field>
+              <Field>
+                <Control>
+                  <Button
+                    state={loading ? "loading" : undefined}
+                    onClick={() => {
+                      setLoading(true);
+                      setTimer(
+                        setTimeout(
+                          () => (onLogin ? onLogin() : setLoading(false)),
+                          2000
+                        )
+                      );
+                    }}
+                    color="primary"
+                  >
+                    Login
+                  </Button>
+                </Control>
+              </Field>
+            </Card.Content>
+          </Card>
+        </Container>
+      </Level.Item>
+    </Level>
+  );
+};
+
+
+
+
 
 
 
@@ -623,7 +741,10 @@ const SendPrivateMsgForm = () => {
       { 
      
         !connection ? (
+          <div>
+          <LoginForm/>
           <SignUpForm joinRoom={joinRoom} /> 
+          </div>
         ) : (
                  
                   <div>
@@ -635,6 +756,7 @@ const SendPrivateMsgForm = () => {
                    senderPlaceHolder="press send button or enter to send a message"
 
                  /> 
+               
                  </div>
           
         ) 
