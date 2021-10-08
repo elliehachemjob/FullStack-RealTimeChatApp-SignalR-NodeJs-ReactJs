@@ -422,10 +422,8 @@ const SendPrivateMsgForm = () => {
   
 
 
-    const [user1, setUser1] = useState();
-    const [password1, setPassword1] = useState();
+   
     
-    const [sendEmailVerification ,setSendEmailVerification] = useState()
 
     
 
@@ -440,6 +438,48 @@ const SendPrivateMsgForm = () => {
 
 
     const LoginForm = ({ onLogin }) => {
+
+
+      const loginHandler = ()=>{
+
+        // if (!password.match(UpperCase) || !password.match(lowerCase) || !password.match(numbers) || !password.match(special) || password.length <= 9 || password === ""  ) {
+        //   alert("password must contain Upper/lower case,Numbers,Special Charachters")}
+  
+     
+  
+        axios
+        .post(
+          `http://localhost:5000/login`,
+          {
+            email: user1,
+            password:password1
+          },
+       
+        )
+        .then((res) => {
+      
+          if(res.data===1){
+            alert("sucess ")
+            joinRoom(user1)
+          }
+          else{
+            alert("email is not found ")
+            
+          }
+
+        })
+        .catch((e) => {
+
+          console.log(e);
+        });
+         }
+ 
+
+
+
+
+      const [user1, setUser1] = useState();
+      const [password1, setPassword1] = useState();
       const [loading, setLoading] = useState(false);
       const [timer, setTimer] = useState(null);
       useEffect(
@@ -577,6 +617,7 @@ const SendPrivateMsgForm = () => {
 
       const [user2 ,setUser2] = useState();
       const [password2, setPassword2] = useState();
+      const [sendEmailVerification ,setSendEmailVerification] = useState()
       const [loading, setLoading] = useState(false);
       const [timer, setTimer] = useState(null);
 
@@ -684,48 +725,6 @@ const SendPrivateMsgForm = () => {
     };
 
 
-    
-
-      
-
-
-
-
-
-      const loginHandler = ()=>{
-
-        // if (!password.match(UpperCase) || !password.match(lowerCase) || !password.match(numbers) || !password.match(special) || password.length <= 9 || password === ""  ) {
-        //   alert("password must contain Upper/lower case,Numbers,Special Charachters")}
-  
-     
-  
-        axios
-        .post(
-          `http://localhost:5000/login`,
-          {
-            email: user1,
-            password:password1
-          },
-       
-        )
-        .then((res) => {
-      
-          if(res.data===1){
-            alert("sucess ")
-            joinRoom(user1)
-          }
-          else{
-            alert("email is not found ")
-            
-          }
-
-        })
-        .catch((e) => {
-
-          console.log(e);
-        });
-         }
- 
 
     return (
           <div>
