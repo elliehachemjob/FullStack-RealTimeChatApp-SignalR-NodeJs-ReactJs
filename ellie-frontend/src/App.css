@@ -11077,18 +11077,7 @@ label.panel-block {
   .chatlist__item:first-child {
     margin-top: 0;
   }
-  .avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-  
-    margin-right: 20px;
-    position: relative;
-  }
-  .avatar img {
-    max-width: 100%;
-    object-fit: cover;
-  }
+
   
   .chatlist__item .userMeta p {
     margin: 0;
@@ -11096,6 +11085,8 @@ label.panel-block {
     color: #000;
     font-weight: 600;
     font-size: 14px;
+    position:relative;
+    left:50px;
   }
   .chatlist__item .userMeta span {
     margin: 0;
@@ -11104,26 +11095,20 @@ label.panel-block {
     font-weight: 400;
     font-size: 12px;
     display: block;
+    position:relative;
+    left:50px;
+    
   }
   .chatlist__item:hover,
   .chatlist__item.active {
-    background: #fff;
-  
+    
     border-radius: 10px;
+    
   }
-  .isOnline {
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    background-color: #ddd;
-    border-radius: 50%;
-    border: 2px solid #fff;
-  }
+
   .isOnline.active {
     background-color: tomato;
+    
   }
   .avatar-img {
     overflow: hidden;
