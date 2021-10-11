@@ -11190,7 +11190,8 @@ label.panel-block {
     min-width: 215px;
     margin:30px;
     position:relative;
-    margin-left:500px;
+    left:485px;
+    margin-right:900px;
     margin:15px
 
   }
@@ -11202,7 +11203,8 @@ label.panel-block {
     border-radius: 10px 10px 0 10px;
     max-width: 50%;
     min-width: 215px;
-   margin:15px
+    margin-left:500px;
+    margin:15px
   
   }
   
