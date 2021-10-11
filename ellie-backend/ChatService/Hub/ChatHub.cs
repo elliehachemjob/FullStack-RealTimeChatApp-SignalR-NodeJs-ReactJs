@@ -18,7 +18,7 @@ namespace SignalRChat.Hubs
         //we saved the instance of botuser and connections here
         public ChatHub(IDictionary<string, UserConnection> connections)
         {
-            _botUser = "Sent By ellieBot";
+            _botUser = "";
             _connections = connections;
         }
 
@@ -63,7 +63,7 @@ namespace SignalRChat.Hubs
                 //This method is a handler in the frontend connection.on 
                 //we could use Clients.Send.All to negate room but later we would do room for support 
                 //clients stay in solo room until the support accept his request then he changes room 
-                await Clients.All.SendAsync("ReceiveMessage", _botUser, $"{userConnection.User} has joined");
+                await Clients.All.SendAsync("ReceiveMessage", _botUser, $"{userConnection.User}");
 
             
         }
@@ -79,7 +79,7 @@ namespace SignalRChat.Hubs
 
 
                //method to recieve and send message to all conencted users in the room
-                await Clients.All.SendAsync("ReceiveMessage", $"sent by { userConnection.User} ", message,userConnection.Id);
+                await Clients.All.SendAsync("ReceiveMessage", $"{userConnection.User} ", message,userConnection.Id);
             }
         }
 
