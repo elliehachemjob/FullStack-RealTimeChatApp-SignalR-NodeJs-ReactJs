@@ -11246,7 +11246,13 @@ label.panel-block {
     justify-content: space-between;
     padding: 10px;
     border-radius: 8px;
+    position:absolute;
+    top:650px;
+    width:1110px;
+    left:520px
   }
+
+  
   .sendNewMessage button {
     width: 36px;
     height: 36px;
@@ -11271,7 +11277,6 @@ label.panel-block {
     display: block;
   }
   .sendNewMessage input {
-    flex-grow: 1;
     padding: 0 15px;
     background-color: transparent;
     border: none;
