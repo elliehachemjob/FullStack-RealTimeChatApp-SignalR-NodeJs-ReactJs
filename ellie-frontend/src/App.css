@@ -11203,9 +11203,22 @@ label.panel-block {
     border-radius: 10px 10px 0 10px;
     max-width: 50%;
     min-width: 215px;
-    margin:20px
-
+    margin:30px;
+    position:relative;
+    margin-left:500px;
   }
+
+  .chat__item__content_client {
+    background-color: #4462ff;
+    color: #fff;
+    padding: 20px;
+    border-radius: 10px 10px 0 10px;
+    max-width: 50%;
+    min-width: 215px;
+  
+  
+  }
+  
   .chat__item__content .chat__meta {
     justify-content: space-between;
     display: flex;

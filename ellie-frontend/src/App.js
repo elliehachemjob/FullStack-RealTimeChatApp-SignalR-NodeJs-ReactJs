@@ -883,7 +883,6 @@ const SendPrivateMsgForm = () => {
     ];
   
     const [chat, setChat] = useState(reduxMessages);
-    const activePointRef2 = useRef(chat);
 
     const [msg, setMsg] = useState();
     const activePointRef = useRef(msg);
@@ -904,40 +903,60 @@ const SendPrivateMsgForm = () => {
   
   
   
-    const abc = (e) => {
+    // const abc = (e) => {
   
   
   
   
   
-      console.log(e);
-      console.log(`ffffffffffffffff is ${activePointRef.current}`);
-      console.log(`ffffffffffffffff is ${chat.length}`);
-      console.log(`the value is ${JSON.stringify(reduxMessages)}`)
+    //   console.log(e);
+    //   console.log(`ffffffffffffffff is ${activePointRef.current}`);
+    //   console.log(`ffffffffffffffff is ${chat.length}`);
+    //   console.log(`the value is ${JSON.stringify(reduxMessages)}`)
 
-      if (e.keyCode == 13) {
+    //   if (e.keyCode == 13) {
         
-        let _chat = [ ...chat]
-        _chat.push({
-          user:"admin",
-          message: "okay",
-        });
-        setChat(_chat)
-        // setChat([...chatItms]);
-        // scrollToBottom();
-        setMsg("");
-        activePointRef.current = "";
-        console.log(_chat)
-      }
-    };
-    useEffect(() => {
-      window.addEventListener("keydown", (e) => {
-        abc(e);
-      });
+    //     let _chat = [ ...chat]
+    //     _chat.push({
+    //       user:"admin",
+    //       message: "okay",
+    //     });
+    //     setChat(_chat)
+        
+    //     dispatch(messageSave(_chat))
+    //     console.log(reduxMessages)
+
+    //     // setChat([...chatItms]);
+    //     // scrollToBottom();
+    //     setMsg("");
+    //     activePointRef.current = "";
+    //   }
+    // };
+    // useEffect(() => {
+    //   window.addEventListener("keydown", (e) => {
+    //     abc(e);
+    //   });
   
-      // scrollToBottom();
-    }, []);
+    //   // scrollToBottom();
+    // }, []);
   
+
+
+    const sendButtonHandler = ()=>{
+        let _chat = []
+              _chat.push({
+              user:"admin",
+              message: msg
+            });
+
+            dispatch(messageSave(_chat))
+            setMsg("");
+            
+          }
+        
+    
+    
+
 
 
 
@@ -973,18 +992,16 @@ const SendPrivateMsgForm = () => {
             console.log(`the value is ${JSON.stringify(reduxMessages)}`)
               return (
                 <div
-                style={{ animationDelay: `0.8s` }}
-                
+                style={{ animationDelay: `0.8s` }} 
               >
-                <div className="chat__item__content">
+          
+                <div className={itm.user==="admin"? 'chat__item__content' : 'chat__item__content_client'}>
                   <div className="chat__msg">{itm.message}</div>
                 </div>
-                
 
-    
+
               </div>
   
-
   
               );
 
@@ -1014,7 +1031,7 @@ const SendPrivateMsgForm = () => {
               value={msg}
             />
      <Icon size="small" align="right">
-     <FontAwesomeIcon icon={faArrowRight} />
+     <FontAwesomeIcon onClick={sendButtonHandler}icon={faArrowRight} />
     </Icon>
           </div>
         </div>
