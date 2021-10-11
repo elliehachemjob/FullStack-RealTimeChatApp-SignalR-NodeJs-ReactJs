@@ -11191,6 +11191,8 @@ label.panel-block {
     margin:30px;
     position:relative;
     margin-left:500px;
+    margin:15px
+
   }
 
   .chat__item__content_client {
@@ -11200,7 +11202,7 @@ label.panel-block {
     border-radius: 10px 10px 0 10px;
     max-width: 50%;
     min-width: 215px;
-  
+   margin:15px
   
   }
   
