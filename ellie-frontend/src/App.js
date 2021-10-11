@@ -853,6 +853,14 @@ const SendPrivateMsgForm = () => {
 
 
   const  ChatContent=()=> {
+
+
+    
+
+
+
+
+
     const messagesEndRef = useRef(null);
     const chatItms = [
       {
@@ -889,9 +897,11 @@ const SendPrivateMsgForm = () => {
     const [chat, setChat] = useState(chatItms);
     const [msg, setMsg] = useState();
     const activePointRef = React.useRef(msg);
-    const scrollToBottom = () => {
-      messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
-    };
+
+
+    // const scrollToBottom = () => {
+    //   messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+    // };
   
     
   
@@ -924,7 +934,7 @@ const SendPrivateMsgForm = () => {
             "https://pbs.twimg.com/profile_images/1116431270697766912/-NfnQHvh_400x400.jpg",
         });
         setChat([...chatItms]);
-        scrollToBottom();
+        // scrollToBottom();
         setMsg("");
         activePointRef.current = "";
       }
@@ -934,7 +944,7 @@ const SendPrivateMsgForm = () => {
         abc(e);
       });
   
-      scrollToBottom();
+      // scrollToBottom();
     }, []);
   
     
@@ -1132,7 +1142,7 @@ const SendPrivateMsgForm = () => {
 
 
   return (
-    <div className="app">
+    <div >
      
 
       { 
@@ -1144,7 +1154,6 @@ const SendPrivateMsgForm = () => {
         ) : (
                  
                   <div>
-               <Chat/>
                <Widget
                    handleNewUserMessage={handleNewUserMessage}
                    launcher={(handleToggle) => getCustomLauncher(handleToggle)}
@@ -1153,7 +1162,20 @@ const SendPrivateMsgForm = () => {
                    senderPlaceHolder="press send button or enter to send a message"
 
                  /> 
+
+<div className="__main">
+<div className="main__chatbody">
+<ChatList/>
+
+  <ChatContent/>
+  </div>
+ </div>
+
+
+ <Chat/>
                  </div>
+
+
           
         ) 
       }
