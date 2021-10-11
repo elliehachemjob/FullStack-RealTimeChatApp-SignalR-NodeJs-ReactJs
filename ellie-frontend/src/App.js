@@ -1,4 +1,5 @@
-import React, { useState,useRef,useEffect } from "react";
+import React, { useRef,useEffect, 
+  useState } from "react";
 import { HubConnectionBuilder } from "@microsoft/signalr";
 import axios from "axios"
 import "./App.css";
@@ -33,28 +34,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
 
 
-
-
-
-
 var FileSaver = require('file-saver');
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 const App = () => {
+
 
 const testButton = ()=>{
 
@@ -868,12 +852,276 @@ const SendPrivateMsgForm = () => {
 
 
 
-
+  const  ChatContent=()=> {
+    const messagesEndRef = useRef(null);
+    const chatItms = [
+      {
+        key: 1,
+        image:
+          "https://pbs.twimg.com/profile_images/1116431270697766912/-NfnQHvh_400x400.jpg",
+        type: "",
+        msg: "Hi Ali, How are you?",
+      },
+      {
+        key: 2,
+        image:
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTA78Na63ws7B7EAWYgTr9BxhX_Z8oLa1nvOA&usqp=CAU",
+        type: "other",
+        msg: "I am fine.",
+      },
+      {
+        key: 3,
+        image:
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTA78Na63ws7B7EAWYgTr9BxhX_Z8oLa1nvOA&usqp=CAU",
+        type: "other",
+        msg: "What about you?",
+      },
+      {
+        key: 4,
+        image:
+          "https://pbs.twimg.com/profile_images/1116431270697766912/-NfnQHvh_400x400.jpg",
+        type: "",
+        msg: "I am fine.",
+      },
+  
+    ];
+  
+    const [chat, setChat] = useState(chatItms);
+    const [msg, setMsg] = useState();
+    const activePointRef = React.useRef(msg);
+    const scrollToBottom = () => {
+      messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+    };
+  
+    
+  
+    const onStateChange = (e) => {
+      setMsg(e.target.value);
+      activePointRef.current = e.target.value;
+      console.log(`aaaaaaaaaaaaaaaa ${msg}`);
+      console.log(`aaaaaaaaaaaaaaaaaaaaaaa ${chat.length}`);
+    };
+  
+  
+  
+    const abc = (e) => {
+  
+  
+     
+  
+  
+  
+      console.log(e);
+      console.log(`ffffffffffffffff is ${activePointRef.current}`);
+      console.log(`ffffffffffffffff is ${chat.length}`);
+  
+      if (e.keyCode == 13) {
+        chatItms.push({
+          key: chat.length +1 ,
+          type: "",
+          msg: activePointRef.current,
+          image:
+            "https://pbs.twimg.com/profile_images/1116431270697766912/-NfnQHvh_400x400.jpg",
+        });
+        setChat([...chatItms]);
+        scrollToBottom();
+        setMsg("");
+        activePointRef.current = "";
+      }
+    };
+    useEffect(() => {
+      window.addEventListener("keydown", (e) => {
+        abc(e);
+      });
+  
+      scrollToBottom();
+    }, []);
+  
+    
+    return (
+  
+      <div className="main__chatcontent">
+        <div className="content__header">
+          <div className="blocks">
+            <div className="current-chatting-user">
+            <div className="avatar">
+          <div className="avatar-img">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTA78Na63ws7B7EAWYgTr9BxhX_Z8oLa1nvOA&usqp=CAU" alt="#" />
+          </div>
+          <span className="active"></span>
+        </div>
+              <p>Ali Ahmad</p>
+            </div>
+          </div>
+  
+          <div className="blocks">
+            <div className="settings"></div>
+          </div>
+        </div>
+        <div className="content__body">
+          <div className="chat__items">
+            {chat.map((itm, index) => {
+              return (
+                <div
+                key={itm.key}
+                style={{ animationDelay: `0.8s` }}
+                className={`chat__item ${itm.type ? itm.type : "me"}`}
+              >
+                <div className="chat__item__content">
+                  <div className="chat__msg">{itm.msg}</div>
+                  <div className="chat__meta">
+                    <span>16 mins ago</span>
+                    <span>Seen 1.03PM</span>
+                  </div>
+                </div>
+                 <div className="avatar">
+          <div className="avatar-img">
+            <img src={itm.image} alt="#" />
+          </div>
+          <span className="active"></span>
+        </div>
+              </div>
+  
+  
+  
+  
+              );
+            })}
+  
+  
+  
+  
+            
+            <div ref={messagesEndRef} />
+          </div>
+        </div>
+        <div className="content__footer">
+          <div className="sendNewMessage">
+            <input
+              type="text"
+              placeholder="Type a message here"
+              onChange={onStateChange}
+              value={msg}
+            />
+            <button className="btnSendMsg" id="sendMsgBtn">
+              <i className="fa fa-paper-plane"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+  
 
   
 
 
+   const ChatList=()=> {
+    const  allChatUsers = [
+      {
+        image:
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTA78Na63ws7B7EAWYgTr9BxhX_Z8oLa1nvOA&usqp=CAU",
+        id: 1,
+        name: "Ali Ahmad",
+        active: true,
+        isOnline: true,
+      },
+      {
+        image:
+          "https://pbs.twimg.com/profile_images/1055263632861343745/vIqzOHXj.jpg",
+        id: 2,
+        name: "Hasan Hawei",
+        active: false,
+        isOnline: false,
+      },
+      {
+        image:
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTQEZrATmgHOi5ls0YCCQBTkocia_atSw0X-Q&usqp=CAU",
+        id: 3,
+        name: "Mohamemd Hachem",
+        active: false,
+        isOnline: false,
+      },
+      {
+        image:
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRZ6tM7Nj72bWjr_8IQ37Apr2lJup_pxX_uZA&usqp=CAU",
+        id: 4,
+        name: "Abas Khansa",
+        active: false,
+        isOnline: true,
+      },
+     
+    ];
+   
+  
+    const [allChats,setAllChats] = useState(allChatUsers)
+  
+  
+  
+    const selectChat = (e) => {
+      for (
+        let index = 0;
+        index < e.currentTarget.parentNode.children.length;
+        index++
+      ) {
+        e.currentTarget.parentNode.children[index].classList.remove("active");
+      }
+      e.currentTarget.classList.add("active");
+    };
+  
+      return (
+        <div className="main__chatlist">
+          <div className="chatlist__heading">
+            <h2>Chats</h2>
+          </div>
+          <div className="chatList__search">
+            <div className="search_wrap">
+              <input type="text" placeholder="Search Here" required />
+              <button className="search-btn">
+                <i className="fa fa-search"></i>
+              </button>
+            </div>
+          </div>
+          <div className="chatlist__items">
+            {allChats.map((item, index) => {
+              return (
+                <div
+                key={item.id}
+                style={{ animationDelay: index + 1 }}
+                onClick={selectChat}
+                className='chatlist__item' >
+                  <div className="avatar">
+                <div className="avatar-img">
+                  <img src={item.image} alt="#" />
+                </div>
+                <span className="active"></span>
+              </div>
+        
+                <div className="userMeta">
+                  <p>{item.name}</p>
+                  <span className="activeTime">32 mins ago</span>
+                </div>
+              </div>
+  
 
+  
+              );
+  
+
+            })}
+  
+  
+  
+  
+  
+  
+          </div>
+          </div>
+  
+      );
+   
+  }
+  
 
 
 
@@ -896,7 +1144,8 @@ const SendPrivateMsgForm = () => {
         ) : (
                  
                   <div>
-                   <Widget
+               <Chat/>
+               <Widget
                    handleNewUserMessage={handleNewUserMessage}
                    launcher={(handleToggle) => getCustomLauncher(handleToggle)}
                    title="Plugit Chat Support"
@@ -904,7 +1153,6 @@ const SendPrivateMsgForm = () => {
                    senderPlaceHolder="press send button or enter to send a message"
 
                  /> 
-               
                  </div>
           
         ) 
@@ -914,3 +1162,10 @@ const SendPrivateMsgForm = () => {
 };
 
 export default App;
+
+// in case we want to add the admin panel here
+
+// <div className="__main">
+// <div className="main__chatbody">
+//   </div>
+//   </div>
