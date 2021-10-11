@@ -11208,6 +11208,10 @@ label.panel-block {
   
   }
   
+  .fix{
+    position:absolute;
+    right:50px;
+  }
   .chat__item__content .chat__meta {
     justify-content: space-between;
     display: flex;

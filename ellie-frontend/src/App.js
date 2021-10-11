@@ -51,6 +51,7 @@ const testButton = ()=>{
   const [users, setUsers] = useState([]);
   const reduxMessages = useSelector(storedMessages);
   const [chatBox,setChatBox] = useState([<span ></span> ])
+  const [newBox,setNewBox] = useState([<span ></span> ])
 
 //for widget
 const [isWidget, setisWidget] = useState(false);
@@ -973,8 +974,10 @@ const SendPrivateMsgForm = () => {
 
     
     return (
-  
+      
       <div className="main__chatcontent">
+                    {newBox}
+
         <div className="content__header">
           <div className="blocks">
             <div className="current-chatting-user">
@@ -1093,6 +1096,16 @@ const SendPrivateMsgForm = () => {
       }
       e.currentTarget.classList.add("active");
     };
+
+
+
+
+    const [newChat , setNewChat] =useState(<ChatContent/>)
+
+
+   
+
+
   
       return (
         <div className="main__chatlist">
@@ -1113,8 +1126,13 @@ const SendPrivateMsgForm = () => {
                 <div
                 key={item.id}
                 style={{ animationDelay: index + 1 }}
-                onClick={selectChat}
-                className='chatlist__item' >
+                onClick={()=>{setNewBox(newBox=>[...newBox , 
+                  <div> 
+                  <ChatContent /></div>
+                 
+               ])}}   
+               
+               className='chatlist__item' >
                   <div className="avatar">
                 <div className="avatar-img">
                 </div>
