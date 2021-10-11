@@ -976,10 +976,6 @@ const SendPrivateMsgForm = () => {
               >
                 <div className="chat__item__content">
                   <div className="chat__msg">{itm.message}</div>
-                  <div className="chat__meta">
-                    <span>16 mins ago</span>
-                    <span>Seen 1.03PM</span>
-                  </div>
                 </div>
                 
 

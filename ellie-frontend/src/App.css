@@ -11199,10 +11199,12 @@ label.panel-block {
   .chat__item__content {
     background-color: #4462ff;
     color: #fff;
-    padding: 15px;
+    padding: 20px;
     border-radius: 10px 10px 0 10px;
     max-width: 50%;
     min-width: 215px;
+    margin:20px
+
   }
   .chat__item__content .chat__meta {
     justify-content: space-between;
@@ -11228,7 +11230,6 @@ label.panel-block {
     color: #000;
     border-radius: 10px 10px 10px 0;
     max-width: 50%;
-  
     
   }
   .chat__item.other .avatar {
@@ -11309,5 +11310,4 @@ label.panel-block {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
       monospace;
   }
-  
   
