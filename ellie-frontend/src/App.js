@@ -154,6 +154,23 @@ else{
 }
 
 
+
+const CustomMessageBoxAdmin = () => {
+
+  //  console.log(`the length is ${ typeof(responder)}`)
+  if(responder)
+  return (  
+            
+    <div >{responder}</div> 
+  )
+  else{
+    return(
+    <div>{responder}</div> )
+  }
+  }
+
+
+
 useEffect(() => {
  
 
@@ -323,12 +340,6 @@ const MessageBox = () => {
     }, [messages]);
   
   
-
-
-
-
-  
-
   return <div ref={messageRef} className='message-box' >
       {reduxMessages.map((m) =>
           <div  className='user-message'>
@@ -336,26 +347,8 @@ const MessageBox = () => {
               <div className='from-user'>{m.user}</div>
 
           </div>
-
-
     
       )}
-
-{/* {reduxMessages.length===1?
- <div> </div>:   <div className="from-user1"> Your ID {JSON.stringify(reduxMessages[1].id)}</div> } */}
-
-
-
-    
-
-
-<div> 
-
-{/* {reduxMessages.map((m) =>
-  <div>{m.id}</div>
-        
-      )} */}
-</div>
 
   </div>
 
@@ -855,11 +848,6 @@ const SendPrivateMsgForm = () => {
   const  ChatContent=()=> {
 
 
-    
-
-
-
-
 
     const messagesEndRef = useRef(null);
     const chatItms = [
@@ -894,9 +882,9 @@ const SendPrivateMsgForm = () => {
   
     ];
   
-    const [chat, setChat] = useState(chatItms);
+    const [chat, setChat] = useState(reduxMessages);
     const [msg, setMsg] = useState();
-    const activePointRef = React.useRef(msg);
+    const activePointRef = useRef(msg);
 
 
     // const scrollToBottom = () => {
@@ -914,39 +902,54 @@ const SendPrivateMsgForm = () => {
   
   
   
-    const abc = (e) => {
+    // const abc = (e) => {
   
   
      
   
   
   
-      console.log(e);
-      console.log(`ffffffffffffffff is ${activePointRef.current}`);
-      console.log(`ffffffffffffffff is ${chat.length}`);
+    //   console.log(e);
+    //   console.log(`ffffffffffffffff is ${activePointRef.current}`);
+    //   console.log(`ffffffffffffffff is ${chat.length}`);
+    //   console.log(`the value is ${JSON.stringify(reduxMessages)}`)
+
+    //   if (e.keyCode == 13) {
+    //     reduxMessages.push({
+    //       key: chat.length +1 ,
+    //       type: "",
+    //       msg: activePointRef.current,
+    //       image:
+    //         "https://pbs.twimg.com/profile_images/1116431270697766912/-NfnQHvh_400x400.jpg",
+    //     });
+    //     // setChat([...chatItms]);
+    //     // scrollToBottom();
+    //     setMsg("");
+    //     activePointRef.current = "";
+    //   }
+    // };
+    // useEffect(() => {
+    //   window.addEventListener("keydown", (e) => {
+    //     abc(e);
+    //   });
   
-      if (e.keyCode == 13) {
-        chatItms.push({
-          key: chat.length +1 ,
-          type: "",
-          msg: activePointRef.current,
-          image:
-            "https://pbs.twimg.com/profile_images/1116431270697766912/-NfnQHvh_400x400.jpg",
-        });
-        setChat([...chatItms]);
-        // scrollToBottom();
-        setMsg("");
-        activePointRef.current = "";
-      }
-    };
+    //   // scrollToBottom();
+    // }, []);
+  
+
+
+
+    const messageRef = useRef();
+
     useEffect(() => {
-      window.addEventListener("keydown", (e) => {
-        abc(e);
-      });
+
+        if (messageRef && messageRef.current) {
+            const { scrollHeight, clientHeight } = messageRef.current;
+            messageRef.current.scrollTo({ left: 0, top: scrollHeight - clientHeight});
+        }
+    }, [messages]);
   
-      // scrollToBottom();
-    }, []);
-  
+
     
     return (
   
@@ -954,12 +957,6 @@ const SendPrivateMsgForm = () => {
         <div className="content__header">
           <div className="blocks">
             <div className="current-chatting-user">
-            <div className="avatar">
-          <div className="avatar-img">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTA78Na63ws7B7EAWYgTr9BxhX_Z8oLa1nvOA&usqp=CAU" alt="#" />
-          </div>
-          <span className="active"></span>
-        </div>
               <p>Ali Ahmad</p>
             </div>
           </div>
@@ -970,39 +967,44 @@ const SendPrivateMsgForm = () => {
         </div>
         <div className="content__body">
           <div className="chat__items">
-            {chat.map((itm, index) => {
+          {reduxMessages.map((itm, index) => {
+            console.log(`the value is ${JSON.stringify(reduxMessages)}`)
               return (
                 <div
-                key={itm.key}
                 style={{ animationDelay: `0.8s` }}
-                className={`chat__item ${itm.type ? itm.type : "me"}`}
+                
               >
                 <div className="chat__item__content">
-                  <div className="chat__msg">{itm.msg}</div>
+                  <div className="chat__msg">{itm.message}</div>
                   <div className="chat__meta">
                     <span>16 mins ago</span>
                     <span>Seen 1.03PM</span>
                   </div>
                 </div>
-                 <div className="avatar">
-          <div className="avatar-img">
-            <img src={itm.image} alt="#" />
-          </div>
-          <span className="active"></span>
-        </div>
+                
+
+    
               </div>
   
-  
-  
+
   
               );
+
+
             })}
-  
+
+         
+         
+         
+
+     
   
   
   
             
             <div ref={messagesEndRef} />
+         
+            
           </div>
         </div>
         <div className="content__footer">
@@ -1102,7 +1104,6 @@ const SendPrivateMsgForm = () => {
                 className='chatlist__item' >
                   <div className="avatar">
                 <div className="avatar-img">
-                  <img src={item.image} alt="#" />
                 </div>
                 <span className="active"></span>
               </div>
@@ -1113,13 +1114,10 @@ const SendPrivateMsgForm = () => {
                 </div>
               </div>
   
-
-  
               );
   
-
+              
             })}
-  
   
   
   

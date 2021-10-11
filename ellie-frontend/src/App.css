@@ -11037,6 +11037,9 @@ label.panel-block {
   }
   .chatlist__items {
     margin-top: 30px;
+    margin-right:-100px;
+    position:relative;
+    right:60px;
     overflow: auto;
     max-height: calc(100vh - calc(100vh / 2));
   }
@@ -11213,6 +11216,7 @@ label.panel-block {
   }
   .chat__msg {
     user-select: none;
+   
   }
   
   .chat__item.other {
@@ -11224,6 +11228,8 @@ label.panel-block {
     color: #000;
     border-radius: 10px 10px 10px 0;
     max-width: 50%;
+  
+    
   }
   .chat__item.other .avatar {
     margin-right: 20px;
