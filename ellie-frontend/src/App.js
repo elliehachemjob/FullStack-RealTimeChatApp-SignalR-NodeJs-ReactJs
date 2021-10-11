@@ -883,6 +883,8 @@ const SendPrivateMsgForm = () => {
     ];
   
     const [chat, setChat] = useState(reduxMessages);
+    const activePointRef2 = useRef(chat);
+
     const [msg, setMsg] = useState();
     const activePointRef = useRef(msg);
 
@@ -902,39 +904,39 @@ const SendPrivateMsgForm = () => {
   
   
   
-    // const abc = (e) => {
-  
-  
-     
+    const abc = (e) => {
   
   
   
-    //   console.log(e);
-    //   console.log(`ffffffffffffffff is ${activePointRef.current}`);
-    //   console.log(`ffffffffffffffff is ${chat.length}`);
-    //   console.log(`the value is ${JSON.stringify(reduxMessages)}`)
+  
+  
+      console.log(e);
+      console.log(`ffffffffffffffff is ${activePointRef.current}`);
+      console.log(`ffffffffffffffff is ${chat.length}`);
+      console.log(`the value is ${JSON.stringify(reduxMessages)}`)
 
-    //   if (e.keyCode == 13) {
-    //     reduxMessages.push({
-    //       key: chat.length +1 ,
-    //       type: "",
-    //       msg: activePointRef.current,
-    //       image:
-    //         "https://pbs.twimg.com/profile_images/1116431270697766912/-NfnQHvh_400x400.jpg",
-    //     });
-    //     // setChat([...chatItms]);
-    //     // scrollToBottom();
-    //     setMsg("");
-    //     activePointRef.current = "";
-    //   }
-    // };
-    // useEffect(() => {
-    //   window.addEventListener("keydown", (e) => {
-    //     abc(e);
-    //   });
+      if (e.keyCode == 13) {
+        
+        let _chat = [ ...chat]
+        _chat.push({
+          user:"admin",
+          message: "okay",
+        });
+        setChat(_chat)
+        // setChat([...chatItms]);
+        // scrollToBottom();
+        setMsg("");
+        activePointRef.current = "";
+        console.log(_chat)
+      }
+    };
+    useEffect(() => {
+      window.addEventListener("keydown", (e) => {
+        abc(e);
+      });
   
-    //   // scrollToBottom();
-    // }, []);
+      // scrollToBottom();
+    }, []);
   
 
 
