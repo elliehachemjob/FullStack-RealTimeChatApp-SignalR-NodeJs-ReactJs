@@ -1025,6 +1025,7 @@ const SendPrivateMsgForm = () => {
         <div className="content__footer">
           <div className="sendNewMessage">
             <input
+              className=""
               type="text"
               placeholder="Type a message here"
               onChange={onStateChange}
@@ -1185,7 +1186,6 @@ const SendPrivateMsgForm = () => {
  </div>
 
 
- <Chat/>
                  </div>
 
 
