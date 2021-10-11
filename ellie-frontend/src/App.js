@@ -1013,9 +1013,9 @@ const SendPrivateMsgForm = () => {
               onChange={onStateChange}
               value={msg}
             />
-            <button className="btnSendMsg" id="sendMsgBtn">
-              <i className="fa fa-paper-plane"></i>
-            </button>
+     <Icon size="small" align="right">
+     <FontAwesomeIcon icon={faArrowRight} />
+    </Icon>
           </div>
         </div>
       </div>
