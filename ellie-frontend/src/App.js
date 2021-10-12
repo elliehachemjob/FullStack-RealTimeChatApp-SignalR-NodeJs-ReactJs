@@ -976,8 +976,7 @@ const SendPrivateMsgForm = () => {
     return (
       
       <div className="main__chatcontent">
-                    {newBox}
-
+      {newBox}
         <div className="content__header">
           <div className="blocks">
             <div className="current-chatting-user">
