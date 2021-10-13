@@ -1,12 +1,16 @@
 --INSERT INTO relatedData VALUES
 --(4,'m')
 
+INSERT INTO Users (Email, Auth, isAdmin)
+VALUES ( 'hasan', 'hasan', 0); 
 
---CREATE TABLE TEST
+
+--CREATE TABLE RelatedData
 --( 
---Test1 int,
---Test2 varchar(50),
---Test3  bit)
+--ClientId int IDENTITY(1, 1),
+--Age varchar(50),
+--Gender varchar(50),
+--)
 
 
 --SELECT * 
@@ -162,3 +166,5 @@
   --FROM Users
   --ORDER BY 1 DESC
 
+--  INSERT INTO table_name (column1, column2, column3, ...)
+--VALUES (value1, value2, value3, ...); 

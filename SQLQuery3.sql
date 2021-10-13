@@ -1,0 +1,2 @@
+--ALTER TABLE Users
+--ADD ClientId int IDENTITY(1, 1) ;
