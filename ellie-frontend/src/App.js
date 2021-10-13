@@ -561,16 +561,17 @@ const SendPrivateMsgForm = () => {
   
         axios
         .post(
-          `http://localhost:5000/register`,
+          `http://localhost:1589/api/users`,
           {
-            email: user2,
-            password:password2
+            Email: user2,
+            Auth:password2,
+            IsAdmin:0
           },
        
         )
         .then((res) => {
-          console.log(` data is ${res.data}`)  
-          if(res.data===1){
+          console.log(` data is ${JSON.stringify(res.status)}`)  
+          if(res.status===200){
             alert("register success")
             joinRoom(user2)
           }   
