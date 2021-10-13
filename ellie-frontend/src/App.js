@@ -28,7 +28,6 @@ import {
   Checkbox,
   Loader
 } from "rbx";
-
 import { faAddressBook, faArrowRight, faCheck, faEnvelope, faEnvelopeOpenText, faLock, faRegistered, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
