@@ -420,21 +420,22 @@ const SendPrivateMsgForm = () => {
   
         axios
         .post(
-          `http://localhost:5000/login`,
+          `http://localhost:1589/api/users/login`,
           {
-            email: user1,
-            password:password1
+            Email: user1,
+            Auth:password1,
+            IsAdmin:0
           },
        
         )
         .then((res) => {
-      
-          if(res.data===1){
-            alert("sucess ")
+          console.log(` data is ${JSON.stringify(res)}`)  
+          if(res.data==="Logged In Successfully"){
+            alert("sucess")
             joinRoom(user1)
           }
-          else{
-            alert("email is not found ")
+          else if (res.data==="Make sure email and password are correct"){
+            alert("Make sure email and password are correct ")
             
           }
 
