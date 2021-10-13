@@ -162,7 +162,7 @@ const CustomMessageBoxAdmin = () => {
   if(adminResponder)
   return (  
             
-    <div >{adminResponder}</div> 
+    <div className="admin-message" >{adminResponder}</div> 
   )
   else{
     return(

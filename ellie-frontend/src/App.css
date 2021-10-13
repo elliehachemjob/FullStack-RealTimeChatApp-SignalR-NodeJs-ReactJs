@@ -522,6 +522,19 @@ hr.line {
   padding-bottom: 0px;
   text-align: left;
 }
+
+
+
+.admin-message{
+  background-color: #e6e6e6;
+  border-radius: 10px;
+  max-width: 215px;
+  padding-right: 15px;
+  padding-left:15px;
+  padding-top:10px;
+  padding-bottom: 10px;
+  text-align: left;
+}
 .rcw-responder {
   background-color: #e6e6e6;
   border-radius: 10px;
