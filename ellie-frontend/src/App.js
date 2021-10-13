@@ -32,7 +32,6 @@ import { faAddressBook, faArrowRight, faCheck, faEnvelope, faEnvelopeOpenText, f
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
 
-
 var FileSaver = require('file-saver');
 
 
@@ -171,17 +170,17 @@ const CustomMessageBoxAdmin = () => {
 
 
 
-useEffect(() => {
+// useEffect(() => {
  
 
- if(isSending==5){
-  renderCustomComponent(CustomMessageBox)}
-  else{
-    renderCustomComponent(CustomMessageBox)
-  }
+//  if(isSending==5){
+//   renderCustomComponent(CustomMessageBox)}
+//   else{
+//     renderCustomComponent(CustomMessageBox)
+//   }
 
  
-}, [responder,setResponder]);
+// }, [responder,setResponder]);
 
 
 
@@ -281,6 +280,9 @@ const getCustomLauncher = (handleToggle) => {
     FileSaver.saveAs(blob, "messages");
 
     }
+
+
+
 
 
 
@@ -973,15 +975,36 @@ const SendPrivateMsgForm = () => {
     }, [messages]);
   
 
+
+    const generateDownload = ()=>{
+
+      const toExport = []
+
+      {reduxMessages.map((m) =>
+    
+        toExport.push(`${m.message} \n ${m.user} \n \n`)
+    
+    )}
+  
+
+      
+    var blob = new Blob([toExport], {type: "text/plain;charset=utf-8"});
+    FileSaver.saveAs(blob, "messages");
+
+    }
+
     
     return (
       
       <div className="main__chatcontent">
       {newBox}
+      <button   className='btn8'  variant='danger' onClick={generateDownload}>Download Messages</button>
+
         <div className="content__header">
           <div className="blocks">
             <div className="current-chatting-user">
               <p>Ali Ahmad</p>
+
             </div>
           </div>
   
