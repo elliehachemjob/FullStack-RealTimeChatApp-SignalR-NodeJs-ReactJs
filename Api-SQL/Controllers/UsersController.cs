@@ -64,8 +64,15 @@ namespace api11.Controllers
         {
             //you can use raw queries here you can use stored procedures or entity framwork here 
             string query = @"
+                            IF EXISTS(SELECT * FROM dbo.Users  WHERE  Email=@Email)
+                            BEGIN
+                            SELECT 'Sorry,this user already exist'
+                            END
+                            ELSE
+                            BEGIN
                             insert into dbo.Users
                             values(@Email,@Auth,@IsAdmin)
+                            END
                             ";
 
             //Putting data into a datatable object  
@@ -76,23 +83,38 @@ namespace api11.Controllers
             SqlDataReader myReader;
 
             //executing the query 
+            int rows = 0;
+
             using (SqlConnection myCon = new SqlConnection(sqlDataSource))
             {
                 myCon.Open();
+
+
                 using (SqlCommand myCommand = new SqlCommand(query, myCon))
                 {
                     myCommand.Parameters.AddWithValue("@Email", users.Email);
                     myCommand.Parameters.AddWithValue("@Auth", users.Auth);
                     myCommand.Parameters.AddWithValue("@IsAdmin", users.IsAdmin);
+                    rows = myCommand.ExecuteNonQuery();
                     myReader = myCommand.ExecuteReader();
                     //fill table using sql dataReader (my reader)
                     table.Load(myReader);
                     myReader.Close();
+
                     myCon.Close();
+
                 }
+
             }
             //returning data in json format
-            return new JsonResult("Added Successfully");
+            if (rows >= 1)
+            {
+                return new JsonResult("Added Successfully");
+            }
+            else
+            {
+                return new JsonResult("Email Already Exist");
+            }
         }
 
         [HttpPut]

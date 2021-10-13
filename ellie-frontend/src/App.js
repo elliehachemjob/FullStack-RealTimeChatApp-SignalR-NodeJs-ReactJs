@@ -570,12 +570,12 @@ const SendPrivateMsgForm = () => {
        
         )
         .then((res) => {
-          console.log(` data is ${JSON.stringify(res.status)}`)  
-          if(res.status===200){
+          console.log(` data is ${JSON.stringify(res)}`)  
+          if(res.data==="Added Successfully"){
             alert("register success")
             joinRoom(user2)
           }   
-          else{
+          else if(res.data==="Email Already Exist"){
            alert("email already exist")
           }
         })
