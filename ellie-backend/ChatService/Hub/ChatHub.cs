@@ -68,7 +68,7 @@ namespace SignalRChat.Hubs
             
         }
         //This method wil recieve a string message 
-        public async Task SendMessage(string isAdmin, string message)
+        public async Task SendMessage(string user3, string isAdmin, string message)
         //_connection is dictionary 
         //codition  that tryes to get the  value  of connectionID as a key 
         //out is used to get(return) variables/properties of the id which is the user and room  as a value
@@ -79,7 +79,7 @@ namespace SignalRChat.Hubs
 
 
                //method to recieve and send message to all conencted users in the room
-                await Clients.All.SendAsync("ReceiveMessage", $"{userConnection.User} ", message,userConnection.Id, isAdmin);
+                await Clients.All.SendAsync("ReceiveMessage", $"{userConnection.User} ", message,userConnection.Id, isAdmin, user3);
             }
         }
 

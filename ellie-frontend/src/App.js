@@ -35,6 +35,12 @@ import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
 var FileSaver = require('file-saver');
 
 
+
+
+
+var user3 = "hey"
+
+
 const App = () => {
 
 
@@ -59,12 +65,15 @@ const [messges2, setMessages2] = useState([]);
 const [isRender, setIsRender] =useState(false)
 const [adminResponder, setAdminResponder] = useState()
 const [clientResponder, setClientResponder] = useState()
-
+const [user3, setUser3] = useState("")
 const [isSending, setIsSending] = useState(false)
 //for widget end 
 
 
 const handleNewUserMessage = (e) => {
+
+
+
 
   setIsSending(false)
 
@@ -76,7 +85,7 @@ const handleNewUserMessage = (e) => {
 //  console.log(`okay 2  ${newStorage}`)
 
     setIsRender(true)
-     sendMessage("Client",e);
+     sendMessage("okay","Client",e);
     // sending messages worked as for save first and last message is not saved for now but that is okay we will fix that late
       setMessages2([...messges2, e])
      console.log(` this is ${messges2}`)
@@ -495,7 +504,8 @@ const SendPrivateMsgForm = () => {
                     <Control iconLeft iconRight>
                       <Input
                       //  disabled={loading}
-                        type="email" placeholder="Email" value={user1} onChange={e => setUser1(e.target.value)}/>
+                        type="email" placeholder="Email" value={user1} onChange={e => setUser1(e.target.value)  }/>
+                          
                       <Icon size="small" align="left">
                         <FontAwesomeIcon icon={faEnvelope} />
                       </Icon>
@@ -764,7 +774,7 @@ const SendPrivateMsgForm = () => {
         
 
 
-      connection.on("ReceiveMessage", (user, message,id,isAdmin) => {
+      connection.on("ReceiveMessage", (user, message,id,isAdmin,user3) => {
 
 
 
@@ -774,6 +784,7 @@ const SendPrivateMsgForm = () => {
 
         // dispatch(messageSave([...reduxMessages, { user, message,id } ]))
         dispatch(messageSave([...reduxMessages, { user, message,id } ]))
+        console.log(`the user name is ${user}`)
         if(isAdmin === "Admin") {
          setAdminResponder(message)}
          else if (isAdmin === "Client"){
@@ -815,9 +826,9 @@ const SendPrivateMsgForm = () => {
   };
 
 
-  const sendMessage = async (isAdmin,message) => {
+  const sendMessage = async (user3,isAdmin,message) => {
     try {
-      await connection.invoke("SendMessage", isAdmin,message); 
+      await connection.invoke("SendMessage", user3,isAdmin,message); 
       console.log("message sent")
     } catch (e) {
       console.log(e);
@@ -969,7 +980,7 @@ const SendPrivateMsgForm = () => {
 
         //     setMsg("");
 
- sendMessage("Admin",msg)
+ sendMessage("Admin","Admin",msg)
             
           }
         
