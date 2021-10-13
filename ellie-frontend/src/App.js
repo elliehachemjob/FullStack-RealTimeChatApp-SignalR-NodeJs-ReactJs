@@ -57,7 +57,9 @@ const [isonline, setIsOnline] = useState(false);
 const [ispending, setIsPending] = useState(false);
 const [messges2, setMessages2] = useState([]);
 const [isRender, setIsRender] =useState(false)
-const [responder, setResponder] = useState()
+const [adminResponder, setAdminResponder] = useState()
+const [clientResponder, setClientResponder] = useState()
+
 const [isSending, setIsSending] = useState(false)
 //for widget end 
 
@@ -74,7 +76,7 @@ const handleNewUserMessage = (e) => {
 //  console.log(`okay 2  ${newStorage}`)
 
     setIsRender(true)
-     sendMessage(e);
+     sendMessage("Client",e);
     // sending messages worked as for save first and last message is not saved for now but that is okay we will fix that late
       setMessages2([...messges2, e])
      console.log(` this is ${messges2}`)
@@ -141,14 +143,14 @@ const handleNewUserMessage = (e) => {
 const CustomMessageBox = () => {
 
 //  console.log(`the length is ${ typeof(responder)}`)
-if(responder)
+if(adminResponder)
 return (  
           
-  <div className="rcw-responder">{responder}</div> 
+  <div className="rcw-responder">{adminResponder}</div> 
 )
 else{
   return(
-  <div>{responder}</div> )
+  <div>{adminResponder}</div> )
 }
 }
 
@@ -157,14 +159,14 @@ else{
 const CustomMessageBoxAdmin = () => {
 
   //  console.log(`the length is ${ typeof(responder)}`)
-  if(responder)
+  if(adminResponder)
   return (  
             
-    <div >{responder}</div> 
+    <div >{adminResponder}</div> 
   )
   else{
     return(
-    <div>{responder}</div> )
+    <div>{adminResponder}</div> )
   }
   }
 
@@ -179,13 +181,13 @@ useEffect(() => {
  
 
  if(isSending==5){
-  renderCustomComponent(CustomChatContent)}
+  renderCustomComponent(CustomMessageBoxAdmin)}
   else{
-    renderCustomComponent(CustomChatContent)
+    renderCustomComponent(CustomMessageBoxAdmin)
   }
 
  
-}, [responder,setResponder]);
+}, [adminResponder,setAdminResponder]);
 
 
 
@@ -772,10 +774,14 @@ const SendPrivateMsgForm = () => {
 
         // dispatch(messageSave([...reduxMessages, { user, message,id } ]))
         dispatch(messageSave([...reduxMessages, { user, message,id } ]))
-         setResponder(message)
+        if(isAdmin === "Admin") {
+         setAdminResponder(message)}
+         else if (isAdmin === "Client"){
+          setClientResponder(message)}
+
         // console.log(`this is the message ${message}`)
         //  console.log(`the user is  ${user}`)
-        console.log(`the status of user is ${isAdmin}`)
+
         
    
       });
@@ -963,7 +969,7 @@ const SendPrivateMsgForm = () => {
 
         //     setMsg("");
 
- sendMessage("false",msg)
+ sendMessage("Admin",msg)
             
           }
         
@@ -1095,7 +1101,7 @@ useEffect(() => {
 dispatch(messageSave(_chat))
 
  
-}, [responder,setResponder]);
+}, [adminResponder,setAdminResponder]);
 
 
 
