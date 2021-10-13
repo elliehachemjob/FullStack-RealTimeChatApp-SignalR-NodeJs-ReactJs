@@ -411,6 +411,9 @@ hr.line {
     margin: auto;
 }
 
+.hide-chat{
+   display:none
+}
 .chat {
     display: grid;
     height:30px;
@@ -11191,7 +11194,8 @@ label.panel-block {
     position:relative;
     left:485px;
     margin-right:900px;
-    margin:15px
+    margin:30px;
+    height:50px
 
   }
 

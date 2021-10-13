@@ -170,17 +170,22 @@ const CustomMessageBoxAdmin = () => {
 
 
 
-// useEffect(() => {
+
+
+
+
+
+useEffect(() => {
  
 
-//  if(isSending==5){
-//   renderCustomComponent(CustomMessageBox)}
-//   else{
-//     renderCustomComponent(CustomMessageBox)
-//   }
+ if(isSending==5){
+  renderCustomComponent(CustomChatContent)}
+  else{
+    renderCustomComponent(CustomChatContent)
+  }
 
  
-// }, [responder,setResponder]);
+}, [responder,setResponder]);
 
 
 
@@ -757,7 +762,7 @@ const SendPrivateMsgForm = () => {
         
 
 
-      connection.on("ReceiveMessage", (user, message,id) => {
+      connection.on("ReceiveMessage", (user, message,id,isAdmin) => {
 
 
 
@@ -768,8 +773,9 @@ const SendPrivateMsgForm = () => {
         // dispatch(messageSave([...reduxMessages, { user, message,id } ]))
         dispatch(messageSave([...reduxMessages, { user, message,id } ]))
          setResponder(message)
-        console.log(`this is the message ${message}`)
-
+        // console.log(`this is the message ${message}`)
+        //  console.log(`the user is  ${user}`)
+        console.log(`the status of user is ${isAdmin}`)
         
    
       });
@@ -803,9 +809,9 @@ const SendPrivateMsgForm = () => {
   };
 
 
-  const sendMessage = async (message) => {
+  const sendMessage = async (isAdmin,message) => {
     try {
-      await connection.invoke("SendMessage", message); 
+      await connection.invoke("SendMessage", isAdmin,message); 
       console.log("message sent")
     } catch (e) {
       console.log(e);
@@ -901,8 +907,8 @@ const SendPrivateMsgForm = () => {
     const onStateChange = (e) => {
       setMsg(e.target.value);
       activePointRef.current = e.target.value;
-      console.log(`aaaaaaaaaaaaaaaa ${msg}`);
-      console.log(`aaaaaaaaaaaaaaaaaaaaaaa ${chat.length}`);
+      // console.log(`aaaaaaaaaaaaaaaa ${msg}`);
+      // console.log(`aaaaaaaaaaaaaaaaaaaaaaa ${chat.length}`);
     };
   
   
@@ -947,14 +953,17 @@ const SendPrivateMsgForm = () => {
 
 
     const sendButtonHandler = ()=>{
-        let _chat = []
-              _chat.push({
-              user:"admin",
-              message: msg
-            });
+        // let _chat = []
+        //       _chat.push({
+        //       user:"admin",
+        //       message: msg
+        //     });
 
-            dispatch(messageSave(_chat))
-            setMsg("");
+        //     dispatch(messageSave(_chat))
+
+        //     setMsg("");
+
+ sendMessage("false",msg)
             
           }
         
@@ -1013,7 +1022,8 @@ const SendPrivateMsgForm = () => {
           </div>
         </div>
         <div className="content__body">
-          <div className="chat__items">
+
+          {/* <div className="chat__items">
           {reduxMessages.map((itm, index) => {
             console.log(`the value is ${JSON.stringify(reduxMessages)}`)
               return (
@@ -1031,22 +1041,15 @@ const SendPrivateMsgForm = () => {
   
               );
 
-
             })}
 
-         
-         
-         
 
-     
-  
-  
   
             
             <div ref={messagesEndRef} />
          
             
-          </div>
+          </div> */}
         </div>
         <div className="content__footer">
           <div className="sendNewMessage">
@@ -1065,6 +1068,66 @@ const SendPrivateMsgForm = () => {
   
 
   
+  const  CustomChatContent=()=> {
+
+   
+
+    const messagesEndRef = useRef(null);
+   
+  
+    const [chat, setChat] = useState(reduxMessages);
+
+    const [msg, setMsg] = useState();
+    const activePointRef = useRef(msg);
+
+ 
+
+useEffect(() => {
+ 
+  let _chat = []
+  _chat.push({
+  user:"admin",
+  message: msg
+
+});
+
+
+dispatch(messageSave(_chat))
+
+ 
+}, [responder,setResponder]);
+
+
+
+   
+        
+    return (
+      
+
+  
+          <div className="chat__items">
+          {reduxMessages.map((itm, index) => {
+            // console.log(`the value is ${JSON.stringify(reduxMessages)}`)
+              return (
+                  <div >{itm.message}</div>
+  
+              );
+            })}
+
+  </div>
+
+        
+    );
+  }
+  
+
+  
+
+
+
+
+
+
 
 
    const ChatList=()=> {
