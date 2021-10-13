@@ -95,6 +95,7 @@ namespace api11.Controllers
                     myCommand.Parameters.AddWithValue("@Email", users.Email);
                     myCommand.Parameters.AddWithValue("@Auth", users.Auth);
                     myCommand.Parameters.AddWithValue("@IsAdmin", users.IsAdmin);
+                    //checking row effected to know response
                     rows = myCommand.ExecuteNonQuery();
                     myReader = myCommand.ExecuteReader();
                     //fill table using sql dataReader (my reader)
