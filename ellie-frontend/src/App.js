@@ -78,6 +78,7 @@ const App = () => {
   const AdminPanel =() =>{
 
     const [adminMessage, setAdminMessage] = useState('')
+    const [msgContainer,setMsgContainer] = useState(CustomMessageBoxClient)
 
   
    const Jalal = "Jalal"
@@ -99,7 +100,7 @@ const App = () => {
    const mariosMsg = ["How are you","what is happening","was calling you from mins "]
 
 
-
+   
    const CustomMessageBoxClientJalal = () => {
 
 
@@ -117,7 +118,7 @@ const App = () => {
             <div>
                              <Message
                   model={{
-                    message: jalalMsg,
+                    message: m,
                     sentTime: "15 mins ago",
                     sender: username,
                     direction: "incoming",
@@ -141,6 +142,47 @@ const App = () => {
 
 
 
+    const CustomMessageBoxClientJalal2 = () => {
+
+
+      const jalalMsg = ["hey","How is the project going"]
+    
+      console.log(`clientMessageArray ${JSON.stringify(clientMessageArray)}`)
+    
+      //  console.log(`the length is ${ typeof(responder)}`)
+      if(clientResponder)
+      return (  
+                   
+        <div >
+            
+             
+           
+     <Message
+                    model={{
+                      message: "hey",
+                      sentTime: "15 mins ago",
+                      sender: username,
+                      direction: "incoming",
+                      position: "single"
+                    }}
+                  >
+                    <Avatar src={avatarIco} name={username} />
+                  </Message>  
+              
+      
+          </div> 
+      )
+      else{
+        return(
+        <div>{clientResponder}</div> )
+      }
+      }
+
+      
+
+      const jalalMsg = [{"message":"hey"},{"message":"How is the project going"}]
+
+
     return (
       <div
         style={{
@@ -158,8 +200,8 @@ const App = () => {
                 info="Yes i can do it for you"
                 onClick={() => {
                   setUsername(Jalal);
-                  setClientResponder("")  
-                  
+                  setClientMessageArray(jalalMsg)
+                  // setClientResponder("")  
 
                 }}
               >
@@ -278,7 +320,9 @@ const App = () => {
                   fontSize: "1.2em"
                 }}
               > 
-                 <CustomMessageBoxClient/>
+
+          
+                {msgContainer}
 
               </MessageList.Content>
             </MessageList>
