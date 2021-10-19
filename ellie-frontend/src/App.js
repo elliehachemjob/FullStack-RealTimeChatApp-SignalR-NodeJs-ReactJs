@@ -80,9 +80,16 @@ const App = () => {
     const [adminMessage, setAdminMessage] = useState('')
 
   
-   const Lilly = "Lilly"
-  
- const Joe = "Joe"
+   const Jalal = "Jalal"
+   const Ahmad = "Ahmad"
+   const Ellie = "Ellie"
+   const Abas = "Abas"
+   const Rita = "Rita"
+   const Shadi = "Shadi"
+   const Sam = "Sam"
+   const Marios = "Marios"
+
+
 
     return (
       <div
@@ -96,76 +103,102 @@ const App = () => {
             <Search placeholder="Search..." />
             <ConversationList>
               <Conversation
-                name={Lilly}
-                lastSenderName={Lilly}
+                name={Jalal}
+                lastSenderName={Jalal}
                 info="Yes i can do it for you"
                 onClick={() => {
-                  setUsername(Lilly);
+                  setUsername(Jalal);
                   setClientResponder("")
                 }}
               >
-                <Avatar src={avatarIco} name="Lilly" status="available" />
+                <Avatar src={avatarIco} name={Jalal} status="available" />
               </Conversation>
   
               <Conversation
-                name={Joe}
-                lastSenderName={Joe}
+                name={Ahmad}
+                lastSenderName={Ahmad}
                 info="Yes i can do it for you"
-                onClick={()=>{alert("hey")}}
+                onClick={() => {
+                  setUsername(Ahmad);
+                  setClientResponder("")
+                }}
               >
-                <Avatar src={avatarIco} name="Joe" status="dnd" />
+                <Avatar src={avatarIco} name={Ahmad} status="dnd" />
               </Conversation>
   
               <Conversation
-                name="Emily"
-                lastSenderName="Emily"
+                name={Ellie}
+                lastSenderName={Ellie}
                 info="Yes i can do it for you"
                 unreadCnt={3}
+                onClick={() => {
+                  setUsername(Ellie);
+                  setClientResponder("")
+                }}
               >
-                <Avatar src={avatarIco} name="Emily" status="available" />
+                <Avatar src={avatarIco} name={Ellie} status="available" />
               </Conversation>
   
               <Conversation
-                name="Kai"
-                lastSenderName="Kai"
+                name={Abas}
+                lastSenderName={Abas}
                 info="Yes i can do it for you"
-                unreadDot
+                onClick={() => {
+                  setUsername(Abas);
+                  setClientResponder("")
+                }}
               >
-                <Avatar src={avatarIco} name="Kai" status="unavailable" />
+                <Avatar src={avatarIco} name={Abas} status="dnd" />
               </Conversation>
   
               <Conversation
-                name="Akane"
-                lastSenderName="Akane"
+                name={Rita}
+                lastSenderName={Rita}
                 info="Yes i can do it for you"
+                onClick={() => {
+                  setUsername(Rita);
+                  setClientResponder("")
+                }}
               >
-                <Avatar src={avatarIco} name="Akane" status="eager" />
+                <Avatar src={avatarIco} name={Rita} status="dnd" />
+              </Conversation>
+              <Conversation
+                name={Shadi}
+                lastSenderName={Shadi}
+                info="Yes i can do it for you"
+                onClick={() => {
+                  setUsername(Shadi);
+                  setClientResponder("")
+                }}
+              >
+                <Avatar src={avatarIco} name={Shadi} status="dnd" />
               </Conversation>
   
               <Conversation
-                name="Eliot"
-                lastSenderName="Eliot"
+                name={Sam}
+                lastSenderName={Sam}
                 info="Yes i can do it for you"
+                onClick={() => {
+                  setUsername(Sam);
+                  setClientResponder("")
+                }}
               >
-                <Avatar src={avatarIco} name="Eliot" status="away" />
+                <Avatar src={avatarIco} name={Sam} status="dnd" />
               </Conversation>
   
               <Conversation
-                name="Zoe"
-                lastSenderName="Zoe"
+                name={Marios}
+                lastSenderName={Marios}
                 info="Yes i can do it for you"
+                onClick={() => {
+                  setUsername(Marios);
+                  setClientResponder("")
+                }}
               >
-                <Avatar src={avatarIco} name="Zoe" status="dnd" />
+                <Avatar src={avatarIco} name={Marios} status="dnd" />
               </Conversation>
-  
-              <Conversation
-                name="Patrik"
-                lastSenderName="Patrik"
-                info="Yes i can do it for you"
-              >
-                <Avatar src={avatarIco} name="Patrik" status="invisible" />
-              </Conversation>
-            </ConversationList>
+              </ConversationList>
+
           </Sidebar>
   
           <ChatContainer>
@@ -173,7 +206,7 @@ const App = () => {
               <ConversationHeader.Back />
               <Avatar src={avatarIco} name={username} />
               <ConversationHeader.Content
-                userName={!username? "Lilly":username}
+                userName={!username? "Jalal":username}
                 info="Active 10 mins ago"
               />
               <ConversationHeader.Actions>
@@ -380,9 +413,20 @@ const CustomMessageBoxClient = () => {
     
     <div >
          {clientMessageArray.map((m) =>
-          <div  >
-              <div >{m.message}</div>
-
+         
+          <div>
+                           <Message
+                model={{
+                  message: m.message,
+                  sentTime: "15 mins ago",
+                  sender: username,
+                  direction: "incoming",
+                  position: "single"
+                }}
+              >
+                <Avatar src={avatarIco} name={username} />
+              </Message>
+           
           </div>
     
       )}
@@ -1020,7 +1064,7 @@ const SendPrivateMsgForm = () => {
       // dispatch(messageSave([...messages, { user, message } ]))
 
         // dispatch(messageSave([...reduxMessages, { user, message,id } ]))
-        dispatch(messageSave((reduxMessages)=>[...reduxMessages, { user, message,id } ]))
+        dispatch(messageSave([...reduxMessages, { user, message,id } ]))
         console.log(`the user name is ${user}`)
         if(isAdmin === "Admin") {
          setAdminResponder(message)}
