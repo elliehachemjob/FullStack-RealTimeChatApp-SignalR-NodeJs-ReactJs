@@ -90,6 +90,15 @@ const App = () => {
    const Marios = "Marios"
 
 
+   const jalalMsg = ["hey","How is the project going"]
+   const ahmadMsg = ["I talked to you yesterday","Did you do redux"]
+   const ellieMsg = ["Good morning","There is an issue here"]
+   const abasMsg =  ["Issue","ticket 2021"]
+   const ritaMsg =  ["There is a customer complaining","need help"]
+   const shadiMsg = ["In the row","how is the project going"]
+   const samMsg =   ["No Message Here"]
+   const mariosMsg = ["How are you","what is happening","was calling you from mins "]
+
 
     return (
       <div
@@ -109,6 +118,7 @@ const App = () => {
                 onClick={() => {
                   setUsername(Jalal);
                   setClientResponder("")
+
                 }}
               >
                 <Avatar src={avatarIco} name={Jalal} status="available" />
