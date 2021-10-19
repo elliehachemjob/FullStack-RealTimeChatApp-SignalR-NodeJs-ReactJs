@@ -90,7 +90,6 @@ const App = () => {
    const Marios = "Marios"
 
 
-   const jalalMsg = ["hey","How is the project going"]
    const ahmadMsg = ["I talked to you yesterday","Did you do redux"]
    const ellieMsg = ["Good morning","There is an issue here"]
    const abasMsg =  ["Issue","ticket 2021"]
@@ -98,6 +97,48 @@ const App = () => {
    const shadiMsg = ["In the row","how is the project going"]
    const samMsg =   ["No Message Here"]
    const mariosMsg = ["How are you","what is happening","was calling you from mins "]
+
+
+
+   const CustomMessageBoxClientJalal = () => {
+
+
+    const jalalMsg = ["hey","How is the project going"]
+  
+    console.log(`clientMessageArray ${JSON.stringify(clientMessageArray)}`)
+  
+    //  console.log(`the length is ${ typeof(responder)}`)
+    if(clientResponder)
+    return (  
+                 
+      <div >
+           {jalalMsg.map((m) =>
+           
+            <div>
+                             <Message
+                  model={{
+                    message: jalalMsg,
+                    sentTime: "15 mins ago",
+                    sender: username,
+                    direction: "incoming",
+                    position: "single"
+                  }}
+                >
+                  <Avatar src={avatarIco} name={username} />
+                </Message>  
+            </div>
+      
+        )}
+    
+        </div> 
+    )
+    else{
+      return(
+      <div>{clientResponder}</div> )
+    }
+    }
+
+
 
 
     return (
@@ -117,7 +158,8 @@ const App = () => {
                 info="Yes i can do it for you"
                 onClick={() => {
                   setUsername(Jalal);
-                  setClientResponder("")
+                  setClientResponder("")  
+                  
 
                 }}
               >
@@ -235,7 +277,7 @@ const App = () => {
                   textAlign: "center",
                   fontSize: "1.2em"
                 }}
-              >
+              > 
                  <CustomMessageBoxClient/>
 
               </MessageList.Content>
@@ -406,6 +448,52 @@ else{
   <div>{adminResponder}</div> )
 }
 }
+
+
+
+
+
+const CustomMessageBoxClientJalal = () => {
+
+
+  const jalalMsg = ["hey","How is the project going"]
+
+  console.log(`clientMessageArray ${JSON.stringify(clientMessageArray)}`)
+
+  //  console.log(`the length is ${ typeof(responder)}`)
+  if(clientResponder)
+  return (  
+            
+
+    
+    
+    <div >
+         {jalalMsg.map((m) =>
+         
+          <div>
+                           <Message
+                model={{
+                  message: jalalMsg,
+                  sentTime: "15 mins ago",
+                  sender: username,
+                  direction: "incoming",
+                  position: "single"
+                }}
+              >
+                <Avatar src={avatarIco} name={username} />
+              </Message>
+           
+          </div>
+    
+      )}
+  
+      </div> 
+  )
+  else{
+    return(
+    <div>{clientResponder}</div> )
+  }
+  }
 
 
 
