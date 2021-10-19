@@ -186,22 +186,15 @@ const App = () => {
                   fontSize: "1.2em"
                 }}
               >
- <Message
-                model={{
-                  message: "Hello my friend",
-                  sentTime: "15 mins ago",
-                  sender: "Zoe",
-                  direction: "incoming",
-                  position: "single"
-                }}
-              >
-                <Avatar src={avatarIco} name="Zoe" />
-              </Message>              </MessageList.Content>
+                 <CustomMessageBoxClient/>
+
+              </MessageList.Content>
             </MessageList>
             <MessageInput 
-            onSend={()=>{alert("sent")  }}
             onAttachClick={()=>{alert("use library/function to upload here")}}
-            onChange ={(e)=>{ setAdminMessage(e); console.log(adminMessage) }}placeholder="Type message here" />
+            onChange ={(e)=>{ setAdminMessage(e); console.log(adminMessage) }}placeholder="Type message here" 
+            onSend={()=>{sendMessage("Admin","Admin",adminMessage)  }}
+            />
           </ChatContainer>
   
           <Sidebar position="right">
@@ -359,6 +352,26 @@ else{
   <div>{adminResponder}</div> )
 }
 }
+
+
+
+
+const CustomMessageBoxClient = () => {
+
+  //  console.log(`the length is ${ typeof(responder)}`)
+  if(clientResponder)
+  return (  
+            
+    <div className="admin-message" >{clientResponder}</div> 
+  )
+  else{
+    return(
+    <div>{clientResponder}</div> )
+  }
+  }
+
+
+
 
 
 
