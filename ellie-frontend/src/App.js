@@ -103,13 +103,12 @@ const App = () => {
    
    const CustomMessageBoxClientJalal = () => {
 
-
     const jalalMsg = ["hey","How is the project going"]
   
     console.log(`clientMessageArray ${JSON.stringify(clientMessageArray)}`)
   
     //  console.log(`the length is ${ typeof(responder)}`)
-    if(clientResponder)
+    
     return (  
                  
       <div >
@@ -133,10 +132,8 @@ const App = () => {
     
         </div> 
     )
-    else{
-      return(
-      <div>{clientResponder}</div> )
-    }
+ 
+    
     }
 
 
@@ -183,6 +180,18 @@ const App = () => {
       const jalalMsg = [{"message":"hey"},{"message":"How is the project going"}]
 
 
+
+      useEffect(() => {
+        console.log("I Only run once (When the component gets mounted)")
+      }, []); 
+
+
+const customFunction = ()=>{
+  setMsgContainer(CustomMessageBoxClientJalal)
+}
+
+
+
     return (
       <div
         style={{
@@ -198,12 +207,8 @@ const App = () => {
                 name={Jalal}
                 lastSenderName={Jalal}
                 info="Yes i can do it for you"
-                onClick={() => {
-                  setUsername(Jalal);
-                  setClientMessageArray(jalalMsg)
-                  // setClientResponder("")  
-
-                }}
+                onClick={customFunction}
+                
               >
                 <Avatar src={avatarIco} name={Jalal} status="available" />
               </Conversation>
@@ -505,38 +510,34 @@ const CustomMessageBoxClientJalal = () => {
   console.log(`clientMessageArray ${JSON.stringify(clientMessageArray)}`)
 
   //  console.log(`the length is ${ typeof(responder)}`)
-  if(clientResponder)
   return (  
             
 
     
     
     <div >
-         {jalalMsg.map((m) =>
+       
          
           <div>
                            <Message
                 model={{
-                  message: jalalMsg,
+                  message: "hey",
                   sentTime: "15 mins ago",
-                  sender: username,
+                  sender: "Jalal",
                   direction: "incoming",
                   position: "single"
                 }}
               >
-                <Avatar src={avatarIco} name={username} />
+                <Avatar src={avatarIco} name="Jalal" />
               </Message>
            
           </div>
     
-      )}
+    
   
       </div> 
   )
-  else{
-    return(
-    <div>{clientResponder}</div> )
-  }
+ 
   }
 
 
@@ -547,7 +548,6 @@ const CustomMessageBoxClient = () => {
   console.log(`clientMessageArray ${JSON.stringify(clientMessageArray)}`)
 
   //  console.log(`the length is ${ typeof(responder)}`)
-  if(clientResponder)
   return (  
             
 
@@ -575,10 +575,7 @@ const CustomMessageBoxClient = () => {
   
       </div> 
   )
-  else{
-    return(
-    <div>{clientResponder}</div> )
-  }
+ 
   }
 
 
