@@ -100,7 +100,8 @@ const App = () => {
                 lastSenderName={Lilly}
                 info="Yes i can do it for you"
                 onClick={() => {
-                  console.log("hi");
+                  setUsername(Lilly);
+                  setClientResponder("")
                 }}
               >
                 <Avatar src={avatarIco} name="Lilly" status="available" />
@@ -264,6 +265,7 @@ const [username, setUsername] = useState("")
 const [clientResponder, setClientResponder] = useState()
 const [user3, setUser3] = useState("")
 const [isSending, setIsSending] = useState(false)
+const [clientMessageArray, setClientMessageArray] = useState([])
 //for widget end 
 
 
@@ -367,7 +369,7 @@ else{
 
 const CustomMessageBoxClient = () => {
 
-  console.log(`username ${username}`)
+  console.log(`clientMessageArray ${JSON.stringify(clientMessageArray)}`)
 
   //  console.log(`the length is ${ typeof(responder)}`)
   if(clientResponder)
@@ -377,19 +379,14 @@ const CustomMessageBoxClient = () => {
     
     
     <div >
-      
-      <Message
-                model={{
-                  message: clientResponder,
-                  sentTime: "15 mins ago",
-                  sender: username,
-                  direction: "incoming",
-                  position: "single"
-                }}
-              >
-                <Avatar src={avatarIco} name="hmmm" />
-              </Message>
+         {clientMessageArray.map((m) =>
+          <div  >
+              <div >{m.message}</div>
 
+          </div>
+    
+      )}
+  
       </div> 
   )
   else{
@@ -1023,7 +1020,7 @@ const SendPrivateMsgForm = () => {
       // dispatch(messageSave([...messages, { user, message } ]))
 
         // dispatch(messageSave([...reduxMessages, { user, message,id } ]))
-        dispatch(messageSave([...reduxMessages, { user, message,id } ]))
+        dispatch(messageSave((reduxMessages)=>[...reduxMessages, { user, message,id } ]))
         console.log(`the user name is ${user}`)
         if(isAdmin === "Admin") {
          setAdminResponder(message)}
@@ -1033,6 +1030,10 @@ const SendPrivateMsgForm = () => {
 
           setUsername(user)
 
+
+          setClientMessageArray((clientMessageArray)=>[...clientMessageArray, {message}])
+
+     
         // console.log(`this is the message ${message}`)
         //  console.log(`the user is  ${user}`)
 
