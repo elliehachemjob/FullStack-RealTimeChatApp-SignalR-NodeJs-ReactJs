@@ -31,7 +31,7 @@ import LoginForm from "./components/LoginForm";
 import SignUpForm from "./components/SignUpForm";
 import CustomSendMsgForAdminInAdminPanel from "./components/CustomSendMsgForAdminInAdminPanel";
 import CustomRecieveMsgForAdminInAdminPanel from "./components/CustomRecieveMsgForAdminInAdminPanel";
-
+import CustomMessageBoxInAdminPanel from "./components/CustomMessageBoxInAdminPanel";
 const App = () => {
   const avatarIco =
     "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAZlBMVEUOHCyclYufmI0AECZvbGkAACCjm5AIGCoxOUIAEycAFSgLGisNHCwEFykDFyljY2N9enUlLjkACCKWkIc+Q0lmZmWIhH0bJjN/e3YVIjGSjYRAREpbXF0tND54dXGEgHpKTVFTVVcfARIMAAADVklEQVR4nO3ciXaiMABA0ZA4lhBEcV+r/v9PTtA6FUVGLXOyzLtf4DtktVghAAAAAAAAAAAAAAAAAAAAAABAuIwej9XAuP4Y/4xR5XY+6U11pI1GL4ZrmSQyGaXZIHf9cTqXa7Gt+ipSfqZ64PoTdcuoYjj56js3jtJxRM/RqMUwueo7Ny6nqohjPtr1Zbi+6Ts1JqNpFsGak2eLxr5z4zItAp+PRtfn313jaT66/pTvM2p1N//uGvv7YOdjNf/ant/VWJ3qABsv+/szzmtOWHtHrldP950a7XwM6QxglJk9Mz7rjcvpOJCxWs2/v60vzY37qc78b7R9s1fGZ60xWW58PwMYu7+/Oj5vGr0+A9yer99qrM4AheuSZnZ/n8kf9p0a7RnAyzVHly+vnw8bq/no3faYbd5dX5obe749xNy8s0G0NW6166a6bNttYJJMxq6b6lSv68L+L9dNdRRSSKF7FFJIoXsUUkihexRSSKF7FFJIoXsUUkihexRSSKF7FFJIoXsUUkihexRSSKF7FL5Oxl4oR8p1U13XhXJdevb6ZbeFUo5K396E7rJQyvlBfLguutVdoUyWB+PfO9BdFUopZztV+NfXUaHs749KebbCXHTwFrScfKbGs5e7r5iy/7M8uR7ulNe/0Bt//uTHQNXq6evwvMjz+buJMumlYw9Xz1sfi7cS7ePbikB+XJntXk+Uk9FmpT0fnt+K3frFxzeZpdrLze+RbPdKX39+XKmPkPqsLJ0825d82tUlmOH5LZs+k2gf37DMwlhd7mSbJx7f/mBXl8CG5x+5PvzlcCP3UxXi8Pymju17xjys1bOJaj2Ey6O/h+tnGT1s+38taaArzLU8m7Ukpt59P/GGvO0+HEWhMC13qTgKRV48TIykUBgxepAYS6Ew+b45MZpCu2k0XxfjKRRm1ZgYUaEoyqbEmArtjbjhv4FEVdh46Y+rsCkxskKhN7eX/tgKhTrEXmgTZeSFuap/rxFf4e33GjEW1i/9MRbWL/1RFopc9/pxF15/rxFpoR2ol0t/rIX2Rvx16Y+20F4Xz5f+eAvtUzxdFyMuFKaw10Xp2zuHnRqU8/5chf53mVaDxSHqRyiqgRp5IAAAAAAAAAAAAAAAAAAAAAAA/4Hf0gU2cK/EibwAAAAASUVORK5CYII=";
@@ -63,201 +63,25 @@ const App = () => {
     const Sam = "Sam";
     const Marios = "Marios";
 
-    const CustomMessageBoxClientJalal = () => {
-      const jalalMsg = ["hey", "How is the project going"];
+    const jalalMsg = ["hey", "How is the project going"];
 
-      return (
-        <div>
-          {jalalMsg.map((m) => (
-            <div>
-              <Message
-                model={{
-                  message: m,
-                  sentTime: "15 mins ago",
-                  sender: username,
-                  direction: "outgoing",
-                  position: "single",
-                }}
-              >
-                <Avatar src={avatarIco} name={username} />
-              </Message>
-            </div>
-          ))}
-        </div>
-      );
-    };
+    const ahmadMsg = ["I talked to you yesterday", "Did you do redux"];
 
-    const CustomMessageBoxClientAhmad = () => {
-      const ahmadMsg = ["I talked to you yesterday", "Did you do redux"];
+    const ellieMsg = ["Good morning", "There is an issue here"];
 
-      return (
-        <div>
-          {ahmadMsg.map((m) => (
-            <div>
-              <Message
-                model={{
-                  message: m,
-                  sentTime: "15 mins ago",
-                  sender: username,
-                  direction: "outgoing",
-                  position: "single",
-                }}
-              >
-                <Avatar src={avatarIco} name={username} />
-              </Message>
-            </div>
-          ))}
-        </div>
-      );
-    };
+    const abasMsg = ["Issue", "ticket 2021"];
 
-    const CustomMessageBoxClientEllie = () => {
-      const ellieMsg = ["Good morning", "There is an issue here"];
+    const ritaMsg = ["There is a customer complaining", "need help"];
 
-      return (
-        <div>
-          {ellieMsg.map((m) => (
-            <div>
-              <Message
-                model={{
-                  message: m,
-                  sentTime: "15 mins ago",
-                  sender: username,
-                  direction: "outgoing",
-                  position: "single",
-                }}
-              >
-                <Avatar src={avatarIco} name={username} />
-              </Message>
-            </div>
-          ))}
-        </div>
-      );
-    };
+    const shadiMsg = ["In the row", "how is the project going"];
 
-    const CustomMessageBoxClientAbas = () => {
-      const abasMsg = ["Issue", "ticket 2021"];
+    const samMsg = ["No Message Here"];
 
-      return (
-        <div>
-          {abasMsg.map((m) => (
-            <div>
-              <Message
-                model={{
-                  message: m,
-                  sentTime: "15 mins ago",
-                  sender: username,
-                  direction: "outgoing",
-                  position: "single",
-                }}
-              >
-                <Avatar src={avatarIco} name={username} />
-              </Message>
-            </div>
-          ))}
-        </div>
-      );
-    };
-
-    const CustomMessageBoxClientRita = () => {
-      const ritaMsg = ["There is a customer complaining", "need help"];
-
-      return (
-        <div>
-          {ritaMsg.map((m) => (
-            <div>
-              <Message
-                model={{
-                  message: m,
-                  sentTime: "15 mins ago",
-                  sender: username,
-                  direction: "outgoing",
-                  position: "single",
-                }}
-              >
-                <Avatar src={avatarIco} name={username} />
-              </Message>
-            </div>
-          ))}
-        </div>
-      );
-    };
-
-    const CustomMessageBoxClientShadi = () => {
-      const shadiMsg = ["In the row", "how is the project going"];
-
-      return (
-        <div>
-          {shadiMsg.map((m) => (
-            <div>
-              <Message
-                model={{
-                  message: m,
-                  sentTime: "15 mins ago",
-                  sender: username,
-                  direction: "outgoing",
-                  position: "single",
-                }}
-              >
-                <Avatar src={avatarIco} name={username} />
-              </Message>
-            </div>
-          ))}
-        </div>
-      );
-    };
-
-    const CustomMessageBoxClientSam = () => {
-      const samMsg = ["No Message Here"];
-
-      return (
-        <div>
-          {samMsg.map((m) => (
-            <div>
-              <Message
-                model={{
-                  message: m,
-                  sentTime: "15 mins ago",
-                  sender: username,
-                  direction: "outgoing",
-                  position: "single",
-                }}
-              >
-                <Avatar src={avatarIco} name={username} />
-              </Message>
-            </div>
-          ))}
-        </div>
-      );
-    };
-
-    const CustomMessageBoxClientMarios = () => {
-      const mariosMsg = [
-        "How are you",
-        "what is happening",
-        "was calling you from mins ",
-      ];
-
-      return (
-        <div>
-          {mariosMsg.map((m) => (
-            <div>
-              <Message
-                model={{
-                  message: m,
-                  sentTime: "15 mins ago",
-                  sender: username,
-                  direction: "outgoing",
-                  position: "single",
-                }}
-              >
-                <Avatar src={avatarIco} name={username} />
-              </Message>
-            </div>
-          ))}
-        </div>
-      );
-    };
+    const mariosMsg = [
+      "How are you",
+      "what is happening",
+      "was calling you from mins ",
+    ];
 
     return (
       <div
@@ -276,7 +100,12 @@ const App = () => {
                 info="Yes i can do it for you"
                 onClick={() => {
                   setUsername(Jalal);
-                  setMsgContainer(CustomMessageBoxClientJalal);
+                  setMsgContainer(
+                    <CustomMessageBoxInAdminPanel
+                      msg={jalalMsg}
+                      name={username}
+                    />
+                  );
                 }}
               >
                 <Avatar src={avatarIco} name={Jalal} status="available" />
@@ -289,7 +118,12 @@ const App = () => {
                 onClick={() => {
                   setClientResponder("");
                   setUsername(Ahmad);
-                  setMsgContainer(CustomMessageBoxClientAhmad);
+                  setMsgContainer(
+                    <CustomMessageBoxInAdminPanel
+                      msg={ahmadMsg}
+                      name={username}
+                    />
+                  );
                 }}
               >
                 <Avatar src={avatarIco} name={Ahmad} status="dnd" />
@@ -303,7 +137,12 @@ const App = () => {
                 onClick={() => {
                   setClientResponder("");
                   setUsername(Ellie);
-                  setMsgContainer(CustomMessageBoxClientEllie);
+                  setMsgContainer(
+                    <CustomMessageBoxInAdminPanel
+                      msg={ellieMsg}
+                      name={username}
+                    />
+                  );
                 }}
               >
                 <Avatar src={avatarIco} name={Ellie} status="available" />
@@ -316,7 +155,12 @@ const App = () => {
                 onClick={() => {
                   setClientResponder("");
                   setUsername(Abas);
-                  setMsgContainer(CustomMessageBoxClientAbas);
+                  setMsgContainer(
+                    <CustomMessageBoxInAdminPanel
+                      msg={abasMsg}
+                      name={username}
+                    />
+                  );
                 }}
               >
                 <Avatar src={avatarIco} name={Abas} status="dnd" />
@@ -328,8 +172,13 @@ const App = () => {
                 info="Yes i can do it for you"
                 onClick={() => {
                   setClientResponder("");
-                  setUsername(Abas);
-                  setMsgContainer(CustomMessageBoxClientRita);
+                  setUsername(Rita);
+                  setMsgContainer(
+                    <CustomMessageBoxInAdminPanel
+                      msg={ritaMsg}
+                      name={username}
+                    />
+                  );
                 }}
               >
                 <Avatar src={avatarIco} name={Rita} status="dnd" />
@@ -341,7 +190,12 @@ const App = () => {
                 onClick={() => {
                   setClientResponder("");
                   setUsername(Shadi);
-                  setMsgContainer(CustomMessageBoxClientShadi);
+                  setMsgContainer(
+                    <CustomMessageBoxInAdminPanel
+                      msg={shadiMsg}
+                      name={username}
+                    />
+                  );
                 }}
               >
                 <Avatar src={avatarIco} name={Shadi} status="dnd" />
@@ -354,7 +208,12 @@ const App = () => {
                 onClick={() => {
                   setClientResponder("");
                   setUsername(Sam);
-                  setMsgContainer(CustomMessageBoxClientSam);
+                  setMsgContainer(
+                    <CustomMessageBoxInAdminPanel
+                      msg={samMsg}
+                      name={username}
+                    />
+                  );
                 }}
               >
                 <Avatar src={avatarIco} name={Sam} status="dnd" />
@@ -367,7 +226,12 @@ const App = () => {
                 onClick={() => {
                   setClientResponder("");
                   setUsername(Marios);
-                  setMsgContainer(CustomMessageBoxClientMarios);
+                  setMsgContainer(
+                    <CustomMessageBoxInAdminPanel
+                      msg={mariosMsg}
+                      name={username}
+                    />
+                  );
                 }}
               >
                 <Avatar src={avatarIco} name={Marios} status="dnd" />
@@ -467,6 +331,7 @@ const App = () => {
   const [isSending, setIsSending] = useState(false);
   const [clientMessageArray, setClientMessageArray] = useState([]);
   const [adminMessageArray, setAdminMessageArray] = useState([]);
+  const dispatch = useDispatch();
 
   const handleNewUserMessage = (e) => {
     sendMessage("okay", "Client", e);
@@ -507,8 +372,6 @@ const App = () => {
       );
     }
   };
-
-  const dispatch = useDispatch();
 
   const Routing = () => {
     return (
