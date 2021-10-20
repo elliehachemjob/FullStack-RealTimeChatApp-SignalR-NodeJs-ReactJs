@@ -112,19 +112,6 @@ const App = () => {
     return (  
                  
       <div >
-         <ConversationHeader style={{position:"relative", bottom:"180px"}}>
-              <ConversationHeader.Back />
-              <Avatar src={avatarIco} name={username} />
-              <ConversationHeader.Content
-                userName={!username? "Jalal":username}
-                info="Active 10 mins ago"
-              />
-              <ConversationHeader.Actions>
-                <VoiceCallButton />
-                <VideoCallButton />
-                <InfoButton />
-              </ConversationHeader.Actions>
-            </ConversationHeader>
            {jalalMsg.map((m) =>
            
             <div>
@@ -305,6 +292,19 @@ const customFunction = ()=>{
           </Sidebar>
   
           <ChatContainer>
+            <ConversationHeader>
+              <ConversationHeader.Back />
+              <Avatar src={avatarIco} name={username} />
+              <ConversationHeader.Content
+                userName={!username? "Jalal":username}
+                info="Active 10 mins ago"
+              />
+              <ConversationHeader.Actions>
+                <VoiceCallButton />
+                <VideoCallButton />
+                <InfoButton />
+              </ConversationHeader.Actions>
+            </ConversationHeader>
             <MessageList>
               <MessageList.Content
                 style={{
