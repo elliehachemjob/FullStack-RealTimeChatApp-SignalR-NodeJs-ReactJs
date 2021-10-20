@@ -67,8 +67,8 @@ import {
   ExpansionPanel,
   MessageGroup,
 } from "@chatscope/chat-ui-kit-react";
-
 import LoginForm from "./components/LoginForm";
+import SignUpForm from "./components/SignUpForm";
 
 var FileSaver = require("file-saver");
 
@@ -928,147 +928,7 @@ const App = () => {
     );
   };
 
-  const SignUpForm = () => {
-    const SignUpForm = () => {
-      const signUpHandler = () => {
-        // if (!password.match(UpperCase) || !password.match(lowerCase) || !password.match(numbers) || !password.match(special) || password.length <= 9 || password === ""  ) {
-        //   alert("password must contain Upper/lower case,Numbers,Special Charachters")}
-
-        axios
-          .post(`http://localhost:1589/api/users`, {
-            Email: user2,
-            Auth: password2,
-            IsAdmin: 0,
-          })
-          .then((res) => {
-            console.log(` data is ${JSON.stringify(res)}`);
-            if (res.data === "Added Successfully") {
-              alert("register success");
-              joinRoom(user2);
-            } else if (res.data === "Email Already Exist") {
-              alert("email already exist");
-            }
-          })
-          .catch((e) => {
-            console.log(e);
-            if (e) {
-              alert("already exist");
-            }
-          });
-      };
-
-      const [user2, setUser2] = useState();
-      const [password2, setPassword2] = useState();
-      const [sendEmailVerification, setSendEmailVerification] = useState();
-      // const [loading, setLoading] = useState(false);
-      const [timer, setTimer] = useState(null);
-
-      // useEffect(
-      //   () => {
-      //     // this will clear Timeout when component unmont like in willComponentUnmount
-      //     return () => {
-      //       clearTimeout(timer);
-      //     };
-      //   },
-      //   [] //useEffect will run only one time
-      // );
-      return (
-        <Level>
-          <Level.Item textAlign="centered">
-            <Container
-              style={{
-                maxWidth: 400,
-                height: "100vh",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-              }}
-            >
-              <Card>
-                <Section backgroundColor="primary">
-                  <Title style={{ color: "white" }}>
-                    Plugit Support Sign Up
-                  </Title>
-                </Section>
-                <Card.Content>
-                  <Field>
-                    <Control iconLeft iconRight>
-                      <Input
-                        // enabled={loading}
-                        type="email"
-                        placeholder="Email"
-                        onChange={(e) => {
-                          setUser2(e.target.value);
-                        }}
-                      />
-                      <Icon size="small" align="left">
-                        <FontAwesomeIcon icon={faEnvelope} />
-                      </Icon>
-                      <Icon size="small" align="right">
-                        <FontAwesomeIcon icon={faCheck} />
-                      </Icon>
-                    </Control>
-                  </Field>
-                  <Field>
-                    <Control iconLeft>
-                      <Input
-                        type="password"
-                        placeholder="Password"
-                        onChange={(e) => setPassword2(e.target.value)}
-                        value={password2}
-                      />
-                      <Icon size="small" align="left">
-                        <FontAwesomeIcon icon={faLock} />
-                      </Icon>
-                    </Control>
-                  </Field>
-                  <Field>
-                    <Control iconLeft>
-                      <Input
-                        type="email"
-                        placeholder="Send Email Verification"
-                        onChange={(e) =>
-                          setSendEmailVerification(e.target.value)
-                        }
-                        value={sendEmailVerification}
-                      />
-                      <Icon size="small" align="left">
-                        <FontAwesomeIcon icon={faArrowRight} />
-                      </Icon>
-                    </Control>
-                  </Field>
-                  <Field>
-                    <Control>
-                      <Label>
-                        <Checkbox
-                        // disabled={loading}
-                        />{" "}
-                        Remember me
-                      </Label>
-                    </Control>
-                  </Field>
-                  <Field>
-                    <Control>
-                      <Button
-                        // state={loading ? "loading" : undefined}
-                        onClick={() => {
-                          signUpHandler();
-                          // setLoading(true);
-                        }}
-                        color="primary"
-                      >
-                        SignUp
-                      </Button>
-                    </Control>
-                  </Field>
-                </Card.Content>
-              </Card>
-            </Container>
-          </Level.Item>
-        </Level>
-      );
-    };
-
+  const Routing = () => {
     return (
       <BrowserRouter>
         <Switch>
@@ -1332,35 +1192,7 @@ const App = () => {
             <div className="settings"></div>
           </div>
         </div>
-        <div className="content__body">
-          {/* <div className="chat__items">
-          {reduxMessages.map((itm, index) => {
-            console.log(`the value is ${JSON.stringify(reduxMessages)}`)
-              return (
-                <div
-                style={{ animationDelay: `0.8s` }} 
-              >
-          
-                <div className={itm.user==="admin"? 'chat__item__content' : 'chat__item__content_client'}>
-                  <div className="chat__msg">{itm.message}</div>
-                </div>
-
-
-              </div>
-  
-  
-              );
-
-            })}
-
-
-  
-            
-            <div ref={messagesEndRef} />
-         
-            
-          </div> */}
-        </div>
+        <div className="content__body"></div>
         <div className="content__footer">
           <div className="sendNewMessage">
             <input
@@ -1508,9 +1340,7 @@ const App = () => {
   return (
     <div>
       {!connection ? (
-        <div>
-          <SignUpForm joinRoom={joinRoom} />
-        </div>
+        <Routing />
       ) : (
         <div>
           <Widget
@@ -1529,10 +1359,3 @@ const App = () => {
 };
 
 export default App;
-
-// in case we want to add the admin panel here
-
-// <div className="__main">
-// <div className="main__chatbody">
-//   </div>
-//   </div>
