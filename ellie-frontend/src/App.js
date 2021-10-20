@@ -457,46 +457,27 @@ const App = () => {
   };
 
   const [connection, setConnection] = useState();
-  const [messages, setMessages] = useState([]);
   const [users, setUsers] = useState([]);
   const reduxMessages = useSelector(storedMessages);
-  const [chatBox, setChatBox] = useState([<span></span>]);
-  const [newBox, setNewBox] = useState([<span></span>]);
-
   const [isWidget, setisWidget] = useState(false);
-  const [isonline, setIsOnline] = useState(false);
-  const [ispending, setIsPending] = useState(false);
-  const [messges2, setMessages2] = useState([]);
   const [isRender, setIsRender] = useState(false);
   const [adminResponder, setAdminResponder] = useState();
   const [username, setUsername] = useState("");
   const [clientResponder, setClientResponder] = useState("");
-  const [user3, setUser3] = useState("");
   const [isSending, setIsSending] = useState(false);
   const [clientMessageArray, setClientMessageArray] = useState([]);
   const [adminMessageArray, setAdminMessageArray] = useState([]);
 
   const handleNewUserMessage = (e) => {
-    setIsSending(false);
-    setIsRender(true);
     sendMessage("okay", "Client", e);
-    setMessages2([...messges2, e]);
   };
 
   const CustomMessageBoxAdmin = () => {
-    if (adminResponder)
-      return <div className="admin-message">{adminResponder}</div>;
-    else {
-      return <div>{adminResponder}</div>;
-    }
+    return <div>{adminResponder}</div>;
   };
 
   useEffect(() => {
-    if (isSending == 5) {
-      renderCustomComponent(CustomMessageBoxAdmin);
-    } else {
-      renderCustomComponent(CustomMessageBoxAdmin);
-    }
+    renderCustomComponent(CustomMessageBoxAdmin);
   }, [adminResponder, setAdminResponder]);
 
   const getCustomLauncher = (handleToggle) => {
