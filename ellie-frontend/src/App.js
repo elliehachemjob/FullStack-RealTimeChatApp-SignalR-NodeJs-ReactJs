@@ -1,15 +1,13 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { HubConnectionBuilder } from "@microsoft/signalr";
 import axios from "axios";
 import "./App.css";
 import { useSelector, useDispatch } from "react-redux";
-import { messageSave, storedMessages, clearMessages } from "./messagesReducer";
+import { messageSave, storedMessages } from "./messagesReducer";
 import { Widget, renderCustomComponent } from "react-chat-widget";
-import flippedimage from "./flippedImage.png";
-import normalimage from "./normalPlugit.png";
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
+import flippedimage from "./assets/images/flippedImage.png";
+import normalimage from "./assets/images/normalImage.png";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import styles from "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
 import {
   MainContainer,
@@ -31,10 +29,6 @@ import {
 } from "@chatscope/chat-ui-kit-react";
 import LoginForm from "./components/LoginForm";
 import SignUpForm from "./components/SignUpForm";
-
-var FileSaver = require("file-saver");
-
-var user3 = "hey";
 
 const App = () => {
   const CustomMessageBoxAdmin1 = () => {
@@ -80,18 +74,6 @@ const App = () => {
     const Shadi = "Shadi";
     const Sam = "Sam";
     const Marios = "Marios";
-
-    const ahmadMsg = ["I talked to you yesterday", "Did you do redux"];
-    const ellieMsg = ["Good morning", "There is an issue here"];
-    const abasMsg = ["Issue", "ticket 2021"];
-    const ritaMsg = ["There is a customer complaining", "need help"];
-    const shadiMsg = ["In the row", "how is the project going"];
-    const samMsg = ["No Message Here"];
-    const mariosMsg = [
-      "How are you",
-      "what is happening",
-      "was calling you from mins ",
-    ];
 
     const CustomMessageBoxClientJalal = () => {
       const jalalMsg = ["hey", "How is the project going"];
@@ -216,8 +198,6 @@ const App = () => {
     const CustomMessageBoxClientShadi = () => {
       const shadiMsg = ["In the row", "how is the project going"];
 
-      const abasMsg = ["Issue", "ticket 2021"];
-
       return (
         <div>
           {shadiMsg.map((m) => (
@@ -241,8 +221,6 @@ const App = () => {
 
     const CustomMessageBoxClientSam = () => {
       const samMsg = ["No Message Here"];
-
-      const abasMsg = ["Issue", "ticket 2021"];
 
       return (
         <div>
@@ -271,8 +249,6 @@ const App = () => {
         "what is happening",
         "was calling you from mins ",
       ];
-
-      const abasMsg = ["Issue", "ticket 2021"];
 
       return (
         <div>
@@ -520,7 +496,6 @@ const App = () => {
     setIsRender(true);
     sendMessage("okay", "Client", e);
     setMessages2([...messges2, e]);
-    console.log(` this is ${messges2}`);
   };
 
   const CustomMessageBoxClient = () => {
