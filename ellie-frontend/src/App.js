@@ -112,6 +112,19 @@ const App = () => {
     return (  
                  
       <div >
+         <ConversationHeader style={{position:"relative", bottom:"180px"}}>
+              <ConversationHeader.Back />
+              <Avatar src={avatarIco} name={username} />
+              <ConversationHeader.Content
+                userName={!username? "Jalal":username}
+                info="Active 10 mins ago"
+              />
+              <ConversationHeader.Actions>
+                <VoiceCallButton />
+                <VideoCallButton />
+                <InfoButton />
+              </ConversationHeader.Actions>
+            </ConversationHeader>
            {jalalMsg.map((m) =>
            
             <div>
@@ -135,28 +148,23 @@ const App = () => {
  
     
     }
-
-
-
-
     const CustomMessageBoxClientJalal2 = () => {
-
 
       const jalalMsg = ["hey","How is the project going"]
     
       console.log(`clientMessageArray ${JSON.stringify(clientMessageArray)}`)
     
       //  console.log(`the length is ${ typeof(responder)}`)
-      if(clientResponder)
+      
       return (  
                    
         <div >
-            
+             {jalalMsg.map((m) =>
              
-           
-     <Message
+              <div>
+                               <Message
                     model={{
-                      message: "hey",
+                      message: m,
                       sentTime: "15 mins ago",
                       sender: username,
                       direction: "incoming",
@@ -165,26 +173,22 @@ const App = () => {
                   >
                     <Avatar src={avatarIco} name={username} />
                   </Message>  
-              
+              </div>
+        
+          )}
       
           </div> 
       )
-      else{
-        return(
-        <div>{clientResponder}</div> )
+   
+      
       }
-      }
+  
+
+
+
+    
 
       
-
-      const jalalMsg = [{"message":"hey"},{"message":"How is the project going"}]
-
-
-
-      useEffect(() => {
-        console.log("I Only run once (When the component gets mounted)")
-      }, []); 
-
 
 const customFunction = ()=>{
   setMsgContainer(CustomMessageBoxClientJalal)
@@ -301,19 +305,6 @@ const customFunction = ()=>{
           </Sidebar>
   
           <ChatContainer>
-            <ConversationHeader>
-              <ConversationHeader.Back />
-              <Avatar src={avatarIco} name={username} />
-              <ConversationHeader.Content
-                userName={!username? "Jalal":username}
-                info="Active 10 mins ago"
-              />
-              <ConversationHeader.Actions>
-                <VoiceCallButton />
-                <VideoCallButton />
-                <InfoButton />
-              </ConversationHeader.Actions>
-            </ConversationHeader>
             <MessageList>
               <MessageList.Content
                 style={{
@@ -326,7 +317,7 @@ const customFunction = ()=>{
                 }}
               > 
 
-          
+           
                 {msgContainer}
 
               </MessageList.Content>
