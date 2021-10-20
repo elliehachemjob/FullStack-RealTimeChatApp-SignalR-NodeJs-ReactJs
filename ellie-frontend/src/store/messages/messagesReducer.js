@@ -1,30 +1,25 @@
-import { createSlice } from '@reduxjs/toolkit';
-
+import { createSlice } from "@reduxjs/toolkit";
 
 export const slice = createSlice({
-    name: 'message',
-    initialState: {
-      value:[],
+  name: "message",
+  initialState: {
+    value: [],
+  },
+  reducers: {
+    messageSave: (state, action) => {
+      state.value = [...state.value, ...action.payload];
     },
-    reducers: {
-      messageSave: (state, action) => {
-        state.value =[...state.value ,...action.payload]
-    
-      },
     //   incrementByAmount: (state, action) => {
     //     state.value += action.payload;
     //   },
     clearMessages: (state) => {
-      state.value = []
+      state.value = [];
     },
+  },
+});
 
-    },
-    
-  });
-  
-  export const { messageSave,clearMessages } = slice.actions;
-  
-  export const storedMessages = state => state.messagesSaved.value;
-  
+export const { messageSave, clearMessages } = slice.actions;
 
-  export default slice.reducer;
+export const storedMessages = (state) => state.messagesReducer.value;
+
+export default slice.reducer;

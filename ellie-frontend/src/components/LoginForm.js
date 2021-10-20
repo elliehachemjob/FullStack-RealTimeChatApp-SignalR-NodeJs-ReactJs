@@ -23,8 +23,12 @@ import {
   Button,
 } from "rbx";
 import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { username } from "../store/auth/authReducer";
 
 const LoginForm = (props) => {
+  const dispatch = useDispatch();
+
   const [user1, setUser1] = useState();
   const [password1, setPassword1] = useState();
   const [timer, setTimer] = useState(null);
@@ -38,8 +42,11 @@ const LoginForm = (props) => {
       })
       .then((res) => {
         console.log(` data is ${JSON.stringify(res)}`);
-        if (res.data === "Logged In Successfully") {
+        if (user1 === "") {
+          console.log("no value");
+        } else if (res.data === "Logged In Successfully") {
           alert("sucess");
+          dispatch(username(user1));
           props.joinRoom(user1);
         } else if (res.data === "Make sure email and password are correct") {
           alert("Make sure email and password are correct ");
