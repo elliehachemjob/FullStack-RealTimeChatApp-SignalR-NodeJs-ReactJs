@@ -81,7 +81,6 @@ const App = () => {
 
     console.log(`adminMessageArray ${JSON.stringify(adminMessageArray)}`)
   
-    //  console.log(`the length is ${ typeof(responder)}`)
     return (  
               
   
@@ -169,7 +168,6 @@ const App = () => {
   
     console.log(`clientMessageArray ${JSON.stringify(clientMessageArray)}`)
   
-    //  console.log(`the length is ${ typeof(responder)}`)
     
     return (  
                  
@@ -205,7 +203,6 @@ const App = () => {
     
       console.log(`clientMessageArray ${JSON.stringify(clientMessageArray)}`)
     
-      //  console.log(`the length is ${ typeof(responder)}`)
       
       return (  
                    
@@ -240,7 +237,6 @@ const App = () => {
     
       console.log(`clientMessageArray ${JSON.stringify(clientMessageArray)}`)
     
-      //  console.log(`the length is ${ typeof(responder)}`)
       
       return (  
                    
@@ -280,7 +276,6 @@ const App = () => {
       
         console.log(`clientMessageArray ${JSON.stringify(clientMessageArray)}`)
       
-        //  console.log(`the length is ${ typeof(responder)}`)
         
         return (  
                      
@@ -319,7 +314,6 @@ const App = () => {
         
           console.log(`clientMessageArray ${JSON.stringify(clientMessageArray)}`)
         
-          //  console.log(`the length is ${ typeof(responder)}`)
           
           return (  
                        
@@ -356,7 +350,6 @@ const App = () => {
           
             console.log(`clientMessageArray ${JSON.stringify(clientMessageArray)}`)
           
-            //  console.log(`the length is ${ typeof(responder)}`)
             
             return (  
                          
@@ -394,7 +387,6 @@ const App = () => {
             
               console.log(`clientMessageArray ${JSON.stringify(clientMessageArray)}`)
             
-              //  console.log(`the length is ${ typeof(responder)}`)
               
               return (  
                            
@@ -434,7 +426,6 @@ const App = () => {
               
                 console.log(`clientMessageArray ${JSON.stringify(clientMessageArray)}`)
               
-                //  console.log(`the length is ${ typeof(responder)}`)
                 
                 return (  
                              
@@ -687,7 +678,6 @@ const testButton = ()=>{
   const [chatBox,setChatBox] = useState([<span ></span> ])
   const [newBox,setNewBox] = useState([<span ></span> ])
 
-//for widget
 const [isWidget, setisWidget] = useState(false);
 const [isonline, setIsOnline] = useState(false);
 const [ispending, setIsPending] = useState(false);
@@ -700,7 +690,6 @@ const [user3, setUser3] = useState("")
 const [isSending, setIsSending] = useState(false)
 const [clientMessageArray, setClientMessageArray] = useState([])
 const [adminMessageArray, setAdminMessageArray] = useState([])
-//for widget end 
 
 
 const handleNewUserMessage = (e) => {
@@ -710,57 +699,11 @@ const handleNewUserMessage = (e) => {
 
   setIsSending(false)
 
-//  console.log(`okay ${JSON.stringify(reduxMessages)}`)
-//  const newStorage = reduxMessages.map((m) =>m.message);
- 
-//  const messageStringified = JSON.stringify(newStorage)
-
-//  console.log(`okay 2  ${newStorage}`)
 
     setIsRender(true)
      sendMessage("okay","Client",e);
-    // sending messages worked as for save first and last message is not saved for now but that is okay we will fix that late
       setMessages2([...messges2, e])
      console.log(` this is ${messges2}`)
- //this is where the admin will send back his msgs 
-
-//  const hi = "hiiii"
- 
-  //  addResponseMessage(
-    
-  //   responder
-    
-  //  );
- 
-
-  //  messges2.forEach((message) => addUserMessage(message));
-
-
-  
-
-//  console.log(`this is redux messages saved ${JSON.stringify(reduxMessages)}`)
-
-
-
-//  {reduxMessages.map((m) =>
-//   <div  className='user-message'>
-//       <div className='message bg-primary'>{m.message}</div>
-//       <div className='from-user'>{m.user}</div>
-
-//   </div>
-
-
-
-// )}
-
-
-
-
-// reduxMessages.map((m) => {
-//   addUserMessage(m.message)
-// });
-
-
 
 
 
@@ -784,7 +727,6 @@ const handleNewUserMessage = (e) => {
 
 const CustomMessageBox = () => {
 
-//  console.log(`the length is ${ typeof(responder)}`)
 if(adminResponder)
 return (  
           
@@ -809,7 +751,6 @@ const CustomMessageBoxClientJalal = () => {
 
   console.log(`clientMessageArray ${JSON.stringify(clientMessageArray)}`)
 
-  //  console.log(`the length is ${ typeof(responder)}`)
   return (  
             
 
@@ -847,7 +788,6 @@ const CustomMessageBoxClient = () => {
 
   console.log(`clientMessageArray ${JSON.stringify(clientMessageArray)}`)
 
-  //  console.log(`the length is ${ typeof(responder)}`)
   return (  
             
 
@@ -889,7 +829,6 @@ const CustomMessageBoxClient = () => {
 
     const CustomMessageBoxAdmin = () => {
 
-      //  console.log(`the length is ${ typeof(responder)}`)
     
       if(adminResponder)
       return (  
@@ -929,22 +868,6 @@ useEffect(() => {
 
 
   
-//  useEffect(() => {
-//   // reduxMessages.map((m) => {
-//   //   addUserMessage(m.message);
-//   // });
-
-
-
-// }, []);
-
- 
-
-
-
-
-
-//for widget 
 
 const getCustomLauncher = (handleToggle) => {
   if (isWidget) {
@@ -979,15 +902,6 @@ const getCustomLauncher = (handleToggle) => {
 
 
 
-//for widget end 
-
-
-
-
-
-
-  // console.log(` the new id is ${Id}`)
-  // console.log(`okay the value ${JSON.stringify(reduxMessages)}`)
   const dispatch = useDispatch();
 
 
@@ -1158,8 +1072,6 @@ const SendPrivateMsgForm = () => {
 
       const loginHandler = ()=>{
 
-        // if (!password.match(UpperCase) || !password.match(lowerCase) || !password.match(numbers) || !password.match(special) || password.length <= 9 || password === ""  ) {
-        //   alert("password must contain Upper/lower case,Numbers,Special Charachters")}
   
      
   
@@ -1197,17 +1109,7 @@ const SendPrivateMsgForm = () => {
 
       const [user1, setUser1] = useState();
       const [password1, setPassword1] = useState();
-      // const [loading, setLoading] = useState(false);
       const [timer, setTimer] = useState(null);
-      // useEffect(
-      //   () => {
-      //     // this will clear Timeout when component unmont like in willComponentUnmount
-      //     return () => {
-      //       clearTimeout(timer);
-      //     };
-      //   },
-      //   [] //useEffect will run only one time
-      // );
       return (
         <Level>
           <Level.Item textAlign="centered">
@@ -1228,7 +1130,6 @@ const SendPrivateMsgForm = () => {
                   <Field>
                     <Control iconLeft iconRight>
                       <Input
-                      //  disabled={loading}
                         type="email" placeholder="Email" value={user1} onChange={e => setUser1(e.target.value)  }/>
                           
                       <Icon size="small" align="left">
@@ -1242,7 +1143,6 @@ const SendPrivateMsgForm = () => {
                   <Field>
                     <Control iconLeft>
                       <Input
-                        // disabled={loading}
                         type="password"
                         placeholder="Password"
                         onChange={e => setPassword1(e.target.value)}
@@ -1258,7 +1158,6 @@ const SendPrivateMsgForm = () => {
                     <Control>
                       <Label>
                         <Checkbox
-                        //  disabled={loading}
                           /> Remember me
                       </Label>
                       <Label>
@@ -1269,10 +1168,8 @@ const SendPrivateMsgForm = () => {
                   <Field>
                     <Control>
                       <Button
-                        // state={loading ? "loading" : undefined}
                         onClick={() => {
                           loginHandler()
-                          // setLoading(true);
                         }}
                         color="primary"
                       >
@@ -1297,8 +1194,6 @@ const SendPrivateMsgForm = () => {
 
       const signUpHandler = ()=>{
 
-        // if (!password.match(UpperCase) || !password.match(lowerCase) || !password.match(numbers) || !password.match(special) || password.length <= 9 || password === ""  ) {
-        //   alert("password must contain Upper/lower case,Numbers,Special Charachters")}
   
   
       
@@ -1336,19 +1231,9 @@ const SendPrivateMsgForm = () => {
       const [user2 ,setUser2] = useState();
       const [password2, setPassword2] = useState();
       const [sendEmailVerification ,setSendEmailVerification] = useState()
-      // const [loading, setLoading] = useState(false);
       const [timer, setTimer] = useState(null);
 
 
-      // useEffect(
-      //   () => {
-      //     // this will clear Timeout when component unmont like in willComponentUnmount
-      //     return () => {
-      //       clearTimeout(timer);
-      //     };
-      //   },
-      //   [] //useEffect will run only one time
-      // );
       return (
         <Level>
           <Level.Item textAlign="centered">
@@ -1369,7 +1254,6 @@ const SendPrivateMsgForm = () => {
                   <Field>
                     <Control iconLeft iconRight>
                       <Input  
-                      // enabled={loading}
                       type="email" placeholder="Email" onChange={(e)=>{setUser2(e.target.value)}}/>
                       <Icon size="small" align="left">
                         <FontAwesomeIcon icon={faEnvelope} />
@@ -1411,7 +1295,6 @@ const SendPrivateMsgForm = () => {
                     <Control>
                       <Label>
                         <Checkbox 
-                        // disabled={loading}
                          /> Remember me
                       </Label>
                     </Control>
@@ -1419,10 +1302,8 @@ const SendPrivateMsgForm = () => {
                   <Field>
                     <Control>
                       <Button
-                        // state={loading ? "loading" : undefined}
                         onClick={() => {
                           signUpHandler()
-                          // setLoading(true);
                         }}
                         color="primary"
                       >
@@ -1500,11 +1381,7 @@ const SendPrivateMsgForm = () => {
 
 
 
-         //store in redux persistance here
-        // setMessages((messages) => [...messages, { user, message } ])
-      // dispatch(messageSave([...messages, { user, message } ]))
 
-        // dispatch(messageSave([...reduxMessages, { user, message,id } ]))
         dispatch(messageSave([...reduxMessages, { user, message,id } ]))
         console.log(`the user name is ${user}`)
         if(isAdmin === "Admin") {
@@ -1522,8 +1399,6 @@ const SendPrivateMsgForm = () => {
 
 
      
-        // console.log(`this is the message ${message}`)
-        //  console.log(`the user is  ${user}`)
 
         
    
@@ -1539,7 +1414,6 @@ const SendPrivateMsgForm = () => {
       await connection.invoke("JoinRoom", { user }) ; 
 
      
-   //here make the values dynamic and that is it 
       setChatListMapping((chatListMapping)=>[chatListMapping, <Conversation
         name={"ApiName"}
         lastSenderName={"ApiName"}
@@ -1651,70 +1525,20 @@ const SendPrivateMsgForm = () => {
     const activePointRef = useRef(msg);
 
 
-    // const scrollToBottom = () => {
-    //   messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
-    // };
   
     
   
     const onStateChange = (e) => {
       setMsg(e.target.value);
       activePointRef.current = e.target.value;
-      // console.log(`aaaaaaaaaaaaaaaa ${msg}`);
-      // console.log(`aaaaaaaaaaaaaaaaaaaaaaa ${chat.length}`);
     };
   
   
   
-    // const abc = (e) => {
-  
-  
-  
-  
-  
-    //   console.log(e);
-    //   console.log(`ffffffffffffffff is ${activePointRef.current}`);
-    //   console.log(`ffffffffffffffff is ${chat.length}`);
-    //   console.log(`the value is ${JSON.stringify(reduxMessages)}`)
-
-    //   if (e.keyCode == 13) {
-        
-    //     let _chat = [ ...chat]
-    //     _chat.push({
-    //       user:"admin",
-    //       message: "okay",
-    //     });
-    //     setChat(_chat)
-        
-    //     dispatch(messageSave(_chat))
-    //     console.log(reduxMessages)
-
-    //     // setChat([...chatItms]);
-    //     // scrollToBottom();
-    //     setMsg("");
-    //     activePointRef.current = "";
-    //   }
-    // };
-    // useEffect(() => {
-    //   window.addEventListener("keydown", (e) => {
-    //     abc(e);
-    //   });
-  
-    //   // scrollToBottom();
-    // }, []);
-  
 
 
     const sendButtonHandler = ()=>{
-        // let _chat = []
-        //       _chat.push({
-        //       user:"admin",
-        //       message: msg
-        //     });
-
-        //     dispatch(messageSave(_chat))
-
-        //     setMsg("");
+       
 
  sendMessage("Admin","Admin",msg)
             
@@ -1860,7 +1684,6 @@ dispatch(messageSave(_chat))
   
           <div className="chat__items">
           {reduxMessages.map((itm, index) => {
-            // console.log(`the value is ${JSON.stringify(reduxMessages)}`)
               return (
                   <div >{itm.message}</div>
   
@@ -2046,9 +1869,3 @@ dispatch(messageSave(_chat))
 
 export default App;
 
-// in case we want to add the admin panel here
-
-// <div className="__main">
-// <div className="main__chatbody">
-//   </div>
-//   </div>
