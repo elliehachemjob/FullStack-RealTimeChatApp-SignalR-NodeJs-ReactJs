@@ -3,7 +3,7 @@ import { HubConnectionBuilder } from "@microsoft/signalr";
 import axios from "axios";
 import "./App.css";
 import { useSelector, useDispatch } from "react-redux";
-import { messageSave, storedMessages } from "./messagesReducer";
+import { messageSave, storedMessages } from "./store/messages/messagesReducer";
 import { Widget, renderCustomComponent } from "react-chat-widget";
 import flippedimage from "./assets/images/flippedImage.png";
 import normalimage from "./assets/images/normalImage.png";
