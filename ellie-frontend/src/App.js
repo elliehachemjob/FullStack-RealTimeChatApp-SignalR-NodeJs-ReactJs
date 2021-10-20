@@ -55,7 +55,8 @@ import {
   Search,
   MessageSeparator,
   action,
-  ExpansionPanel
+  ExpansionPanel,
+  MessageGroup
 } from "@chatscope/chat-ui-kit-react";
 
 
@@ -70,9 +71,61 @@ var FileSaver = require('file-saver');
 var user3 = "hey"
 
 
+
+
 const App = () => {
+
+
+
+  const CustomMessageBoxAdmin1 = () => {
+
+    console.log(`adminMessageArray ${JSON.stringify(adminMessageArray)}`)
+  
+    //  console.log(`the length is ${ typeof(responder)}`)
+    return (  
+              
+  
+      
+      
+      <div >
+        
+         
+           
+            <div>
+            {adminMessageArray.map((m) =>
+         
+         <div>
+                          <Message
+               model={{
+                 message: m.message,
+                 sentTime: "15 mins ago",
+                 sender: username,
+                 direction: "outgoing",
+                 position: "single"
+               }}
+             >
+               <Avatar src={avatarIco} name={username} />
+             </Message>
+          
+         </div>
+
+             ) }
+            </div>
+      
+      
+    
+        </div> 
+    )
+   
+    }
+
   const avatarIco =
   "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAZlBMVEUOHCyclYufmI0AECZvbGkAACCjm5AIGCoxOUIAEycAFSgLGisNHCwEFykDFyljY2N9enUlLjkACCKWkIc+Q0lmZmWIhH0bJjN/e3YVIjGSjYRAREpbXF0tND54dXGEgHpKTVFTVVcfARIMAAADVklEQVR4nO3ciXaiMABA0ZA4lhBEcV+r/v9PTtA6FUVGLXOyzLtf4DtktVghAAAAAAAAAAAAAAAAAAAAAABAuIwej9XAuP4Y/4xR5XY+6U11pI1GL4ZrmSQyGaXZIHf9cTqXa7Gt+ipSfqZ64PoTdcuoYjj56js3jtJxRM/RqMUwueo7Ny6nqohjPtr1Zbi+6Ts1JqNpFsGak2eLxr5z4zItAp+PRtfn313jaT66/pTvM2p1N//uGvv7YOdjNf/ant/VWJ3qABsv+/szzmtOWHtHrldP950a7XwM6QxglJk9Mz7rjcvpOJCxWs2/v60vzY37qc78b7R9s1fGZ60xWW58PwMYu7+/Oj5vGr0+A9yer99qrM4AheuSZnZ/n8kf9p0a7RnAyzVHly+vnw8bq/no3faYbd5dX5obe749xNy8s0G0NW6166a6bNttYJJMxq6b6lSv68L+L9dNdRRSSKF7FFJIoXsUUkihexRSSKF7FFJIoXsUUkihexRSSKF7FFJIoXsUUkihexRSSKF7FL5Oxl4oR8p1U13XhXJdevb6ZbeFUo5K396E7rJQyvlBfLguutVdoUyWB+PfO9BdFUopZztV+NfXUaHs749KebbCXHTwFrScfKbGs5e7r5iy/7M8uR7ulNe/0Bt//uTHQNXq6evwvMjz+buJMumlYw9Xz1sfi7cS7ePbikB+XJntXk+Uk9FmpT0fnt+K3frFxzeZpdrLze+RbPdKX39+XKmPkPqsLJ0825d82tUlmOH5LZs+k2gf37DMwlhd7mSbJx7f/mBXl8CG5x+5PvzlcCP3UxXi8Pymju17xjys1bOJaj2Ey6O/h+tnGT1s+38taaArzLU8m7Ukpt59P/GGvO0+HEWhMC13qTgKRV48TIykUBgxepAYS6Ew+b45MZpCu2k0XxfjKRRm1ZgYUaEoyqbEmArtjbjhv4FEVdh46Y+rsCkxskKhN7eX/tgKhTrEXmgTZeSFuap/rxFf4e33GjEW1i/9MRbWL/1RFopc9/pxF15/rxFpoR2ol0t/rIX2Rvx16Y+20F4Xz5f+eAvtUzxdFyMuFKaw10Xp2zuHnRqU8/5chf53mVaDxSHqRyiqgRp5IAAAAAAAAAAAAAAAAAAAAAAA/4Hf0gU2cK/EibwAAAAASUVORK5CYII=";
+
+
+
+
+
 
 
 
@@ -84,6 +137,7 @@ const App = () => {
 
     const [adminMessage, setAdminMessage] = useState('')
     const [msgContainer,setMsgContainer] = useState(CustomMessageBoxClient)
+    const [msgAdminContainer , setmsgAdminContainer] = useState(CustomMessageBoxAdmin1)
 
   
    const Jalal = "Jalal"
@@ -106,6 +160,9 @@ const App = () => {
 
 
    
+
+
+
    const CustomMessageBoxClientJalal = () => {
 
     const jalalMsg = ["hey","How is the project going"]
@@ -125,7 +182,7 @@ const App = () => {
                     message: m,
                     sentTime: "15 mins ago",
                     sender: username,
-                    direction: "incoming",
+                    direction: "outgoing",
                     position: "single"
                   }}
                 >
@@ -161,7 +218,7 @@ const App = () => {
                       message: m,
                       sentTime: "15 mins ago",
                       sender: username,
-                      direction: "incoming",
+                      direction: "outgoing",
                       position: "single"
                     }}
                   >
@@ -196,7 +253,7 @@ const App = () => {
                       message: m,
                       sentTime: "15 mins ago",
                       sender: username,
-                      direction: "incoming",
+                      direction: "outgoing",
                       position: "single"
                     }}
                   >
@@ -236,7 +293,7 @@ const App = () => {
                         message: m,
                         sentTime: "15 mins ago",
                         sender: username,
-                        direction: "incoming",
+                        direction: "outgoing",
                         position: "single"
                       }}
                     >
@@ -275,7 +332,7 @@ const App = () => {
                           message: m,
                           sentTime: "15 mins ago",
                           sender: username,
-                          direction: "incoming",
+                          direction: "outgoing",
                           position: "single"
                         }}
                       >
@@ -312,7 +369,7 @@ const App = () => {
                             message: m,
                             sentTime: "15 mins ago",
                             sender: username,
-                            direction: "incoming",
+                            direction: "outgoing",
                             position: "single"
                           }}
                         >
@@ -350,7 +407,7 @@ const App = () => {
                               message: m,
                               sentTime: "15 mins ago",
                               sender: username,
-                              direction: "incoming",
+                              direction: "outgoing",
                               position: "single"
                             }}
                           >
@@ -390,7 +447,7 @@ const App = () => {
                                 message: m,
                                 sentTime: "15 mins ago",
                                 sender: username,
-                                direction: "incoming",
+                                direction: "outgoing",
                                 position: "single"
                               }}
                             >
@@ -568,6 +625,8 @@ const App = () => {
 
            
                 {msgContainer}
+                {msgAdminContainer}
+                
 
               </MessageList.Content>
             </MessageList>
@@ -640,6 +699,7 @@ const [clientResponder, setClientResponder] = useState("")
 const [user3, setUser3] = useState("")
 const [isSending, setIsSending] = useState(false)
 const [clientMessageArray, setClientMessageArray] = useState([])
+const [adminMessageArray, setAdminMessageArray] = useState([])
 //for widget end 
 
 
@@ -764,7 +824,7 @@ const CustomMessageBoxClientJalal = () => {
                   message: "hey",
                   sentTime: "15 mins ago",
                   sender: "Jalal",
-                  direction: "incoming",
+                  direction: "outgoing",
                   position: "single"
                 }}
               >
@@ -794,6 +854,7 @@ const CustomMessageBoxClient = () => {
     
     
     <div >
+      
          {clientMessageArray.map((m) =>
          
           <div>
@@ -823,22 +884,25 @@ const CustomMessageBoxClient = () => {
 
 
 
-const CustomMessageBoxAdmin = () => {
-
-  //  console.log(`the length is ${ typeof(responder)}`)
-
-  if(adminResponder)
-  return (  
-            
-    <div className="admin-message" >{adminResponder}</div> 
-  )
-  else{
-    return(
-    <div>{adminResponder}</div> )
-  }
-  }
+  
 
 
+    const CustomMessageBoxAdmin = () => {
+
+      //  console.log(`the length is ${ typeof(responder)}`)
+    
+      if(adminResponder)
+      return (  
+                
+        <div className="admin-message" >{adminResponder}</div> 
+      )
+      else{
+        return(
+        <div>{adminResponder}</div> )
+      }
+      }
+    
+    
 
 
 
@@ -856,6 +920,10 @@ useEffect(() => {
 
  
 }, [adminResponder,setAdminResponder]);
+
+
+
+
 
 
 
@@ -1447,13 +1515,17 @@ const SendPrivateMsgForm = () => {
         console.log(`the user name is ${user}`)
         if(isAdmin === "Admin") {
          setAdminResponder(message)
+         setAdminMessageArray((adminMessageArray)=>[...adminMessageArray, {message}])
+
         }
          else if (isAdmin === "Client"){
-          setClientResponder(message)}
+          setClientResponder(message)
+          setClientMessageArray((clientMessageArray)=>[...clientMessageArray, {message}])
+
+        }
 
           setUsername(user)
 
-          setClientMessageArray((clientMessageArray)=>[...clientMessageArray, {message}])
 
      
         // console.log(`this is the message ${message}`)
@@ -1465,7 +1537,6 @@ const SendPrivateMsgForm = () => {
 
      
       connection.onclose((e) => {
-        
         setConnection();
         setUsers([]);
       });
@@ -1482,15 +1553,9 @@ const SendPrivateMsgForm = () => {
         onClick={() => {
           setUsername("ApiName");
         }}
-        
       >
         <Avatar src={avatarIco} name={"ApiName"} status="available" />
       </Conversation> ])
-
-
-
-
-
 
 
       setConnection(connection);
