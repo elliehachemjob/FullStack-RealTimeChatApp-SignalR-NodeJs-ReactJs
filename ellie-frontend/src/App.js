@@ -1218,9 +1218,6 @@ const SendPrivateMsgForm = () => {
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "center",
-                position:"relative",
-                bottom:310,
-                right:50
               }}
             >
               <Card>
@@ -1362,9 +1359,6 @@ const SendPrivateMsgForm = () => {
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "center",
-                position:"relative",
-                bottom:300,
-                right:50
               }}
             >
               <Card>
