@@ -54,33 +54,26 @@ const App = () => {
       />
     );
 
-    const Jalal = "Jalal";
-    const Ahmad = "Ahmad";
-    const Ellie = "Ellie";
-    const Abas = "Abas";
-    const Rita = "Rita";
-    const Shadi = "Shadi";
-    const Sam = "Sam";
-    const Marios = "Marios";
+    const names = [
+      "Jalal",
+      "Ahmad",
+      "Ellie",
+      "Abas",
+      "Rita",
+      "Shadi",
+      "Sam",
+      "Marios",
+    ];
 
-    const jalalMsg = ["hey", "How is the project going"];
-
-    const ahmadMsg = ["I talked to you yesterday", "Did you do redux"];
-
-    const ellieMsg = ["Good morning", "There is an issue here"];
-
-    const abasMsg = ["Issue", "ticket 2021"];
-
-    const ritaMsg = ["There is a customer complaining", "need help"];
-
-    const shadiMsg = ["In the row", "how is the project going"];
-
-    const samMsg = ["No Message Here"];
-
-    const mariosMsg = [
-      "How are you",
-      "what is happening",
-      "was calling you from mins ",
+    const msgs = [
+      ["hey", "How is the project going"],
+      ["I talked to you yesterday", "Did you do redux"],
+      ["Good morning", "There is an issue here"],
+      ["Issue", "ticket 2021"],
+      ["There is a customer complaining", "need help"],
+      ["In the row", "how is the project going"],
+      ["No Message Here"],
+      ["How are you", "what is happening", "was calling you from mins "],
     ];
 
     return (
@@ -95,146 +88,143 @@ const App = () => {
             <Search placeholder="Search..." />
             <ConversationList>
               <Conversation
-                name={Jalal}
-                lastSenderName={Jalal}
+                name={names[0]}
+                lastSenderName={names[0]}
                 info="Yes i can do it for you"
                 onClick={() => {
-                  setUsername(Jalal);
+                  setUsername(names[0]);
                   setMsgContainer(
                     <CustomMessageBoxInAdminPanel
-                      msg={jalalMsg}
+                      msg={msgs[0]}
                       name={username}
                     />
                   );
                 }}
               >
-                <Avatar src={avatarIco} name={Jalal} status="available" />
+                <Avatar src={avatarIco} name={names[0]} status="available" />
               </Conversation>
 
               <Conversation
-                name={Ahmad}
-                lastSenderName={Ahmad}
+                name={names[1]}
+                lastSenderName={names[1]}
                 info="Yes i can do it for you"
                 onClick={() => {
                   setClientResponder("");
-                  setUsername(Ahmad);
+                  setUsername(names[1]);
                   setMsgContainer(
-                    <CustomMessageBoxInAdminPanel
-                      msg={ahmadMsg}
-                      name={username}
-                    />
+                    <CustomMessageBoxInAdminPanel msg={msgs[1]} />
                   );
                 }}
               >
-                <Avatar src={avatarIco} name={Ahmad} status="dnd" />
+                <Avatar src={avatarIco} name={names[1]} status="dnd" />
               </Conversation>
 
               <Conversation
-                name={Ellie}
-                lastSenderName={Ellie}
+                name={names[2]}
+                lastSenderName={names[2]}
                 info="Yes i can do it for you"
                 unreadCnt={3}
                 onClick={() => {
                   setClientResponder("");
-                  setUsername(Ellie);
+                  setUsername(names[2]);
                   setMsgContainer(
                     <CustomMessageBoxInAdminPanel
-                      msg={ellieMsg}
+                      msg={msgs[2]}
                       name={username}
                     />
                   );
                 }}
               >
-                <Avatar src={avatarIco} name={Ellie} status="available" />
+                <Avatar src={avatarIco} name={names[2]} status="available" />
               </Conversation>
 
               <Conversation
-                name={Abas}
-                lastSenderName={Abas}
+                name={names[3]}
+                lastSenderName={names[3]}
                 info="Yes i can do it for you"
                 onClick={() => {
                   setClientResponder("");
-                  setUsername(Abas);
+                  setUsername(names[3]);
                   setMsgContainer(
                     <CustomMessageBoxInAdminPanel
-                      msg={abasMsg}
+                      msg={msgs[3]}
                       name={username}
                     />
                   );
                 }}
               >
-                <Avatar src={avatarIco} name={Abas} status="dnd" />
+                <Avatar src={avatarIco} name={names[3]} status="dnd" />
               </Conversation>
 
               <Conversation
-                name={Rita}
-                lastSenderName={Rita}
+                name={names[4]}
+                lastSenderName={names[4]}
                 info="Yes i can do it for you"
                 onClick={() => {
                   setClientResponder("");
-                  setUsername(Rita);
+                  setUsername(names[4]);
                   setMsgContainer(
                     <CustomMessageBoxInAdminPanel
-                      msg={ritaMsg}
+                      msg={msgs[4]}
                       name={username}
                     />
                   );
                 }}
               >
-                <Avatar src={avatarIco} name={Rita} status="dnd" />
+                <Avatar src={avatarIco} name={names[4]} status="dnd" />
               </Conversation>
               <Conversation
-                name={Shadi}
-                lastSenderName={Shadi}
+                name={names[5]}
+                lastSenderName={names[6]}
                 info="Yes i can do it for you"
                 onClick={() => {
                   setClientResponder("");
-                  setUsername(Shadi);
+                  setUsername(names[5]);
                   setMsgContainer(
                     <CustomMessageBoxInAdminPanel
-                      msg={shadiMsg}
+                      msg={msgs[5]}
                       name={username}
                     />
                   );
                 }}
               >
-                <Avatar src={avatarIco} name={Shadi} status="dnd" />
-              </Conversation>
-
-              <Conversation
-                name={Sam}
-                lastSenderName={Sam}
-                info="Yes i can do it for you"
-                onClick={() => {
-                  setClientResponder("");
-                  setUsername(Sam);
-                  setMsgContainer(
-                    <CustomMessageBoxInAdminPanel
-                      msg={samMsg}
-                      name={username}
-                    />
-                  );
-                }}
-              >
-                <Avatar src={avatarIco} name={Sam} status="dnd" />
+                <Avatar src={avatarIco} name={names[5]} status="dnd" />
               </Conversation>
 
               <Conversation
-                name={Marios}
-                lastSenderName={Marios}
+                name={names[6]}
+                lastSenderName={names[6]}
                 info="Yes i can do it for you"
                 onClick={() => {
                   setClientResponder("");
-                  setUsername(Marios);
+                  setUsername(names[6]);
                   setMsgContainer(
                     <CustomMessageBoxInAdminPanel
-                      msg={mariosMsg}
+                      msg={msgs[6]}
                       name={username}
                     />
                   );
                 }}
               >
-                <Avatar src={avatarIco} name={Marios} status="dnd" />
+                <Avatar src={avatarIco} name={names[6]} status="dnd" />
+              </Conversation>
+
+              <Conversation
+                name={names[7]}
+                lastSenderName={names[7]}
+                info="Yes i can do it for you"
+                onClick={() => {
+                  setClientResponder("");
+                  setUsername(names[7]);
+                  setMsgContainer(
+                    <CustomMessageBoxInAdminPanel
+                      msg={msgs[7]}
+                      name={username}
+                    />
+                  );
+                }}
+              >
+                <Avatar src={avatarIco} name={names[7]} status="dnd" />
               </Conversation>
               {chatListMapping}
             </ConversationList>
