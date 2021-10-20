@@ -135,9 +135,11 @@ const App = () => {
  
     
     }
-    const CustomMessageBoxClientJalal2 = () => {
 
-      const jalalMsg = ["hey","How is the project going"]
+
+    const CustomMessageBoxClientAhmad = () => {
+
+      const ahmadMsg = ["I talked to you yesterday","Did you do redux"]
     
       console.log(`clientMessageArray ${JSON.stringify(clientMessageArray)}`)
     
@@ -146,7 +148,42 @@ const App = () => {
       return (  
                    
         <div >
-             {jalalMsg.map((m) =>
+             {ahmadMsg.map((m) =>
+             
+              <div>
+                               <Message
+                    model={{
+                      message: m,
+                      sentTime: "15 mins ago",
+                      sender: username,
+                      direction: "incoming",
+                      position: "single"
+                    }}
+                  >
+                    <Avatar src={avatarIco} name={username} />
+                  </Message>  
+              </div>
+        
+          )}
+      
+          </div> 
+      )
+   
+      
+      }
+
+    const CustomMessageBoxClientEllie = () => {
+
+      const ellieMsg = ["Good morning","There is an issue here"]
+    
+      console.log(`clientMessageArray ${JSON.stringify(clientMessageArray)}`)
+    
+      //  console.log(`the length is ${ typeof(responder)}`)
+      
+      return (  
+                   
+        <div >
+             {ellieMsg.map((m) =>
              
               <div>
                                <Message
@@ -175,11 +212,199 @@ const App = () => {
 
     
 
-      
+      const CustomMessageBoxClientAbas = () => {
 
-const customFunction = ()=>{
-  setMsgContainer(CustomMessageBoxClientJalal)
-}
+        const abasMsg =  ["Issue","ticket 2021"]
+      
+        console.log(`clientMessageArray ${JSON.stringify(clientMessageArray)}`)
+      
+        //  console.log(`the length is ${ typeof(responder)}`)
+        
+        return (  
+                     
+          <div >
+               {abasMsg.map((m) =>
+               
+                <div>
+                                 <Message
+                      model={{
+                        message: m,
+                        sentTime: "15 mins ago",
+                        sender: username,
+                        direction: "incoming",
+                        position: "single"
+                      }}
+                    >
+                      <Avatar src={avatarIco} name={username} />
+                    </Message>  
+                </div>
+          
+            )}
+        
+            </div> 
+        )
+     
+        
+        }
+  
+
+
+        const CustomMessageBoxClientRita = () => {
+
+          const ritaMsg =  ["There is a customer complaining","need help"]
+       
+
+          const abasMsg =  ["Issue","ticket 2021"]
+        
+          console.log(`clientMessageArray ${JSON.stringify(clientMessageArray)}`)
+        
+          //  console.log(`the length is ${ typeof(responder)}`)
+          
+          return (  
+                       
+            <div >
+                 {ritaMsg.map((m) =>
+                 
+                  <div>
+                                   <Message
+                        model={{
+                          message: m,
+                          sentTime: "15 mins ago",
+                          sender: username,
+                          direction: "incoming",
+                          position: "single"
+                        }}
+                      >
+                        <Avatar src={avatarIco} name={username} />
+                      </Message>  
+                  </div>
+            
+              )}
+          
+              </div> 
+          )
+            
+          }
+  
+          const CustomMessageBoxClientShadi = () => {
+
+            const shadiMsg = ["In the row","how is the project going"]
+         
+  
+            const abasMsg =  ["Issue","ticket 2021"]
+          
+            console.log(`clientMessageArray ${JSON.stringify(clientMessageArray)}`)
+          
+            //  console.log(`the length is ${ typeof(responder)}`)
+            
+            return (  
+                         
+              <div >
+                   {shadiMsg.map((m) =>
+                   
+                    <div>
+                                     <Message
+                          model={{
+                            message: m,
+                            sentTime: "15 mins ago",
+                            sender: username,
+                            direction: "incoming",
+                            position: "single"
+                          }}
+                        >
+                          <Avatar src={avatarIco} name={username} />
+                        </Message>  
+                    </div>
+              
+                )}
+            
+                </div> 
+            )
+              
+            }
+    
+
+            const CustomMessageBoxClientSam = () => {
+
+              const samMsg =   ["No Message Here"]
+           
+    
+              const abasMsg =  ["Issue","ticket 2021"]
+            
+              console.log(`clientMessageArray ${JSON.stringify(clientMessageArray)}`)
+            
+              //  console.log(`the length is ${ typeof(responder)}`)
+              
+              return (  
+                           
+                <div >
+                     {samMsg.map((m) =>
+                     
+                      <div>
+                                       <Message
+                            model={{
+                              message: m,
+                              sentTime: "15 mins ago",
+                              sender: username,
+                              direction: "incoming",
+                              position: "single"
+                            }}
+                          >
+                            <Avatar src={avatarIco} name={username} />
+                          </Message>  
+                      </div>
+                
+                  )}
+              
+                  </div> 
+              )
+                
+              }
+  
+  
+  
+
+              const CustomMessageBoxClientMarios= () => {
+
+                const mariosMsg = ["How are you","what is happening","was calling you from mins "]
+             
+      
+                const abasMsg =  ["Issue","ticket 2021"]
+              
+                console.log(`clientMessageArray ${JSON.stringify(clientMessageArray)}`)
+              
+                //  console.log(`the length is ${ typeof(responder)}`)
+                
+                return (  
+                             
+                  <div >
+                       {mariosMsg.map((m) =>
+                       
+                        <div>
+                                         <Message
+                              model={{
+                                message: m,
+                                sentTime: "15 mins ago",
+                                sender: username,
+                                direction: "incoming",
+                                position: "single"
+                              }}
+                            >
+                              <Avatar src={avatarIco} name={username} />
+                            </Message>  
+                        </div>
+                  
+                    )}
+                
+                    </div> 
+                )
+                  
+                }
+    
+    
+    
+  
+  
 
 
 
@@ -198,7 +423,12 @@ const customFunction = ()=>{
                 name={Jalal}
                 lastSenderName={Jalal}
                 info="Yes i can do it for you"
-                onClick={customFunction}
+                onClick={() => {
+                  setClientResponder("")
+                  setUsername(Jalal);
+                  setMsgContainer(CustomMessageBoxClientJalal)
+
+                }}
                 
               >
                 <Avatar src={avatarIco} name={Jalal} status="available" />
@@ -209,9 +439,12 @@ const customFunction = ()=>{
                 lastSenderName={Ahmad}
                 info="Yes i can do it for you"
                 onClick={() => {
-                  setUsername(Ahmad);
                   setClientResponder("")
+                  setUsername(Ahmad);
+                  setMsgContainer(CustomMessageBoxClientAhmad)
+
                 }}
+                
               >
                 <Avatar src={avatarIco} name={Ahmad} status="dnd" />
               </Conversation>
@@ -222,8 +455,10 @@ const customFunction = ()=>{
                 info="Yes i can do it for you"
                 unreadCnt={3}
                 onClick={() => {
-                  setUsername(Ellie);
                   setClientResponder("")
+                  setUsername(Ellie);
+                  setMsgContainer(CustomMessageBoxClientEllie)
+
                 }}
               >
                 <Avatar src={avatarIco} name={Ellie} status="available" />
@@ -234,8 +469,10 @@ const customFunction = ()=>{
                 lastSenderName={Abas}
                 info="Yes i can do it for you"
                 onClick={() => {
-                  setUsername(Abas);
                   setClientResponder("")
+                  setUsername(Abas);
+                  setMsgContainer(CustomMessageBoxClientAbas)
+
                 }}
               >
                 <Avatar src={avatarIco} name={Abas} status="dnd" />
@@ -246,8 +483,10 @@ const customFunction = ()=>{
                 lastSenderName={Rita}
                 info="Yes i can do it for you"
                 onClick={() => {
-                  setUsername(Rita);
                   setClientResponder("")
+                  setUsername(Abas);
+                  setMsgContainer(CustomMessageBoxClientRita)
+
                 }}
               >
                 <Avatar src={avatarIco} name={Rita} status="dnd" />
@@ -257,8 +496,10 @@ const customFunction = ()=>{
                 lastSenderName={Shadi}
                 info="Yes i can do it for you"
                 onClick={() => {
-                  setUsername(Shadi);
                   setClientResponder("")
+                  setUsername(Shadi);
+                  setMsgContainer(CustomMessageBoxClientShadi)
+
                 }}
               >
                 <Avatar src={avatarIco} name={Shadi} status="dnd" />
@@ -269,8 +510,10 @@ const customFunction = ()=>{
                 lastSenderName={Sam}
                 info="Yes i can do it for you"
                 onClick={() => {
-                  setUsername(Sam);
                   setClientResponder("")
+                  setUsername(Sam);
+                  setMsgContainer(CustomMessageBoxClientSam)
+
                 }}
               >
                 <Avatar src={avatarIco} name={Sam} status="dnd" />
@@ -281,8 +524,10 @@ const customFunction = ()=>{
                 lastSenderName={Marios}
                 info="Yes i can do it for you"
                 onClick={() => {
-                  setUsername(Marios);
                   setClientResponder("")
+                  setUsername(Marios);
+                  setMsgContainer(CustomMessageBoxClientMarios)
+
                 }}
               >
                 <Avatar src={avatarIco} name={Marios} status="dnd" />
