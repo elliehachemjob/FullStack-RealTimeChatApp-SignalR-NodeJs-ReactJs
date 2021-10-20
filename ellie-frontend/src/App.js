@@ -34,7 +34,7 @@ import SignUpForm from "./components/SignUpForm";
 import CustomSendMsgForAdminInAdminPanel from "./components/CustomSendMsgForAdminInAdminPanel";
 import CustomRecieveMsgForAdminInAdminPanel from "./components/CustomRecieveMsgForAdminInAdminPanel";
 import CustomMessageBoxInAdminPanel from "./components/CustomMessageBoxInAdminPanel";
-import { joinRoom } from "./components/joinRoom";
+import { joinRoom, sendMessage } from "./functions/eventListeners";
 
 const App = () => {
   const user = useSelector(usernameSelector);
@@ -274,7 +274,7 @@ const App = () => {
               }}
               placeholder="Type message here"
               onSend={() => {
-                sendMessage("Admin", "Admin", adminMessage);
+                sendMessage("Admin", "Admin", adminMessage, connection);
               }}
             />
           </ChatContainer>
@@ -330,7 +330,7 @@ const App = () => {
   const dispatch = useDispatch();
 
   const handleNewUserMessage = (e) => {
-    sendMessage("okay", "Client", e);
+    sendMessage("okay", "Client", e, connection);
   };
 
   const CustomMessageBoxAdmin = () => {
@@ -397,76 +397,6 @@ const App = () => {
         </Switch>
       </BrowserRouter>
     );
-  };
-
-  // const joinRoom = async (user) => {
-  //   axios
-  //     .post(`https://localhost:44382/chat/negotiate?negotiateVersion=1`)
-  //     .then((res) => {
-  //       const data = JSON.stringify(res);
-  //     })
-  //     .catch((e) => {
-  //       console.log(e);
-  //     });
-
-  //   try {
-  //     const connection = new HubConnectionBuilder()
-  //       .withUrl("https://localhost:44382/chat")
-  //       .build();
-
-  //     connection.on("ReceiveMessage", (user, message, id, isAdmin, user3) => {
-  //       dispatch(messageSave([...reduxMessages, { user, message, id }]));
-  //       if (isAdmin === "Admin") {
-  //         setAdminResponder(message);
-  //         setAdminMessageArray((adminMessageArray) => [
-  //           ...adminMessageArray,
-  //           { message },
-  //         ]);
-  //       } else if (isAdmin === "Client") {
-  //         setClientResponder(message);
-  //         setClientMessageArray((clientMessageArray) => [
-  //           ...clientMessageArray,
-  //           { message },
-  //         ]);
-  //       }
-
-  //       setUsername(user);
-  //     });
-
-  //     connection.onclose((e) => {
-  //       setConnection();
-  //       setUsers([]);
-  //     });
-
-  //     await connection.start();
-  //     await connection.invoke("JoinRoom", { user });
-
-  //     setChatListMapping((chatListMapping) => [
-  //       chatListMapping,
-  //       <Conversation
-  //         name={"ApiName"}
-  //         lastSenderName={"ApiName"}
-  //         info="Yes i can do it for you"
-  //         onClick={() => {
-  //           setUsername("ApiName");
-  //         }}
-  //       >
-  //         <Avatar src={avatarIco} name={"ApiName"} status="available" />
-  //       </Conversation>,
-  //     ]);
-
-  //     setConnection(connection);
-  //   } catch (e) {
-  //     console.log(e);
-  //   }
-  // };
-
-  const sendMessage = async (user3, isAdmin, message) => {
-    try {
-      await connection.invoke("SendMessage", user3, isAdmin, message);
-    } catch (e) {
-      console.log(e);
-    }
   };
 
   return (
