@@ -38,9 +38,6 @@ var user3 = "hey";
 
 const App = () => {
   const CustomMessageBoxAdmin1 = () => {
-    console.log(`adminMessageArray ${JSON.stringify(adminMessageArray)}`);
-
-    //  console.log(`the length is ${ typeof(responder)}`)
     return (
       <div>
         <div>
@@ -99,10 +96,6 @@ const App = () => {
     const CustomMessageBoxClientJalal = () => {
       const jalalMsg = ["hey", "How is the project going"];
 
-      console.log(`clientMessageArray ${JSON.stringify(clientMessageArray)}`);
-
-      //  console.log(`the length is ${ typeof(responder)}`)
-
       return (
         <div>
           {jalalMsg.map((m) => (
@@ -126,10 +119,6 @@ const App = () => {
 
     const CustomMessageBoxClientAhmad = () => {
       const ahmadMsg = ["I talked to you yesterday", "Did you do redux"];
-
-      console.log(`clientMessageArray ${JSON.stringify(clientMessageArray)}`);
-
-      //  console.log(`the length is ${ typeof(responder)}`)
 
       return (
         <div>
@@ -155,10 +144,6 @@ const App = () => {
     const CustomMessageBoxClientEllie = () => {
       const ellieMsg = ["Good morning", "There is an issue here"];
 
-      console.log(`clientMessageArray ${JSON.stringify(clientMessageArray)}`);
-
-      //  console.log(`the length is ${ typeof(responder)}`)
-
       return (
         <div>
           {ellieMsg.map((m) => (
@@ -183,10 +168,6 @@ const App = () => {
     const CustomMessageBoxClientAbas = () => {
       const abasMsg = ["Issue", "ticket 2021"];
 
-      console.log(`clientMessageArray ${JSON.stringify(clientMessageArray)}`);
-
-      //  console.log(`the length is ${ typeof(responder)}`)
-
       return (
         <div>
           {abasMsg.map((m) => (
@@ -210,10 +191,6 @@ const App = () => {
 
     const CustomMessageBoxClientRita = () => {
       const ritaMsg = ["There is a customer complaining", "need help"];
-
-      console.log(`clientMessageArray ${JSON.stringify(clientMessageArray)}`);
-
-      //  console.log(`the length is ${ typeof(responder)}`)
 
       return (
         <div>
@@ -241,10 +218,6 @@ const App = () => {
 
       const abasMsg = ["Issue", "ticket 2021"];
 
-      console.log(`clientMessageArray ${JSON.stringify(clientMessageArray)}`);
-
-      //  console.log(`the length is ${ typeof(responder)}`)
-
       return (
         <div>
           {shadiMsg.map((m) => (
@@ -270,10 +243,6 @@ const App = () => {
       const samMsg = ["No Message Here"];
 
       const abasMsg = ["Issue", "ticket 2021"];
-
-      console.log(`clientMessageArray ${JSON.stringify(clientMessageArray)}`);
-
-      //  console.log(`the length is ${ typeof(responder)}`)
 
       return (
         <div>
@@ -304,10 +273,6 @@ const App = () => {
       ];
 
       const abasMsg = ["Issue", "ticket 2021"];
-
-      console.log(`clientMessageArray ${JSON.stringify(clientMessageArray)}`);
-
-      //  console.log(`the length is ${ typeof(responder)}`)
 
       return (
         <div>
@@ -482,7 +447,6 @@ const App = () => {
               }}
               onChange={(e) => {
                 setAdminMessage(e);
-                console.log(adminMessage);
               }}
               placeholder="Type message here"
               onSend={() => {
@@ -537,7 +501,6 @@ const App = () => {
   const [chatBox, setChatBox] = useState([<span></span>]);
   const [newBox, setNewBox] = useState([<span></span>]);
 
-  //for widget
   const [isWidget, setisWidget] = useState(false);
   const [isonline, setIsOnline] = useState(false);
   const [ispending, setIsPending] = useState(false);
@@ -550,97 +513,17 @@ const App = () => {
   const [isSending, setIsSending] = useState(false);
   const [clientMessageArray, setClientMessageArray] = useState([]);
   const [adminMessageArray, setAdminMessageArray] = useState([]);
-  //for widget end
 
   const handleNewUserMessage = (e) => {
     setIsSending(false);
 
-    //  console.log(`okay ${JSON.stringify(reduxMessages)}`)
-    //  const newStorage = reduxMessages.map((m) =>m.message);
-
-    //  const messageStringified = JSON.stringify(newStorage)
-
-    //  console.log(`okay 2  ${newStorage}`)
-
     setIsRender(true);
     sendMessage("okay", "Client", e);
-    // sending messages worked as for save first and last message is not saved for now but that is okay we will fix that late
     setMessages2([...messges2, e]);
     console.log(` this is ${messges2}`);
-    //this is where the admin will send back his msgs
-
-    //  const hi = "hiiii"
-
-    //  addResponseMessage(
-
-    //   responder
-
-    //  );
-
-    //  messges2.forEach((message) => addUserMessage(message));
-
-    //  console.log(`this is redux messages saved ${JSON.stringify(reduxMessages)}`)
-
-    //  {reduxMessages.map((m) =>
-    //   <div  className='user-message'>
-    //       <div className='message bg-primary'>{m.message}</div>
-    //       <div className='from-user'>{m.user}</div>
-
-    //   </div>
-
-    // )}
-
-    // reduxMessages.map((m) => {
-    //   addUserMessage(m.message)
-    // });
-  };
-
-  const ComponentToRender = () => {
-    return (
-      <div className="App">
-        <h1>hi </h1>
-      </div>
-    );
-  };
-
-  const CustomMessageBox = () => {
-    //  console.log(`the length is ${ typeof(responder)}`)
-    if (adminResponder)
-      return <div className="rcw-responder">{adminResponder}</div>;
-    else {
-      return <div>{adminResponder}</div>;
-    }
-  };
-
-  const CustomMessageBoxClientJalal = () => {
-    const jalalMsg = ["hey", "How is the project going"];
-
-    console.log(`clientMessageArray ${JSON.stringify(clientMessageArray)}`);
-
-    //  console.log(`the length is ${ typeof(responder)}`)
-    return (
-      <div>
-        <div>
-          <Message
-            model={{
-              message: "hey",
-              sentTime: "15 mins ago",
-              sender: "Jalal",
-              direction: "outgoing",
-              position: "single",
-            }}
-          >
-            <Avatar src={avatarIco} name="Jalal" />
-          </Message>
-        </div>
-      </div>
-    );
   };
 
   const CustomMessageBoxClient = () => {
-    console.log(`clientMessageArray ${JSON.stringify(clientMessageArray)}`);
-
-    //  console.log(`the length is ${ typeof(responder)}`)
     return (
       <div>
         {clientMessageArray.map((m) => (
@@ -663,8 +546,6 @@ const App = () => {
   };
 
   const CustomMessageBoxAdmin = () => {
-    //  console.log(`the length is ${ typeof(responder)}`)
-
     if (adminResponder)
       return <div className="admin-message">{adminResponder}</div>;
     else {
@@ -679,15 +560,6 @@ const App = () => {
       renderCustomComponent(CustomMessageBoxAdmin);
     }
   }, [adminResponder, setAdminResponder]);
-
-  //  useEffect(() => {
-  //   // reduxMessages.map((m) => {
-  //   //   addUserMessage(m.message);
-  //   // });
-
-  // }, []);
-
-  //for widget
 
   const getCustomLauncher = (handleToggle) => {
     if (isWidget) {
@@ -739,7 +611,6 @@ const App = () => {
       .post(`https://localhost:44382/chat/negotiate?negotiateVersion=1`)
       .then((res) => {
         const data = JSON.stringify(res);
-        console.log(`this is the id ${data}`);
       })
       .catch((e) => {
         console.log(e);
@@ -752,7 +623,6 @@ const App = () => {
 
       connection.on("ReceiveMessage", (user, message, id, isAdmin, user3) => {
         dispatch(messageSave([...reduxMessages, { user, message, id }]));
-        console.log(`the user name is ${user}`);
         if (isAdmin === "Admin") {
           setAdminResponder(message);
           setAdminMessageArray((adminMessageArray) => [
@@ -801,49 +671,9 @@ const App = () => {
   const sendMessage = async (user3, isAdmin, message) => {
     try {
       await connection.invoke("SendMessage", user3, isAdmin, message);
-      console.log("message sent");
     } catch (e) {
       console.log(e);
     }
-  };
-
-  const sendPrivateMessage = async (user, message) => {
-    try {
-      console.log("done ");
-      await connection.invoke("SendPrivateMessage", user, message);
-      console.log("private message sent ");
-      console.log(user);
-    } catch (e) {
-      console.log(e);
-    }
-  };
-
-  const CustomChatContent = () => {
-    const messagesEndRef = useRef(null);
-
-    const [chat, setChat] = useState(reduxMessages);
-
-    const [msg, setMsg] = useState();
-    const activePointRef = useRef(msg);
-
-    useEffect(() => {
-      let _chat = [];
-      _chat.push({
-        user: "admin",
-        message: msg,
-      });
-
-      dispatch(messageSave(_chat));
-    }, [adminResponder, setAdminResponder]);
-
-    return (
-      <div className="chat__items">
-        {reduxMessages.map((itm, index) => {
-          // console.log(`the value is ${JSON.stringify(reduxMessages)}`)
-          return <div>{itm.message}</div>;
-        })}
-      </div>
-    );
   };
 
   return (
