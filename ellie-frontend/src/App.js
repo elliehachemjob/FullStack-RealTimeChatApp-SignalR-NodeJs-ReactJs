@@ -1,72 +1,51 @@
-import React, { useRef, useEffect, useState } from "react";
-import { HubConnectionBuilder } from "@microsoft/signalr";
-import axios from "axios";
-import "./App.css";
-import { useSelector, useDispatch } from "react-redux";
-import { messageSave, storedMessages, clearMessages } from "./messagesReducer";
 import {
-  Widget,
-  addResponseMessage,
-  addUserMessage,
-  renderCustomComponent,
-} from "react-chat-widget";
-import flippedimage from "./flippedImage.png";
-import normalimage from "./normalPlugit.png";
-
+  Avatar,
+  Button,
+  ChatContainer,
+  Conversation,
+  ConversationHeader,
+  ConversationList,
+  ExpansionPanel,
+  InfoButton,
+  MainContainer,
+  Message,
+  MessageInput,
+  MessageList,
+  Search,
+  Sidebar,
+  VideoCallButton,
+  VoiceCallButton,
+} from "@chatscope/chat-ui-kit-react";
 import {
-  Field,
-  Control,
-  Input,
-  Icon,
-  Container,
-  Card,
-  Level,
-  Title,
-  Section,
-  Label,
-  Checkbox,
-} from "rbx";
-import {
-  faAddressBook,
   faArrowRight,
   faCheck,
   faEnvelope,
-  faEnvelopeOpenText,
   faLock,
-  faRegistered,
-  faSignOutAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
-import styles from "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
+import { HubConnectionBuilder } from "@microsoft/signalr";
+import axios from "axios";
 import {
-  MainContainer,
-  ChatContainer,
-  MessageList,
-  Message,
-  MessageInput,
-  Avatar,
-  AvatarGroup,
-  Button,
-  Conversation,
-  ConversationHeader,
-  StarButton,
-  VoiceCallButton,
-  VideoCallButton,
-  InfoButton,
-  ConversationList,
-  InputToolbox,
-  Loader,
-  TypingIndicator,
-  StatusList,
-  Status,
-  Sidebar,
-  Search,
-  MessageSeparator,
-  action,
-  ExpansionPanel,
-  MessageGroup,
-} from "@chatscope/chat-ui-kit-react";
+  Card,
+  Checkbox,
+  Container,
+  Control,
+  Field,
+  Icon,
+  Input,
+  Label,
+  Level,
+  Section,
+  Title,
+} from "rbx";
+import React, { useEffect, useRef, useState } from "react";
+import { renderCustomComponent, Widget } from "react-chat-widget";
+import { useDispatch, useSelector } from "react-redux";
+import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
+import "./App.css";
+import flippedimage from "./flippedImage.png";
+import { clearMessages, messageSave, storedMessages } from "./messagesReducer";
+import normalimage from "./normalPlugit.png";
 
 var FileSaver = require("file-saver");
 
@@ -748,7 +727,6 @@ const App = () => {
           >
             Test Button
           </button>
-          {/* <button   className='btn9'  variant='danger' onClick={()=>{setChat(chatBox=>[...chatBox , <Chat/>])}}>Test Button</button> */}
         </div>
 
         <div className="chat">
@@ -1300,35 +1278,7 @@ const App = () => {
             <div className="settings"></div>
           </div>
         </div>
-        <div className="content__body">
-          {/* <div className="chat__items">
-          {reduxMessages.map((itm, index) => {
-            console.log(`the value is ${JSON.stringify(reduxMessages)}`)
-              return (
-                <div
-                style={{ animationDelay: `0.8s` }} 
-              >
-          
-                <div className={itm.user==="admin"? 'chat__item__content' : 'chat__item__content_client'}>
-                  <div className="chat__msg">{itm.message}</div>
-                </div>
-
-
-              </div>
-  
-  
-              );
-
-            })}
-
-
-  
-            
-            <div ref={messagesEndRef} />
-         
-            
-          </div> */}
-        </div>
+        <div className="content__body"></div>
         <div className="content__footer">
           <div className="sendNewMessage">
             <input
