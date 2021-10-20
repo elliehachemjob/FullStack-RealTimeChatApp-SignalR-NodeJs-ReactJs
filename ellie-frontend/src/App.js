@@ -4,38 +4,10 @@ import axios from "axios";
 import "./App.css";
 import { useSelector, useDispatch } from "react-redux";
 import { messageSave, storedMessages, clearMessages } from "./messagesReducer";
-import {
-  Widget,
-  addResponseMessage,
-  addUserMessage,
-  renderCustomComponent,
-} from "react-chat-widget";
+import { Widget, renderCustomComponent } from "react-chat-widget";
 import flippedimage from "./flippedImage.png";
 import normalimage from "./normalPlugit.png";
-
-import {
-  Field,
-  Control,
-  Input,
-  Icon,
-  Container,
-  Card,
-  Level,
-  Title,
-  Section,
-  Label,
-  Checkbox,
-} from "rbx";
-import {
-  faAddressBook,
-  faArrowRight,
-  faCheck,
-  faEnvelope,
-  faEnvelopeOpenText,
-  faLock,
-  faRegistered,
-  faSignOutAlt,
-} from "@fortawesome/free-solid-svg-icons";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
 import styles from "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
@@ -46,8 +18,6 @@ import {
   Message,
   MessageInput,
   Avatar,
-  AvatarGroup,
-  Button,
   Conversation,
   ConversationHeader,
   StarButton,
@@ -55,17 +25,9 @@ import {
   VideoCallButton,
   InfoButton,
   ConversationList,
-  InputToolbox,
-  Loader,
-  TypingIndicator,
-  StatusList,
-  Status,
   Sidebar,
   Search,
-  MessageSeparator,
-  action,
   ExpansionPanel,
-  MessageGroup,
 } from "@chatscope/chat-ui-kit-react";
 import LoginForm from "./components/LoginForm";
 import SignUpForm from "./components/SignUpForm";
@@ -755,178 +717,7 @@ const App = () => {
     }
   };
 
-  //for widget end
-
-  // console.log(` the new id is ${Id}`)
-  // console.log(`okay the value ${JSON.stringify(reduxMessages)}`)
   const dispatch = useDispatch();
-
-  const Chat = () => {
-    let message =
-      "YOUR ID WONT SHOW TO OTHERS give it to others to recieve messages";
-
-    const generateDownload = () => {
-      const toExport = [];
-
-      {
-        reduxMessages.map((m) =>
-          toExport.push(`${m.message} \n ${m.user} \n \n`)
-        );
-      }
-
-      var blob = new Blob([toExport], { type: "text/plain;charset=utf-8" });
-      FileSaver.saveAs(blob, "messages");
-    };
-
-    return (
-      <div>
-        <div>
-          <button
-            className="btn5"
-            variant="danger"
-            onClick={() => closeConnection()}
-          >
-            Leave Chat
-          </button>
-          <button
-            className="btn6"
-            variant="danger"
-            onClick={() => getId(message)}
-          >
-            Get Id
-          </button>
-          <button
-            className="btn7"
-            variant="danger"
-            onClick={() => {
-              dispatch(clearMessages());
-            }}
-          >
-            Clear Messages
-          </button>
-          <button className="btn8" variant="danger" onClick={generateDownload}>
-            Download Messages
-          </button>
-          <button
-            className="btn9"
-            variant="danger"
-            onClick={() => {
-              setChatBox((chatBox) => [
-                ...chatBox,
-                <div className="className='chat'">
-                  {" "}
-                  <MessageBox />
-                  <SendPrivateMsgForm />
-                </div>,
-              ]);
-            }}
-          >
-            Test Button
-          </button>
-          {/* <button   className='btn9'  variant='danger' onClick={()=>{setChat(chatBox=>[...chatBox , <Chat/>])}}>Test Button</button> */}
-        </div>
-
-        <div className="chat">
-          <MessageBox />
-          <SendMsgForm />
-          <SendPrivateMsgForm />
-        </div>
-        <div className="niceAppend">{chatBox}</div>
-      </div>
-    );
-  };
-
-  const MessageBox = () => {
-    const messageRef = useRef();
-
-    useEffect(() => {
-      if (messageRef && messageRef.current) {
-        const { scrollHeight, clientHeight } = messageRef.current;
-        messageRef.current.scrollTo({
-          left: 0,
-          top: scrollHeight - clientHeight,
-        });
-      }
-    }, [messages]);
-
-    return (
-      <div ref={messageRef} className="message-box">
-        {reduxMessages.map((m) => (
-          <div className="user-message">
-            <div className="message bg-primary">{m.message}</div>
-            <div className="from-user">{m.user}</div>
-          </div>
-        ))}
-      </div>
-    );
-  };
-
-  const SendMsgForm = () => {
-    const [message, setMessage] = useState("");
-
-    return (
-      <div>
-        <input
-          className="css-input6"
-          type="user"
-          placeholder="Send your message..."
-          onChange={(e) => setMessage(e.target.value)}
-          value={message}
-        />
-        <button
-          className="btn3"
-          onClick={() => {
-            sendMessage(message);
-            setMessage("");
-          }}
-          variant="primary"
-          type="submit"
-          disabled={!message}
-        >
-          {" "}
-          Send{" "}
-        </button>
-      </div>
-    );
-  };
-
-  const SendPrivateMsgForm = () => {
-    const [message, setMessage] = useState("");
-    const [user, setUser] = useState("");
-
-    return (
-      <div classaName="niceAppend">
-        <input
-          className="css-input6"
-          type="user"
-          placeholder="Send Private Message..."
-          onChange={(e) => setMessage(e.target.value)}
-          value={message}
-        />
-        <input
-          className="css-input6"
-          type="user"
-          placeholder="message to which user Provide User's Id?..."
-          onChange={(e) => setUser(e.target.value)}
-          value={user}
-        />
-        <button
-          className="btn3"
-          onClick={() => {
-            sendPrivateMessage(user, message);
-            setMessage("");
-            setUser("");
-          }}
-          variant="primary"
-          type="submit"
-          disabled={!message}
-        >
-          {" "}
-          Send{" "}
-        </button>
-      </div>
-    );
-  };
 
   const Routing = () => {
     return (
@@ -960,11 +751,6 @@ const App = () => {
         .build();
 
       connection.on("ReceiveMessage", (user, message, id, isAdmin, user3) => {
-        //store in redux persistance here
-        // setMessages((messages) => [...messages, { user, message } ])
-        // dispatch(messageSave([...messages, { user, message } ]))
-
-        // dispatch(messageSave([...reduxMessages, { user, message,id } ]))
         dispatch(messageSave([...reduxMessages, { user, message, id }]));
         console.log(`the user name is ${user}`);
         if (isAdmin === "Admin") {
@@ -982,9 +768,6 @@ const App = () => {
         }
 
         setUsername(user);
-
-        // console.log(`this is the message ${message}`)
-        //  console.log(`the user is  ${user}`)
       });
 
       connection.onclose((e) => {
@@ -995,7 +778,6 @@ const App = () => {
       await connection.start();
       await connection.invoke("JoinRoom", { user });
 
-      //here make the values dynamic and that is it
       setChatListMapping((chatListMapping) => [
         chatListMapping,
         <Conversation
@@ -1036,182 +818,6 @@ const App = () => {
     }
   };
 
-  const closeConnection = async () => {
-    try {
-      await connection.stop();
-    } catch (e) {
-      console.log(e);
-    }
-  };
-
-  const getId = async (message) => {
-    try {
-      await connection.invoke("GetId", message);
-      console.log(`worked getid ${message}`);
-    } catch (e) {
-      console.log(e);
-    }
-  };
-
-  const ChatContent = () => {
-    const messagesEndRef = useRef(null);
-    const chatItms = [
-      {
-        key: 1,
-        image:
-          "https://pbs.twimg.com/profile_images/1116431270697766912/-NfnQHvh_400x400.jpg",
-        type: "",
-        msg: "Hi Ali, How are you?",
-      },
-      {
-        key: 2,
-        image:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTA78Na63ws7B7EAWYgTr9BxhX_Z8oLa1nvOA&usqp=CAU",
-        type: "other",
-        msg: "I am fine.",
-      },
-      {
-        key: 3,
-        image:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTA78Na63ws7B7EAWYgTr9BxhX_Z8oLa1nvOA&usqp=CAU",
-        type: "other",
-        msg: "What about you?",
-      },
-      {
-        key: 4,
-        image:
-          "https://pbs.twimg.com/profile_images/1116431270697766912/-NfnQHvh_400x400.jpg",
-        type: "",
-        msg: "I am fine.",
-      },
-    ];
-
-    const [chat, setChat] = useState(reduxMessages);
-
-    const [msg, setMsg] = useState();
-    const activePointRef = useRef(msg);
-
-    // const scrollToBottom = () => {
-    //   messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
-    // };
-
-    const onStateChange = (e) => {
-      setMsg(e.target.value);
-      activePointRef.current = e.target.value;
-      // console.log(`aaaaaaaaaaaaaaaa ${msg}`);
-      // console.log(`aaaaaaaaaaaaaaaaaaaaaaa ${chat.length}`);
-    };
-
-    // const abc = (e) => {
-
-    //   console.log(e);
-    //   console.log(`ffffffffffffffff is ${activePointRef.current}`);
-    //   console.log(`ffffffffffffffff is ${chat.length}`);
-    //   console.log(`the value is ${JSON.stringify(reduxMessages)}`)
-
-    //   if (e.keyCode == 13) {
-
-    //     let _chat = [ ...chat]
-    //     _chat.push({
-    //       user:"admin",
-    //       message: "okay",
-    //     });
-    //     setChat(_chat)
-
-    //     dispatch(messageSave(_chat))
-    //     console.log(reduxMessages)
-
-    //     // setChat([...chatItms]);
-    //     // scrollToBottom();
-    //     setMsg("");
-    //     activePointRef.current = "";
-    //   }
-    // };
-    // useEffect(() => {
-    //   window.addEventListener("keydown", (e) => {
-    //     abc(e);
-    //   });
-
-    //   // scrollToBottom();
-    // }, []);
-
-    const sendButtonHandler = () => {
-      // let _chat = []
-      //       _chat.push({
-      //       user:"admin",
-      //       message: msg
-      //     });
-
-      //     dispatch(messageSave(_chat))
-
-      //     setMsg("");
-
-      sendMessage("Admin", "Admin", msg);
-    };
-
-    const messageRef = useRef();
-
-    useEffect(() => {
-      if (messageRef && messageRef.current) {
-        const { scrollHeight, clientHeight } = messageRef.current;
-        messageRef.current.scrollTo({
-          left: 0,
-          top: scrollHeight - clientHeight,
-        });
-      }
-    }, [messages]);
-
-    const generateDownload = () => {
-      const toExport = [];
-
-      {
-        reduxMessages.map((m) =>
-          toExport.push(`${m.message} \n ${m.user} \n \n`)
-        );
-      }
-
-      var blob = new Blob([toExport], { type: "text/plain;charset=utf-8" });
-      FileSaver.saveAs(blob, "messages");
-    };
-
-    return (
-      <div className="main__chatcontent">
-        {newBox}
-        <button className="btn8" variant="danger" onClick={generateDownload}>
-          Download Messages
-        </button>
-
-        <div className="content__header">
-          <div className="blocks">
-            <div className="current-chatting-user">
-              <p>Ali Ahmad</p>
-            </div>
-          </div>
-
-          <div className="blocks">
-            <div className="settings"></div>
-          </div>
-        </div>
-        <div className="content__body"></div>
-        <div className="content__footer">
-          <div className="sendNewMessage">
-            <input
-              type="text"
-              placeholder="Type a message here"
-              onChange={onStateChange}
-              value={msg}
-            />
-            <FontAwesomeIcon
-              className="inputIcon"
-              onClick={sendButtonHandler}
-              icon={faArrowRight}
-            />
-          </div>
-        </div>
-      </div>
-    );
-  };
-
   const CustomChatContent = () => {
     const messagesEndRef = useRef(null);
 
@@ -1236,103 +842,6 @@ const App = () => {
           // console.log(`the value is ${JSON.stringify(reduxMessages)}`)
           return <div>{itm.message}</div>;
         })}
-      </div>
-    );
-  };
-
-  const ChatList = () => {
-    const allChatUsers = [
-      {
-        image:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTA78Na63ws7B7EAWYgTr9BxhX_Z8oLa1nvOA&usqp=CAU",
-        id: 1,
-        name: "Ali Ahmad",
-        active: true,
-        isOnline: true,
-      },
-      {
-        image:
-          "https://pbs.twimg.com/profile_images/1055263632861343745/vIqzOHXj.jpg",
-        id: 2,
-        name: "Hasan Hawei",
-        active: false,
-        isOnline: false,
-      },
-      {
-        image:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTQEZrATmgHOi5ls0YCCQBTkocia_atSw0X-Q&usqp=CAU",
-        id: 3,
-        name: "Mohamemd Hachem",
-        active: false,
-        isOnline: false,
-      },
-      {
-        image:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRZ6tM7Nj72bWjr_8IQ37Apr2lJup_pxX_uZA&usqp=CAU",
-        id: 4,
-        name: "Abas Khansa",
-        active: false,
-        isOnline: true,
-      },
-    ];
-
-    const [allChats, setAllChats] = useState(allChatUsers);
-
-    const selectChat = (e) => {
-      for (
-        let index = 0;
-        index < e.currentTarget.parentNode.children.length;
-        index++
-      ) {
-        e.currentTarget.parentNode.children[index].classList.remove("active");
-      }
-      e.currentTarget.classList.add("active");
-    };
-
-    const [newChat, setNewChat] = useState(<ChatContent />);
-
-    return (
-      <div className="main__chatlist">
-        <div className="chatlist__heading">
-          <h2>Chats</h2>
-        </div>
-        <div className="chatList__search">
-          <div className="search_wrap">
-            <input type="text" placeholder="Search Here" required />
-            <button className="search-btn">
-              <i className="fa fa-search"></i>
-            </button>
-          </div>
-        </div>
-        <div className="chatlist__items">
-          {allChats.map((item, index) => {
-            return (
-              <div
-                key={item.id}
-                style={{ animationDelay: index + 1 }}
-                onClick={() => {
-                  setNewBox((newBox) => [
-                    ...newBox,
-                    <div>
-                      <ChatContent />
-                    </div>,
-                  ]);
-                }}
-                className="chatlist__item"
-              >
-                <div className="avatar">
-                  <div className="avatar-img"></div>
-                  <span className="active"></span>
-                </div>
-
-                <div className="userMeta">
-                  <p>{item.name}</p>
-                  <span className="activeTime">32 mins ago</span>
-                </div>
-              </div>
-            );
-          })}
-        </div>
       </div>
     );
   };
