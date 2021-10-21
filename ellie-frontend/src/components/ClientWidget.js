@@ -1,12 +1,7 @@
 import React from "react";
-import {
-  Widget,
-  addResponseMessage,
-  addUserMessage,
-  renderCustomComponent,
-} from "react-chat-widget";
-import flippedimage from "./flippedImage.png";
-import normalimage from "./normalPlugit.png";
+import { Widget } from "react-chat-widget";
+import flippedimage from "../assets/images/normalImage.png";
+import normalimage from "../assets/images/flippedImage.png";
 
 function ClientWidget(props) {
   const getCustomLauncher = (handleToggle) => {

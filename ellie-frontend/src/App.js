@@ -5,46 +5,16 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   messageSave,
   storedMessages,
-  clearMessages,
   adminMsgSelector,
-} from "./messagesReducer";
+} from "./store/messges/messagesReducer";
 import { renderCustomComponent } from "react-chat-widget";
-import flippedimage from "./flippedImage.png";
-import normalimage from "./normalPlugit.png";
 import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
 import styles from "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
-import {
-  MainContainer,
-  ChatContainer,
-  MessageList,
-  Message,
-  MessageInput,
-  Avatar,
-  AvatarGroup,
-  Button,
-  Conversation,
-  ConversationHeader,
-  StarButton,
-  VoiceCallButton,
-  VideoCallButton,
-  InfoButton,
-  ConversationList,
-  InputToolbox,
-  Loader,
-  TypingIndicator,
-  StatusList,
-  Status,
-  Sidebar,
-  Search,
-  MessageSeparator,
-  action,
-  ExpansionPanel,
-  MessageGroup,
-} from "@chatscope/chat-ui-kit-react";
-import LoginForm from "./LoginForm";
-import SignUpForm from "./SignUpForm";
-import ClientWidget from "./ClientWidget";
-import AdminPanel from "./AdminPanel";
+import { Message, Avatar, Conversation } from "@chatscope/chat-ui-kit-react";
+import LoginForm from "./components/LoginForm";
+import SignUpForm from "./components/SignUpForm";
+import ClientWidget from "./components/ClientWidget";
+import AdminPanel from "./components/AdminPanel";
 
 const App = () => {
   const avatarIco =
@@ -199,8 +169,6 @@ const App = () => {
       console.log(e);
     }
   };
-
-  joinRoom("ali");
 
   console.log(`clientMessageArray ${JSON.stringify(clientMessageArray)}`);
   return (

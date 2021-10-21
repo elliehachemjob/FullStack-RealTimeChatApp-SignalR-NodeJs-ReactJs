@@ -1,17 +1,6 @@
-import React, { useRef, useEffect, useState } from "react";
-import { HubConnectionBuilder } from "@microsoft/signalr";
+import React, { useState } from "react";
 import axios from "axios";
-import "./App.css";
-import { useSelector, useDispatch } from "react-redux";
-import { messageSave, storedMessages, clearMessages } from "./messagesReducer";
-import {
-  Widget,
-  addResponseMessage,
-  addUserMessage,
-  renderCustomComponent,
-} from "react-chat-widget";
-import flippedimage from "./flippedImage.png";
-import normalimage from "./normalPlugit.png";
+import "../App.css";
 
 import {
   Field,
@@ -25,49 +14,12 @@ import {
   Section,
   Label,
   Checkbox,
+  Button,
 } from "rbx";
-import {
-  faAddressBook,
-  faArrowRight,
-  faCheck,
-  faEnvelope,
-  faEnvelopeOpenText,
-  faLock,
-  faRegistered,
-  faSignOutAlt,
-} from "@fortawesome/free-solid-svg-icons";
+import { faCheck, faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
 import styles from "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
-import {
-  MainContainer,
-  ChatContainer,
-  MessageList,
-  Message,
-  MessageInput,
-  Avatar,
-  AvatarGroup,
-  Button,
-  Conversation,
-  ConversationHeader,
-  StarButton,
-  VoiceCallButton,
-  VideoCallButton,
-  InfoButton,
-  ConversationList,
-  InputToolbox,
-  Loader,
-  TypingIndicator,
-  StatusList,
-  Status,
-  Sidebar,
-  Search,
-  MessageSeparator,
-  action,
-  ExpansionPanel,
-  MessageGroup,
-} from "@chatscope/chat-ui-kit-react";
-import ClientWidget from "./ClientWidget";
 
 const LoginForm = (props) => {
   const loginHandler = () => {
