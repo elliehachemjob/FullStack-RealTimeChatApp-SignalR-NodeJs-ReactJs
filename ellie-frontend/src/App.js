@@ -69,7 +69,7 @@ import {
 } from "@chatscope/chat-ui-kit-react";
 import LoginForm from "./LoginForm";
 import SignUpForm from "./SignUpForm";
-
+import ClientWidget from "./ClientWidget";
 const App = () => {
   const CustomMessageBoxAdmin1 = () => {
     console.log(`adminMessageArray ${JSON.stringify(adminMessageArray)}`);
@@ -555,7 +555,6 @@ const App = () => {
 
   const handleNewUserMessage = (e) => {
     setIsSending(false);
-
     setIsRender(true);
     sendMessage("okay", "Client", e);
     setMessages2([...messges2, e]);
@@ -768,14 +767,11 @@ const App = () => {
         </div>
       ) : (
         <div>
-          <Widget
-            handleNewUserMessage={handleNewUserMessage}
-            launcher={(handleToggle) => getCustomLauncher(handleToggle)}
-            title="Plugit Chat Support"
-            subtitle="Welcome To Yoonit Customer Service"
-            senderPlaceHolder="press send button or enter to send a message"
-          />
           <AdminPanel />
+          <ClientWidget
+            handleNewUserMessage={handleNewUserMessage}
+            getCustomLauncher={getCustomLauncher}
+          />
         </div>
       )}
     </div>

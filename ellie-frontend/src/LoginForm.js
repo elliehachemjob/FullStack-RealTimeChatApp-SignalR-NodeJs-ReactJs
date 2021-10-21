@@ -67,6 +67,7 @@ import {
   ExpansionPanel,
   MessageGroup,
 } from "@chatscope/chat-ui-kit-react";
+import ClientWidget from "./ClientWidget";
 
 const LoginForm = (props) => {
   const loginHandler = () => {
