@@ -69,16 +69,15 @@ import {
 } from "@chatscope/chat-ui-kit-react";
 
 const AdminPanel = (props) => {
+  console.log(props);
+
   const avatarIco =
     "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAZlBMVEUOHCyclYufmI0AECZvbGkAACCjm5AIGCoxOUIAEycAFSgLGisNHCwEFykDFyljY2N9enUlLjkACCKWkIc+Q0lmZmWIhH0bJjN/e3YVIjGSjYRAREpbXF0tND54dXGEgHpKTVFTVVcfARIMAAADVklEQVR4nO3ciXaiMABA0ZA4lhBEcV+r/v9PTtA6FUVGLXOyzLtf4DtktVghAAAAAAAAAAAAAAAAAAAAAABAuIwej9XAuP4Y/4xR5XY+6U11pI1GL4ZrmSQyGaXZIHf9cTqXa7Gt+ipSfqZ64PoTdcuoYjj56js3jtJxRM/RqMUwueo7Ny6nqohjPtr1Zbi+6Ts1JqNpFsGak2eLxr5z4zItAp+PRtfn313jaT66/pTvM2p1N//uGvv7YOdjNf/ant/VWJ3qABsv+/szzmtOWHtHrldP950a7XwM6QxglJk9Mz7rjcvpOJCxWs2/v60vzY37qc78b7R9s1fGZ60xWW58PwMYu7+/Oj5vGr0+A9yer99qrM4AheuSZnZ/n8kf9p0a7RnAyzVHly+vnw8bq/no3faYbd5dX5obe749xNy8s0G0NW6166a6bNttYJJMxq6b6lSv68L+L9dNdRRSSKF7FFJIoXsUUkihexRSSKF7FFJIoXsUUkihexRSSKF7FFJIoXsUUkihexRSSKF7FL5Oxl4oR8p1U13XhXJdevb6ZbeFUo5K396E7rJQyvlBfLguutVdoUyWB+PfO9BdFUopZztV+NfXUaHs749KebbCXHTwFrScfKbGs5e7r5iy/7M8uR7ulNe/0Bt//uTHQNXq6evwvMjz+buJMumlYw9Xz1sfi7cS7ePbikB+XJntXk+Uk9FmpT0fnt+K3frFxzeZpdrLze+RbPdKX39+XKmPkPqsLJ0825d82tUlmOH5LZs+k2gf37DMwlhd7mSbJx7f/mBXl8CG5x+5PvzlcCP3UxXi8Pymju17xjys1bOJaj2Ey6O/h+tnGT1s+38taaArzLU8m7Ukpt59P/GGvO0+HEWhMC13qTgKRV48TIykUBgxepAYS6Ew+b45MZpCu2k0XxfjKRRm1ZgYUaEoyqbEmArtjbjhv4FEVdh46Y+rsCkxskKhN7eX/tgKhTrEXmgTZeSFuap/rxFf4e33GjEW1i/9MRbWL/1RFopc9/pxF15/rxFpoR2ol0t/rIX2Rvx16Y+20F4Xz5f+eAvtUzxdFyMuFKaw10Xp2zuHnRqU8/5chf53mVaDxSHqRyiqgRp5IAAAAAAAAAAAAAAAAAAAAAAA/4Hf0gU2cK/EibwAAAAASUVORK5CYII=";
+  console.log(props.clientMessageArray);
 
   const [adminMessage, setAdminMessage] = useState("");
-  const [msgContainer, setMsgContainer] = useState(
-    props.CustomMessageBoxClient
-  );
-  const [msgAdminContainer, setmsgAdminContainer] = useState(
-    props.CustomMessageBoxAdmin1
-  );
+  const [msgContainer, setMsgContainer] = useState();
+  const [msgAdminContainer, setmsgAdminContainer] = useState();
 
   const Jalal = "Jalal";
   const Ahmad = "Ahmad";
@@ -91,10 +90,6 @@ const AdminPanel = (props) => {
 
   const CustomMessageBoxClientJalal = () => {
     const jalalMsg = ["hey", "How is the project going"];
-
-    console.log(
-      `clientMessageArray ${JSON.stringify(props.clientMessageArray)}`
-    );
 
     return (
       <div>
@@ -120,10 +115,6 @@ const AdminPanel = (props) => {
   const CustomMessageBoxClientAhmad = () => {
     const ahmadMsg = ["I talked to you yesterday", "Did you do redux"];
 
-    console.log(
-      `clientMessageArray ${JSON.stringify(props.clientMessageArray)}`
-    );
-
     return (
       <div>
         {ahmadMsg.map((m) => (
@@ -147,10 +138,6 @@ const AdminPanel = (props) => {
 
   const CustomMessageBoxClientEllie = () => {
     const ellieMsg = ["Good morning", "There is an issue here"];
-
-    console.log(
-      `clientMessageArray ${JSON.stringify(props.clientMessageArray)}`
-    );
 
     return (
       <div>
@@ -176,10 +163,6 @@ const AdminPanel = (props) => {
   const CustomMessageBoxClientAbas = () => {
     const abasMsg = ["Issue", "ticket 2021"];
 
-    console.log(
-      `clientMessageArray ${JSON.stringify(props.clientMessageArray)}`
-    );
-
     return (
       <div>
         {abasMsg.map((m) => (
@@ -203,10 +186,6 @@ const AdminPanel = (props) => {
 
   const CustomMessageBoxClientRita = () => {
     const ritaMsg = ["There is a customer complaining", "need help"];
-
-    console.log(
-      `clientMessageArray ${JSON.stringify(props.clientMessageArray)}`
-    );
 
     return (
       <div>
@@ -234,10 +213,6 @@ const AdminPanel = (props) => {
 
     const abasMsg = ["Issue", "ticket 2021"];
 
-    console.log(
-      `clientMessageArray ${JSON.stringify(props.clientMessageArray)}`
-    );
-
     return (
       <div>
         {shadiMsg.map((m) => (
@@ -263,10 +238,6 @@ const AdminPanel = (props) => {
     const samMsg = ["No Message Here"];
 
     const abasMsg = ["Issue", "ticket 2021"];
-
-    console.log(
-      `clientMessageArray ${JSON.stringify(props.clientMessageArray)}`
-    );
 
     return (
       <div>
@@ -297,10 +268,6 @@ const AdminPanel = (props) => {
     ];
 
     const abasMsg = ["Issue", "ticket 2021"];
-
-    console.log(
-      `clientMessageArray ${JSON.stringify(props.clientMessageArray)}`
-    );
 
     return (
       <div>
@@ -465,8 +432,42 @@ const AdminPanel = (props) => {
                 fontSize: "1.2em",
               }}
             >
-              {msgContainer}
-              {msgAdminContainer}
+              <div>
+                {props.clientMessageArray.map((m) => (
+                  <div>
+                    <Message
+                      model={{
+                        message: m.message,
+                        sentTime: "15 mins ago",
+                        sender: props.username,
+                        direction: "incoming",
+                        position: "single",
+                      }}
+                    >
+                      <Avatar src={avatarIco} name={props.username} />
+                    </Message>
+                  </div>
+                ))}
+              </div>
+              <div>
+                <div>
+                  {props.adminMessageArray.map((m) => (
+                    <div>
+                      <Message
+                        model={{
+                          message: m.message,
+                          sentTime: "15 mins ago",
+                          sender: props.username,
+                          direction: "outgoing",
+                          position: "single",
+                        }}
+                      >
+                        <Avatar src={avatarIco} name={props.username} />
+                      </Message>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </MessageList.Content>
           </MessageList>
           <MessageInput
@@ -475,7 +476,6 @@ const AdminPanel = (props) => {
             }}
             onChange={(e) => {
               setAdminMessage(e);
-              console.log(adminMessage);
             }}
             placeholder="Type message here"
             onSend={() => {
