@@ -58,7 +58,6 @@ C:\Users\EllieHachem\Desktop\Final-for-now\Api-SQL\obj\Debug\netcoreapp3.1\stati
 C:\Users\EllieHachem\Desktop\Final-for-now\Api-SQL\obj\Debug\netcoreapp3.1\staticwebassets\api11.StaticWebAssets.xml
 C:\Users\EllieHachem\Desktop\Final-for-now\Api-SQL\obj\Debug\netcoreapp3.1\scopedcss\bundle\api11.styles.css
 C:\Users\EllieHachem\Desktop\Final-for-now\Api-SQL\obj\Debug\netcoreapp3.1\api11.RazorTargetAssemblyInfo.cache
-C:\Users\EllieHachem\Desktop\Final-for-now\Api-SQL\obj\Debug\netcoreapp3.1\api11.csproj.CopyComplete
 C:\Users\EllieHachem\Desktop\Final-for-now\Api-SQL\obj\Debug\netcoreapp3.1\api11.dll
 C:\Users\EllieHachem\Desktop\Final-for-now\Api-SQL\obj\Debug\netcoreapp3.1\api11.pdb
 C:\Users\EllieHachem\Desktop\Final-for-now\Api-SQL\obj\Debug\netcoreapp3.1\api11.genruntimeconfig.cache

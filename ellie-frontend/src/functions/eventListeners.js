@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { HubConnectionBuilder } from "@microsoft/signalr";
 import axios from "axios";
-import { messageSave, storedMessages } from "../store/messages/messagesReducer";
 import styles from "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
 import { Avatar, Conversation } from "@chatscope/chat-ui-kit-react";
 
