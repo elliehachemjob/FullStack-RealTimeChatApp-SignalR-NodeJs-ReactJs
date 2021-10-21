@@ -1,42 +1,11 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { HubConnectionBuilder } from "@microsoft/signalr";
-import axios from "axios";
 import "./App.css";
 import { useSelector, useDispatch } from "react-redux";
 import { messageSave, storedMessages, clearMessages } from "./messagesReducer";
-import {
-  Widget,
-  addResponseMessage,
-  addUserMessage,
-  renderCustomComponent,
-} from "react-chat-widget";
+import { renderCustomComponent } from "react-chat-widget";
 import flippedimage from "./flippedImage.png";
 import normalimage from "./normalPlugit.png";
-
-import {
-  Field,
-  Control,
-  Input,
-  Icon,
-  Container,
-  Card,
-  Level,
-  Title,
-  Section,
-  Label,
-  Checkbox,
-} from "rbx";
-import {
-  faAddressBook,
-  faArrowRight,
-  faCheck,
-  faEnvelope,
-  faEnvelopeOpenText,
-  faLock,
-  faRegistered,
-  faSignOutAlt,
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
 import styles from "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
 import {
@@ -106,7 +75,7 @@ const App = () => {
   const [connection, setConnection] = useState();
   const [users, setUsers] = useState([]);
   const reduxMessages = useSelector(storedMessages);
-  const [isWidget, setisWidget] = useState(false);
+  const [isWidget, setIsWidget] = useState(false);
   const [adminResponder, setAdminResponder] = useState();
   const [username, setUsername] = useState("");
   const [clientResponder, setClientResponder] = useState("");
@@ -147,34 +116,6 @@ const App = () => {
     renderCustomComponent(CustomMessageBoxAdmin);
   }, [adminResponder, setAdminResponder]);
 
-  const getCustomLauncher = (handleToggle) => {
-    if (isWidget) {
-      return (
-        <img
-          src={normalimage}
-          alt="imageNot working"
-          className="rcw-launcher "
-          onClick={() => {
-            handleToggle();
-            setisWidget(false);
-          }}
-        />
-      );
-    } else {
-      return (
-        <img
-          src={flippedimage}
-          alt="imageNot working"
-          className="rcw-launcher "
-          onClick={() => {
-            handleToggle();
-            setisWidget(true);
-          }}
-        />
-      );
-    }
-  };
-
   const dispatch = useDispatch();
 
   const Home = () => {
@@ -193,16 +134,6 @@ const App = () => {
   };
 
   const joinRoom = async (user) => {
-    axios
-      .post(`https://localhost:44382/chat/negotiate?negotiateVersion=1`)
-      .then((res) => {
-        const data = JSON.stringify(res);
-        console.log(`this is the id ${data}`);
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-
     try {
       const connection = new HubConnectionBuilder()
         .withUrl("https://localhost:44382/chat")
@@ -285,8 +216,9 @@ const App = () => {
             CustomMessageBoxAdmin1={CustomMessageBoxAdmin1}
           />
           <ClientWidget
-            getCustomLauncher={getCustomLauncher}
+            setIsWidget={setIsWidget}
             sendMessage={sendMessage}
+            isWidget={isWidget}
           />
         </div>
       )}
