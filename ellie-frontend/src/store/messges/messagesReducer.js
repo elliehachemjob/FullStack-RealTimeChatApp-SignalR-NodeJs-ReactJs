@@ -11,7 +11,7 @@ export const slice = createSlice({
     ],
     clientMsgs: [
       { message: "hey" },
-      { message: "client here" },
+      { message: "clieasdasdnt here" },
       { message: "1" },
     ],
   },
@@ -30,7 +30,7 @@ export const slice = createSlice({
       state.adminMsgs = [...state.adminMsgs, ...action.payload];
     },
     clientMsgsDispatcher: (state, action) => {
-      state.adminMsgs = [...state.adminMsgs, ...action.payload];
+      state.clientMsgs = [];
     },
   },
 });

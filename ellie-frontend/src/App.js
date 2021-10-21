@@ -6,6 +6,9 @@ import {
   messageSave,
   storedMessages,
   adminMsgSelector,
+  clientMsgSelector,
+  clientMsgsDispatcher,
+  adminMsgsDispatcher,
 } from "./store/messges/messagesReducer";
 import { renderCustomComponent } from "react-chat-widget";
 import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
@@ -22,6 +25,8 @@ const App = () => {
   const dispatch = useDispatch();
   const reduxMessages = useSelector(storedMessages);
   const adminMsgs = useSelector(adminMsgSelector);
+  const clientMsgs = useSelector(clientMsgSelector);
+
   const [chatListMapping, setChatListMapping] = useState([]);
   const [connection, setConnection] = useState();
   const [users, setUsers] = useState([]);
@@ -32,52 +37,6 @@ const App = () => {
   const [adminMessageArray, setAdminMessageArray] = useState([]);
 
   const [isWidget, setIsWidget] = useState(false);
-
-  const CustomMessageBoxAdmin1 = () => {
-    return (
-      <div>
-        <div>
-          {adminMessageArray.map((m) => (
-            <div>
-              <Message
-                model={{
-                  message: m.message,
-                  sentTime: "15 mins ago",
-                  sender: username,
-                  direction: "outgoing",
-                  position: "single",
-                }}
-              >
-                <Avatar src={avatarIco} name={username} />
-              </Message>
-            </div>
-          ))}
-        </div>
-      </div>
-    );
-  };
-
-  const CustomMessageBoxClient = () => {
-    return (
-      <div>
-        {clientMessageArray.map((m) => (
-          <div>
-            <Message
-              model={{
-                message: m.message,
-                sentTime: "15 mins ago",
-                sender: username,
-                direction: "incoming",
-                position: "single",
-              }}
-            >
-              <Avatar src={avatarIco} name={username} />
-            </Message>
-          </div>
-        ))}
-      </div>
-    );
-  };
 
   const CustomMessageBoxAdmin = () => {
     if (adminResponder)
@@ -114,7 +73,6 @@ const App = () => {
 
       connection.on("ReceiveMessage", (user, message, id, isAdmin, user3) => {
         dispatch(messageSave([...reduxMessages, { user, message, id }]));
-        console.log(`the user name is ${user}`);
         if (isAdmin === "Admin") {
           setAdminResponder(message);
           setAdminMessageArray((adminMessageArray) => [
@@ -124,10 +82,8 @@ const App = () => {
         } else if (isAdmin === "Client") {
           setClientResponder(message);
 
-          setClientMessageArray((clientMessageArray) => [
-            ...clientMessageArray,
-            { message },
-          ]);
+          dispatch(clientMsgsDispatcher());
+          console.log(`clientmsgs are ${JSON.stringify(clientMsgs)}`);
         }
 
         setUsername(user);
@@ -170,7 +126,6 @@ const App = () => {
     }
   };
 
-  console.log(`clientMessageArray ${JSON.stringify(clientMessageArray)}`);
   return (
     <div>
       {!connection ? (
