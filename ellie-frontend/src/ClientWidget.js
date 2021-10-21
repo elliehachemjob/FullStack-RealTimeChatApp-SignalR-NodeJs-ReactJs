@@ -10,7 +10,7 @@ function ClientWidget(props) {
   return (
     <div>
       <Widget
-        handleNewUserMessage={props.handleNewUserMessage}
+        handleNewUserMessage={(e) => props.sendMessage("okay", "Client", e)}
         launcher={(handleToggle) => props.getCustomLauncher(handleToggle)}
         title="Plugit Chat Support"
         subtitle="Welcome To Yoonit Customer Service"
