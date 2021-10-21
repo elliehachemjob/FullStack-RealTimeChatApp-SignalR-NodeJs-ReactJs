@@ -51,37 +51,29 @@ const AdminPanel = (props) => {
             </Message>
           </div>
         ))}
-      </div>
-    );
-  };
-
-  const CustomMessageBoxAdmin = () => {
-    return (
-      <div>
-        {adminMsgs.map((m) => (
-          <div>
-            <Message
-              model={{
-                message: m.message,
-                sentTime: "15 mins ago",
-                sender: props.username,
-                direction: "outgoing",
-                position: "single",
-              }}
-            >
-              <Avatar src={avatarIco} name={props.username} />
-            </Message>
-          </div>
-        ))}
+        <div>
+          {adminMsgs.map((m) => (
+            <div>
+              <Message
+                model={{
+                  message: m.message,
+                  sentTime: "15 mins ago",
+                  sender: props.username,
+                  direction: "outgoing",
+                  position: "single",
+                }}
+              >
+                <Avatar src={avatarIco} name={props.username} />
+              </Message>
+            </div>
+          ))}
+        </div>
       </div>
     );
   };
 
   const [adminMessage, setAdminMessage] = useState("");
   const [msgContainer, setMsgContainer] = useState(CustomMessageBoxClient);
-  const [msgAdminContainer, setmsgAdminContainer] = useState(
-    CustomMessageBoxAdmin
-  );
 
   const Jalal = "Jalal";
   const Ahmad = "Ahmad";
@@ -437,7 +429,6 @@ const AdminPanel = (props) => {
               }}
             >
               {msgContainer}
-              {msgAdminContainer}
             </MessageList.Content>
           </MessageList>
           <MessageInput
