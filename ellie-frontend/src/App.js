@@ -200,6 +200,8 @@ const App = () => {
     }
   };
 
+  joinRoom("ali");
+
   console.log(`clientMessageArray ${JSON.stringify(clientMessageArray)}`);
   return (
     <div>
