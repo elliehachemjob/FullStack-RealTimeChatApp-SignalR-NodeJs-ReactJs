@@ -36,19 +36,9 @@ import CustomRecieveMsgForAdminInAdminPanel from "./components/CustomRecieveMsgF
 import CustomMessageBoxInAdminPanel from "./components/CustomMessageBoxInAdminPanel";
 import { joinRoom, sendMessage } from "./functions/eventListeners";
 import ClientWidget from "./components/ClientWidget";
+import AdminPanel from "./components/AdminPanel";
 
 const App = () => {
-  // for widget
-  const [isWidget, setisWidget] = useState(false);
-  const [connection, setConnection] = useState();
-  const CustomMessageBoxAdmin = () => {
-    return <div>{adminResponder}</div>;
-  };
-
-  useEffect(() => {
-    renderCustomComponent(CustomMessageBoxAdmin);
-  }, [adminResponder, setAdminResponder]);
-
   //for admin panel
   const dispatch = useDispatch();
   const user = useSelector(usernameSelector);
@@ -58,283 +48,21 @@ const App = () => {
   const [clientResponder, setClientResponder] = useState("");
   const [chatListMapping, setChatListMapping] = useState([]);
   const [users, setUsers] = useState([]);
-  const [adminResponder, setAdminResponder] = useState();
   const [username, setUsername] = useState("");
   const [clientMessageArray, setClientMessageArray] = useState([]);
   const [adminMessageArray, setAdminMessageArray] = useState([]);
 
-  const AdminPanel = () => {
-    const [adminMessage, setAdminMessage] = useState("");
-    const [msgContainer, setMsgContainer] = useState(
-      <CustomRecieveMsgForAdminInAdminPanel
-        clientMessageArray={clientMessageArray}
-        name={username}
-        src={avatarIco}
-      />
-    );
-    const [msgAdminContainer, setmsgAdminContainer] = useState(
-      <CustomSendMsgForAdminInAdminPanel
-        adminMessageArray={adminMessageArray}
-        name={username}
-        src={avatarIco}
-      />
-    );
-
-    const names = [
-      "Jalal",
-      "Ahmad",
-      "Ellie",
-      "Abas",
-      "Rita",
-      "Shadi",
-      "Sam",
-      "Marios",
-    ];
-
-    const msgs = [
-      ["hey", "How is the project going"],
-      ["I talked to you yesterday", "Did you do redux"],
-      ["Good morning", "There is an issue here"],
-      ["Issue", "ticket 2021"],
-      ["There is a customer complaining", "need help"],
-      ["In the row", "how is the project going"],
-      ["No Message Here"],
-      ["How are you", "what is happening", "was calling you from mins "],
-    ];
-
-    return (
-      <div
-        style={{
-          height: "600px",
-          position: "relative",
-        }}
-      >
-        <MainContainer responsive>
-          <Sidebar position="left" scrollable={false}>
-            <Search placeholder="Search..." />
-            <ConversationList>
-              <Conversation
-                name={names[0]}
-                lastSenderName={names[0]}
-                info="Yes i can do it for you"
-                onClick={() => {
-                  setUsername(names[0]);
-                  setMsgContainer(
-                    <CustomMessageBoxInAdminPanel
-                      msg={msgs[0]}
-                      name={username}
-                    />
-                  );
-                }}
-              >
-                <Avatar src={avatarIco} name={names[0]} status="available" />
-              </Conversation>
-
-              <Conversation
-                name={names[1]}
-                lastSenderName={names[1]}
-                info="Yes i can do it for you"
-                onClick={() => {
-                  setClientResponder("");
-                  setUsername(names[1]);
-                  setMsgContainer(
-                    <CustomMessageBoxInAdminPanel msg={msgs[1]} />
-                  );
-                }}
-              >
-                <Avatar src={avatarIco} name={names[1]} status="dnd" />
-              </Conversation>
-
-              <Conversation
-                name={names[2]}
-                lastSenderName={names[2]}
-                info="Yes i can do it for you"
-                unreadCnt={3}
-                onClick={() => {
-                  setClientResponder("");
-                  setUsername(names[2]);
-                  setMsgContainer(
-                    <CustomMessageBoxInAdminPanel
-                      msg={msgs[2]}
-                      name={username}
-                    />
-                  );
-                }}
-              >
-                <Avatar src={avatarIco} name={names[2]} status="available" />
-              </Conversation>
-
-              <Conversation
-                name={names[3]}
-                lastSenderName={names[3]}
-                info="Yes i can do it for you"
-                onClick={() => {
-                  setClientResponder("");
-                  setUsername(names[3]);
-                  setMsgContainer(
-                    <CustomMessageBoxInAdminPanel
-                      msg={msgs[3]}
-                      name={username}
-                    />
-                  );
-                }}
-              >
-                <Avatar src={avatarIco} name={names[3]} status="dnd" />
-              </Conversation>
-
-              <Conversation
-                name={names[4]}
-                lastSenderName={names[4]}
-                info="Yes i can do it for you"
-                onClick={() => {
-                  setClientResponder("");
-                  setUsername(names[4]);
-                  setMsgContainer(
-                    <CustomMessageBoxInAdminPanel
-                      msg={msgs[4]}
-                      name={username}
-                    />
-                  );
-                }}
-              >
-                <Avatar src={avatarIco} name={names[4]} status="dnd" />
-              </Conversation>
-              <Conversation
-                name={names[5]}
-                lastSenderName={names[6]}
-                info="Yes i can do it for you"
-                onClick={() => {
-                  setClientResponder("");
-                  setUsername(names[5]);
-                  setMsgContainer(
-                    <CustomMessageBoxInAdminPanel
-                      msg={msgs[5]}
-                      name={username}
-                    />
-                  );
-                }}
-              >
-                <Avatar src={avatarIco} name={names[5]} status="dnd" />
-              </Conversation>
-
-              <Conversation
-                name={names[6]}
-                lastSenderName={names[6]}
-                info="Yes i can do it for you"
-                onClick={() => {
-                  setClientResponder("");
-                  setUsername(names[6]);
-                  setMsgContainer(
-                    <CustomMessageBoxInAdminPanel
-                      msg={msgs[6]}
-                      name={username}
-                    />
-                  );
-                }}
-              >
-                <Avatar src={avatarIco} name={names[6]} status="dnd" />
-              </Conversation>
-
-              <Conversation
-                name={names[7]}
-                lastSenderName={names[7]}
-                info="Yes i can do it for you"
-                onClick={() => {
-                  setClientResponder("");
-                  setUsername(names[7]);
-                  setMsgContainer(
-                    <CustomMessageBoxInAdminPanel
-                      msg={msgs[7]}
-                      name={username}
-                    />
-                  );
-                }}
-              >
-                <Avatar src={avatarIco} name={names[7]} status="dnd" />
-              </Conversation>
-              {chatListMapping}
-            </ConversationList>
-          </Sidebar>
-
-          <ChatContainer>
-            <ConversationHeader>
-              <ConversationHeader.Back />
-              <Avatar src={avatarIco} name={username} />
-              <ConversationHeader.Content
-                userName={!username ? "Jalal" : username}
-                info="Active 10 mins ago"
-              />
-              <ConversationHeader.Actions>
-                <VoiceCallButton />
-                <VideoCallButton />
-                <InfoButton />
-              </ConversationHeader.Actions>
-            </ConversationHeader>
-            <MessageList>
-              <MessageList.Content
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "center",
-                  height: "100%",
-                  textAlign: "center",
-                  fontSize: "1.2em",
-                }}
-              >
-                {msgContainer}
-                {msgAdminContainer}
-              </MessageList.Content>
-            </MessageList>
-            <MessageInput
-              onAttachClick={() => {
-                alert("use library/function to upload here");
-              }}
-              onChange={(e) => {
-                setAdminMessage(e);
-              }}
-              placeholder="Type message here"
-              onSend={() => {
-                sendMessage("Admin", "Admin", adminMessage, connection);
-              }}
-            />
-          </ChatContainer>
-
-          <Sidebar position="right">
-            <ExpansionPanel open title="INFO">
-              <p>DynamicData</p>
-              <p>DynamicData</p>
-              <p>DynamicData</p>
-              <p>DynamicData</p>
-            </ExpansionPanel>
-            <ExpansionPanel title="CUSTOMIZATION">
-              <p>DynamicData</p>
-              <p>DynamicData</p>
-              <p>DynamicData</p>
-              <p>DynamicData</p>
-            </ExpansionPanel>
-            <ExpansionPanel title="MEDIA">
-              <p>DynamicData</p>
-              <p>DynamicData</p>
-              <p>DynamicData</p>
-              <p>DynamicData</p>
-            </ExpansionPanel>
-            <ExpansionPanel title="SURVEY">
-              <p>DynamicData</p>
-              <p>DynamicData</p>
-              <p>DynamicData</p>
-              <p>DynamicData</p>
-            </ExpansionPanel>
-            <ExpansionPanel title="SETTINGS">
-              <p>DynamicData</p>
-              <p>DynamicData</p>
-              <p>DynamicData</p>
-              <p>DynamicData</p>
-            </ExpansionPanel>
-          </Sidebar>
-        </MainContainer>
-      </div>
-    );
+  // for widget
+  const [adminResponder, setAdminResponder] = useState();
+  const [isWidget, setisWidget] = useState(false);
+  const [connection, setConnection] = useState(); // also for admin
+  const CustomMessageBoxAdmin = () => {
+    return <div>{adminResponder}</div>;
   };
+
+  useEffect(() => {
+    renderCustomComponent(CustomMessageBoxAdmin);
+  }, [adminResponder, setAdminResponder]);
 
   const Routing = () => {
     return (
@@ -375,9 +103,8 @@ const App = () => {
           <ClientWidget
             setisWidget={setisWidget}
             isWidget={isWidget}
-            connection={connection}
+            sendMessage={sendMessage(connection)}
           />
-
           <AdminPanel />
         </div>
       )}

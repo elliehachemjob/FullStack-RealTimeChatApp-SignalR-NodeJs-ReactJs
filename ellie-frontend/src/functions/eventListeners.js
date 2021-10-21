@@ -83,7 +83,7 @@ export const joinRoom = async (
   // }
 };
 
-export const sendMessage = async (user3, isAdmin, message, connection) => {
+export const sendMessage = async (user3, isAdmin, message) => {
   try {
     await connection.invoke("SendMessage", user3, isAdmin, message);
   } catch (e) {
