@@ -67,8 +67,8 @@ import {
   ExpansionPanel,
   MessageGroup,
 } from "@chatscope/chat-ui-kit-react";
-
-var FileSaver = require("file-saver");
+import LoginForm from "./LoginForm";
+import SignUpForm from "./SignUpForm";
 
 const App = () => {
   const CustomMessageBoxAdmin1 = () => {
@@ -672,257 +672,15 @@ const App = () => {
 
   const dispatch = useDispatch();
 
-  const SignUpForm = () => {
-    const LoginForm = () => {
-      const loginHandler = () => {
-        axios
-          .post(`http://localhost:1589/api/users/login`, {
-            Email: user1,
-            Auth: password1,
-            IsAdmin: 0,
-          })
-          .then((res) => {
-            console.log(` data is ${JSON.stringify(res)}`);
-            if (res.data === "Logged In Successfully") {
-              alert("sucess");
-              joinRoom(user1);
-            } else if (
-              res.data === "Make sure email and password are correct"
-            ) {
-              alert("Make sure email and password are correct ");
-            }
-          })
-          .catch((e) => {
-            console.log(e);
-          });
-      };
-
-      const [user1, setUser1] = useState();
-      const [password1, setPassword1] = useState();
-      const [timer, setTimer] = useState(null);
-      return (
-        <Level>
-          <Level.Item textAlign="centered">
-            <Container
-              style={{
-                maxWidth: 400,
-                height: "100vh",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-              }}
-            >
-              <Card>
-                <Section backgroundColor="primary">
-                  <Title style={{ color: "white" }}>Plugit Support Login</Title>
-                </Section>
-                <Card.Content>
-                  <Field>
-                    <Control iconLeft iconRight>
-                      <Input
-                        //  disabled={loading}
-                        type="email"
-                        placeholder="Email"
-                        value={user1}
-                        onChange={(e) => setUser1(e.target.value)}
-                      />
-
-                      <Icon size="small" align="left">
-                        <FontAwesomeIcon icon={faEnvelope} />
-                      </Icon>
-                      <Icon size="small" align="right">
-                        <FontAwesomeIcon icon={faCheck} />
-                      </Icon>
-                    </Control>
-                  </Field>
-                  <Field>
-                    <Control iconLeft>
-                      <Input
-                        type="password"
-                        placeholder="Password"
-                        onChange={(e) => setPassword1(e.target.value)}
-                        value={password1}
-                      />
-
-                      <Icon size="small" align="left">
-                        <FontAwesomeIcon icon={faLock} />
-                      </Icon>
-                    </Control>
-                  </Field>
-                  <Field>
-                    <Control>
-                      <Label>
-                        <Checkbox
-                        //  disabled={loading}
-                        />{" "}
-                        Remember me
-                      </Label>
-                      <Label>
-                        <Link
-                          style={{
-                            paddingLeft: 175,
-                            top: 120,
-                            right: 85,
-                            position: "relative",
-                          }}
-                          to="/SignUpForm"
-                        >
-                          Create New Account
-                        </Link>
-                      </Label>
-                    </Control>
-                  </Field>
-                  <Field>
-                    <Control>
-                      <Button
-                        onClick={() => {
-                          loginHandler();
-                        }}
-                        color="primary"
-                      >
-                        Login
-                      </Button>
-                    </Control>
-                  </Field>
-                </Card.Content>
-              </Card>
-            </Container>
-          </Level.Item>
-        </Level>
-      );
-    };
-
-    const SignUpForm = () => {
-      const signUpHandler = () => {
-        axios
-          .post(`http://localhost:1589/api/users`, {
-            Email: user2,
-            Auth: password2,
-            IsAdmin: 0,
-          })
-          .then((res) => {
-            console.log(` data is ${JSON.stringify(res)}`);
-            if (res.data === "Added Successfully") {
-              alert("register success");
-              joinRoom(user2);
-            } else if (res.data === "Email Already Exist") {
-              alert("email already exist");
-            }
-          })
-          .catch((e) => {
-            console.log(e);
-            if (e) {
-              alert("already exist");
-            }
-          });
-      };
-
-      const [user2, setUser2] = useState();
-      const [password2, setPassword2] = useState();
-      const [sendEmailVerification, setSendEmailVerification] = useState();
-      const [timer, setTimer] = useState(null);
-
-      return (
-        <Level>
-          <Level.Item textAlign="centered">
-            <Container
-              style={{
-                maxWidth: 400,
-                height: "100vh",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-              }}
-            >
-              <Card>
-                <Section backgroundColor="primary">
-                  <Title style={{ color: "white" }}>
-                    Plugit Support Sign Up
-                  </Title>
-                </Section>
-                <Card.Content>
-                  <Field>
-                    <Control iconLeft iconRight>
-                      <Input
-                        // enabled={loading}
-                        type="email"
-                        placeholder="Email"
-                        onChange={(e) => {
-                          setUser2(e.target.value);
-                        }}
-                      />
-                      <Icon size="small" align="left">
-                        <FontAwesomeIcon icon={faEnvelope} />
-                      </Icon>
-                      <Icon size="small" align="right">
-                        <FontAwesomeIcon icon={faCheck} />
-                      </Icon>
-                    </Control>
-                  </Field>
-                  <Field>
-                    <Control iconLeft>
-                      <Input
-                        type="password"
-                        placeholder="Password"
-                        onChange={(e) => setPassword2(e.target.value)}
-                        value={password2}
-                      />
-                      <Icon size="small" align="left">
-                        <FontAwesomeIcon icon={faLock} />
-                      </Icon>
-                    </Control>
-                  </Field>
-                  <Field>
-                    <Control iconLeft>
-                      <Input
-                        type="email"
-                        placeholder="Send Email Verification"
-                        onChange={(e) =>
-                          setSendEmailVerification(e.target.value)
-                        }
-                        value={sendEmailVerification}
-                      />
-                      <Icon size="small" align="left">
-                        <FontAwesomeIcon icon={faArrowRight} />
-                      </Icon>
-                    </Control>
-                  </Field>
-                  <Field>
-                    <Control>
-                      <Label>
-                        <Checkbox />
-                        Remember me
-                      </Label>
-                    </Control>
-                  </Field>
-                  <Field>
-                    <Control>
-                      <Button
-                        onClick={() => {
-                          signUpHandler();
-                        }}
-                        color="primary"
-                      >
-                        SignUp
-                      </Button>
-                    </Control>
-                  </Field>
-                </Card.Content>
-              </Card>
-            </Container>
-          </Level.Item>
-        </Level>
-      );
-    };
-
+  const Home = () => {
     return (
       <BrowserRouter>
         <Switch>
           <Route exact path="/SignUpForm">
-            <SignUpForm />
+            <SignUpForm joinRoom={joinRoom} />
           </Route>
           <Route exact path="/">
-            <LoginForm />
+            <LoginForm joinRoom={joinRoom} />
           </Route>
         </Switch>
       </BrowserRouter>
@@ -1002,30 +760,11 @@ const App = () => {
     }
   };
 
-  const sendPrivateMessage = async (user, message) => {
-    try {
-      console.log("done ");
-      await connection.invoke("SendPrivateMessage", user, message);
-      console.log("private message sent ");
-      console.log(user);
-    } catch (e) {
-      console.log(e);
-    }
-  };
-
-  const closeConnection = async () => {
-    try {
-      await connection.stop();
-    } catch (e) {
-      console.log(e);
-    }
-  };
-
   return (
     <div>
       {!connection ? (
         <div>
-          <SignUpForm joinRoom={joinRoom} />
+          <Home joinRoom={joinRoom} />
         </div>
       ) : (
         <div>
@@ -1036,7 +775,6 @@ const App = () => {
             subtitle="Welcome To Yoonit Customer Service"
             senderPlaceHolder="press send button or enter to send a message"
           />
-
           <AdminPanel />
         </div>
       )}
