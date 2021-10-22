@@ -1,3 +1,5 @@
+import "./styles.css";
+
 import React, { useEffect, useState } from "react";
 import { HubConnectionBuilder } from "@microsoft/signalr";
 import "./App.css";
@@ -12,12 +14,12 @@ import {
 } from "./store/messges/messagesReducer";
 import { renderCustomComponent } from "react-chat-widget";
 import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
-import styles from "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
 import { Message, Avatar, Conversation } from "@chatscope/chat-ui-kit-react";
 import LoginForm from "./components/LoginForm";
 import SignUpForm from "./components/SignUpForm";
 import ClientWidget from "./components/ClientWidget";
 import AdminPanel from "./components/AdminPanel";
+
 
 const App = () => {
   const avatarIco =

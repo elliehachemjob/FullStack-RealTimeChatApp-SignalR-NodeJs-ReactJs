@@ -20,8 +20,6 @@ import {
 import { faCheck, faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
-import styles from "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
-
 
 
 

@@ -1,12 +1,10 @@
 import React, { useState } from "react";
-
-// import "../App.css";
+import "../App.css";
 import { useSelector, useDispatch } from "react-redux";
 import {
   adminMsgSelector,
   clientMsgSelector,
 } from "../store/messges/messagesReducer";
-import styles from "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
 import {
   MainContainer,
   ChatContainer,

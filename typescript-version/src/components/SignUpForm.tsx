@@ -23,7 +23,6 @@ import {
   faLock,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import styles from "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
 
 const SignUpForm = (props:any) => {
   const signUpHandler = () => {
