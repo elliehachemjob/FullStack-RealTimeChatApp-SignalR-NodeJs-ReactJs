@@ -104,7 +104,7 @@ const AdminPanel:React.FC<Props> = (props:any):any => {
   const Marios = "Marios";
 
   const CustomMessageBoxClientJalal:any = ():any => {
-    const jalalMsg = ["hey", "How is the project going"];
+    const jalalMsg:string[] = ["hey", "How is the project going"];
 
     return (
       <div>
