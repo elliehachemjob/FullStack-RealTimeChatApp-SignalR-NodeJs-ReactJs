@@ -24,7 +24,13 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const SignUpForm = (props:any) => {
+
+interface Props{
+  joinRoom:any
+  }
+
+
+const SignUpForm:React.FC<Props> = (props:any) => {
   const signUpHandler = () => {
     axios
       .post(`http://localhost:1589/api/users`, {

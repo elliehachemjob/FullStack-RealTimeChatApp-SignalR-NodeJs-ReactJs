@@ -23,7 +23,13 @@ import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
 
 
 
-const LoginForm = (props:any) => {
+interface Props{
+  joinRoom:any
+  }
+
+
+
+const LoginForm:React.FC<Props> = (props:any) => {
   
   const loginHandler = () => {
     axios
