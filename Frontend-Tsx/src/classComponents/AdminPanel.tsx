@@ -43,11 +43,6 @@ interface Props{
 
   class  AdminPanel extends React.Component<Props> {
 
-
-  interface message{
-    message:string 
-  }
-
   let adminMsgs:message[] = useSelector(adminMsgSelector);
   let clientMsgs:message[] = useSelector(clientMsgSelector);
 
@@ -142,7 +137,7 @@ class CustomMessageBoxJalal extends React.Component {
               model={{
                 message: m,
                 sentTime: "15 mins ago",
-                sender: props.username,
+                sender: this.props.username,
                 direction: "outgoing",
                 position: "single",
               }}
@@ -294,7 +289,7 @@ class CustomMessageBoxJalal extends React.Component {
     );
   }};
 
-  render(){
+render(){
   return (
     <div
       style={{
@@ -312,7 +307,7 @@ class CustomMessageBoxJalal extends React.Component {
               info="Yes i can do it for you"
               onClick={() => {
                 props.setUsername(names[0]);
-                this.setState({msgContainer:CustomMessageBoxClientJalal});
+                this.setState({msgContainer:CustomMessageBoxJalal});
               }}
             >
               <Avatar src={avatarIco} name={names[0]} status="available" />
@@ -325,7 +320,7 @@ class CustomMessageBoxJalal extends React.Component {
               onClick={() => {
                 this.props.setClientResponder("");
                 this.props.setUsername(names[1]);
-                this.setState({msgContainer:CustomMessageBoxClientAhmad});
+                this.setState({msgContainer:CustomMessageBoxAhmad});
               }}
             >
               <Avatar src={avatarIco} name={names[1]} status="dnd" />
@@ -339,7 +334,7 @@ class CustomMessageBoxJalal extends React.Component {
               onClick={() => {
                 this.props.setClientResponder("");
                 this.props.setUsername(names[2]);
-                this.setState({msgContainer:CustomMessageBoxClientEllie})
+                this.setState({msgContainer:CustomMessageBoxEllie})
               }}
             >
               <Avatar src={avatarIco} name={names[2]} status="available" />
@@ -352,7 +347,7 @@ class CustomMessageBoxJalal extends React.Component {
               onClick={() => {
                 this.props.setClientResponder("");
                 this.props.setUsername(names[3]);
-                this.setState({msgContainer:CustomMessageBoxClientAbas})
+                this.setState({msgContainer:CustomMessageBoxAbas})
               }}
             >
               <Avatar src={avatarIco} name={names[3]} status="dnd" />
@@ -365,7 +360,7 @@ class CustomMessageBoxJalal extends React.Component {
               onClick={() => {
                 this.props.setClientResponder("");
                 this.props.setUsername(names[4]);
-                this.setState({msgContainer:CustomMessageBoxClientRita})
+                this.setState({msgContainer:CustomMessageBoxRita})
               }}
             >
               <Avatar src={avatarIco} name={names[4]} status="dnd" />
@@ -377,7 +372,7 @@ class CustomMessageBoxJalal extends React.Component {
               onClick={() => {
                 this.props.setClientResponder("");
                 this.props.setUsername(names[5]);
-                this.setState({msgContainer:CustomMessageBoxClientShadi})
+                this.setState({msgContainer:CustomMessageBoxShadi})
               }}
             >
               <Avatar src={avatarIco} name={names[5]} status="dnd" />
@@ -390,7 +385,7 @@ class CustomMessageBoxJalal extends React.Component {
               onClick={() => {
                 this.props.setClientResponder("");
                 this.props.setUsername(names[6]);
-                this.setState({msgContainer:CustomMessageBoxClientSam})
+                this.setState({msgContainer:CustomMessageBoxSam})
               }}
             >
               <Avatar src={avatarIco} name={names[6]} status="dnd" />
@@ -403,7 +398,7 @@ class CustomMessageBoxJalal extends React.Component {
               onClick={() => {
                 this.props.setClientResponder("");
                 this.props.setUsername(names[7]);
-                this.setState({msgContainer:CustomMessageBoxClientMarios})
+                this.setState({msgContainer:CustomMessageBoxMarios})
               }}
             >
               <Avatar src={avatarIco} name={names[7]} status="dnd" />
