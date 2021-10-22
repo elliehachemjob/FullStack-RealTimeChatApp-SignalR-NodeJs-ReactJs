@@ -40,10 +40,10 @@ const App = () => {
 
   const [isWidget, setIsWidget] = useState<any>(false);
 
-  const CustomMessageBoxAdmin = (props:any) => {
+  const CustomMessageBoxAdmin = () => {
 
     if (adminResponder)
-      return <div className="admin-message">{props.adminResponder}</div>;
+      return <div className="admin-message">{adminResponder}</div>;
     else {
       return <div>{adminResponder}</div>;
     }
