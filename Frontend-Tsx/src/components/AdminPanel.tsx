@@ -41,16 +41,18 @@ interface Props{
 
 
 const AdminPanel:React.FC<Props> = (props:any):any => {
-  console.log(props)
 
+  interface message{
+    message:string 
+  }
 
-  let adminMsgs:any = useSelector(adminMsgSelector);
-  let clientMsgs:any = useSelector(clientMsgSelector);
+  let adminMsgs:message[] = useSelector(adminMsgSelector);
+  let clientMsgs:message[] = useSelector(clientMsgSelector);
 
-  const avatarIco =
+  const avatarIco:string =
     "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAZlBMVEUOHCyclYufmI0AECZvbGkAACCjm5AIGCoxOUIAEycAFSgLGisNHCwEFykDFyljY2N9enUlLjkACCKWkIc+Q0lmZmWIhH0bJjN/e3YVIjGSjYRAREpbXF0tND54dXGEgHpKTVFTVVcfARIMAAADVklEQVR4nO3ciXaiMABA0ZA4lhBEcV+r/v9PTtA6FUVGLXOyzLtf4DtktVghAAAAAAAAAAAAAAAAAAAAAABAuIwej9XAuP4Y/4xR5XY+6U11pI1GL4ZrmSQyGaXZIHf9cTqXa7Gt+ipSfqZ64PoTdcuoYjj56js3jtJxRM/RqMUwueo7Ny6nqohjPtr1Zbi+6Ts1JqNpFsGak2eLxr5z4zItAp+PRtfn313jaT66/pTvM2p1N//uGvv7YOdjNf/ant/VWJ3qABsv+/szzmtOWHtHrldP950a7XwM6QxglJk9Mz7rjcvpOJCxWs2/v60vzY37qc78b7R9s1fGZ60xWW58PwMYu7+/Oj5vGr0+A9yer99qrM4AheuSZnZ/n8kf9p0a7RnAyzVHly+vnw8bq/no3faYbd5dX5obe749xNy8s0G0NW6166a6bNttYJJMxq6b6lSv68L+L9dNdRRSSKF7FFJIoXsUUkihexRSSKF7FFJIoXsUUkihexRSSKF7FFJIoXsUUkihexRSSKF7FL5Oxl4oR8p1U13XhXJdevb6ZbeFUo5K396E7rJQyvlBfLguutVdoUyWB+PfO9BdFUopZztV+NfXUaHs749KebbCXHTwFrScfKbGs5e7r5iy/7M8uR7ulNe/0Bt//uTHQNXq6evwvMjz+buJMumlYw9Xz1sfi7cS7ePbikB+XJntXk+Uk9FmpT0fnt+K3frFxzeZpdrLze+RbPdKX39+XKmPkPqsLJ0825d82tUlmOH5LZs+k2gf37DMwlhd7mSbJx7f/mBXl8CG5x+5PvzlcCP3UxXi8Pymju17xjys1bOJaj2Ey6O/h+tnGT1s+38taaArzLU8m7Ukpt59P/GGvO0+HEWhMC13qTgKRV48TIykUBgxepAYS6Ew+b45MZpCu2k0XxfjKRRm1ZgYUaEoyqbEmArtjbjhv4FEVdh46Y+rsCkxskKhN7eX/tgKhTrEXmgTZeSFuap/rxFf4e33GjEW1i/9MRbWL/1RFopc9/pxF15/rxFpoR2ol0t/rIX2Rvx16Y+20F4Xz5f+eAvtUzxdFyMuFKaw10Xp2zuHnRqU8/5chf53mVaDxSHqRyiqgRp5IAAAAAAAAAAAAAAAAAAAAAAA/4Hf0gU2cK/EibwAAAAASUVORK5CYII=";
 
-  const CustomMessageBoxClient = () => {
+  const CustomMessageBoxClient:any = ():any => {
     return (
       <div>
         {clientMsgs.map((m:any) => (
@@ -89,8 +91,8 @@ const AdminPanel:React.FC<Props> = (props:any):any => {
     );
   };
 
-  const [adminMessage, setAdminMessage] = useState("");
-  const [msgContainer, setMsgContainer] = useState(CustomMessageBoxClient);
+  const [adminMessage, setAdminMessage] = useState<string>("");
+  const [msgContainer, setMsgContainer] = useState<any[]>(CustomMessageBoxClient);
 
   const Jalal = "Jalal";
   const Ahmad = "Ahmad";
@@ -101,7 +103,7 @@ const AdminPanel:React.FC<Props> = (props:any):any => {
   const Sam = "Sam";
   const Marios = "Marios";
 
-  const CustomMessageBoxClientJalal = () => {
+  const CustomMessageBoxClientJalal:any = ():any => {
     const jalalMsg = ["hey", "How is the project going"];
 
     return (
@@ -125,7 +127,7 @@ const AdminPanel:React.FC<Props> = (props:any):any => {
     );
   };
 
-  const CustomMessageBoxClientAhmad = () => {
+  const CustomMessageBoxClientAhmad:any = ():any => {
     const ahmadMsg = ["I talked to you yesterday", "Did you do redux"];
 
     return (
@@ -149,7 +151,7 @@ const AdminPanel:React.FC<Props> = (props:any):any => {
     );
   };
 
-  const CustomMessageBoxClientEllie = () => {
+  const CustomMessageBoxClientEllie:any = ():any => {
     const ellieMsg = ["Good morning", "There is an issue here"];
 
     return (
@@ -173,7 +175,7 @@ const AdminPanel:React.FC<Props> = (props:any):any => {
     );
   };
 
-  const CustomMessageBoxClientAbas = () => {
+  const CustomMessageBoxClientAbas:any = ():any => {
     const abasMsg = ["Issue", "ticket 2021"];
 
     return (
@@ -197,7 +199,7 @@ const AdminPanel:React.FC<Props> = (props:any):any => {
     );
   };
 
-  const CustomMessageBoxClientRita = () => {
+  const CustomMessageBoxClientRita:any = ():any => {
     const ritaMsg = ["There is a customer complaining", "need help"];
 
     return (
@@ -221,7 +223,7 @@ const AdminPanel:React.FC<Props> = (props:any):any => {
     );
   };
 
-  const CustomMessageBoxClientShadi = () => {
+  const CustomMessageBoxClientShadi:any = ():any => {
     const shadiMsg = ["In the row", "how is the project going"];
 
     const abasMsg = ["Issue", "ticket 2021"];
@@ -247,10 +249,9 @@ const AdminPanel:React.FC<Props> = (props:any):any => {
     );
   };
 
-  const CustomMessageBoxClientSam = () => {
+  const CustomMessageBoxClientSam:any= ():any => {
     const samMsg = ["No Message Here"];
 
-    const abasMsg = ["Issue", "ticket 2021"];
 
     return (
       <div>
@@ -273,7 +274,7 @@ const AdminPanel:React.FC<Props> = (props:any):any => {
     );
   };
 
-  const CustomMessageBoxClientMarios = () => {
+  const CustomMessageBoxClientMarios:any = ():any => {
     const mariosMsg = [
       "How are you",
       "what is happening",
