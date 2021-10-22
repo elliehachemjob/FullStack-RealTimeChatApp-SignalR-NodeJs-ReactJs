@@ -3,7 +3,19 @@ import { Widget } from "react-chat-widget";
 import flippedimage from "../assets/images/normalImage.png";
 import normalimage from "../assets/images/flippedImage.png";
 
-function ClientWidget(props:any) {
+
+
+interface Props{
+ isWidget:boolean,
+ setIsWidget: (active: boolean)=>void;
+ sendMessage:(user3:any, isAdmin:any, message:any)=>any;
+
+}
+
+
+
+const  ClientWidget:React.FC<Props>=(props:any)=> {
+  console.log(props)
   const getCustomLauncher = (handleToggle:any) => {
     if (props.isWidget) {
       return (
