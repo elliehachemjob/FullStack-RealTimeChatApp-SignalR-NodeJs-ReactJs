@@ -54,9 +54,8 @@ const LoginForm:React.FC<Props> = (props:any):any=> {
       });
   };
 
-  const [user1, setUser1] = useState();
-  const [password1, setPassword1] = useState();
-  const [timer, setTimer] = useState(null);
+  const [user1, setUser1] = useState<string>();
+  const [password1, setPassword1] = useState<string>();
   return (
     <Level>
       <Level.Item textAlign="centered">

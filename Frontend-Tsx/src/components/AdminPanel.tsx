@@ -24,14 +24,19 @@ import {
 } from "@chatscope/chat-ui-kit-react";
 
 
+interface message{
+  message:string 
+}
+
+
 interface Props{
   username:string,
   setUsername:(username: string)=>void,
   setClientResponder:(response: string)=>void;
-  chatListMapping:any,
-  clientMessageArray:any[],
-  adminMessageArray:any[],
-  sendMessage:(user3:any, isAdmin:any, message:any)=>any
+  chatListMapping:any[],
+  clientMessageArray:message[],
+  adminMessageArray:message[],
+  sendMessage:(user3:string, isAdmin:string, message:string)=>Promise<void>
   }
 
 

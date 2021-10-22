@@ -9,7 +9,7 @@ interface Props{
 
  isWidget:boolean,
  setIsWidget: (active: boolean)=>void,
- sendMessage:(user3:any, isAdmin:any, message:any)=>any,
+ sendMessage:(user3:string, isAdmin:string, message:string)=>Promise<void>,
 }
 
 

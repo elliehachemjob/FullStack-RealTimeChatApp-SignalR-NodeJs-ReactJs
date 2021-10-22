@@ -57,10 +57,9 @@ const SignUpForm:React.FC<Props> = (props:any):any => {
       });
   };
 
-  const [user2, setUser2] = useState();
-  const [password2, setPassword2] = useState();
-  const [sendEmailVerification, setSendEmailVerification] = useState();
-  const [timer, setTimer] = useState(null);
+  const [user2, setUser2] = useState<string>();
+  const [password2, setPassword2] = useState<string>();
+  const [sendEmailVerification, setSendEmailVerification] = useState<string>();
 
   return (
     <Level>
