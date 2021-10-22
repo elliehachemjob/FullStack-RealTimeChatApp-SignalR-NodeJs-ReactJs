@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import axios from "axios";
 import "../App.css";
@@ -16,45 +17,42 @@ import {
   Checkbox,
   Button,
 } from "rbx";
-import {
-  faArrowRight,
-  faCheck,
-  faEnvelope,
-  faLock,
-} from "@fortawesome/free-solid-svg-icons";
+import { faCheck, faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
 import styles from "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
 
-const SignUpForm = (props) => {
-  const signUpHandler = () => {
+
+
+
+const LoginForm = (props:any) => {
+  
+  const loginHandler = () => {
     axios
-      .post(`http://localhost:1589/api/users`, {
-        Email: user2,
-        Auth: password2,
+      .post(`http://localhost:1589/api/users/login`, {
+        Email: user1,
+        Auth: password1,
         IsAdmin: 0,
       })
       .then((res) => {
         console.log(` data is ${JSON.stringify(res)}`);
-        if (res.data === "Added Successfully") {
-          alert("register success");
-          props.joinRoom(user2);
-        } else if (res.data === "Email Already Exist") {
-          alert("email already exist");
+        // @ts-ignore
+        if (  res.data === "Logged In Successfully") {
+          alert("sucess");
+          props.joinRoom(user1);
+          // @ts-ignore
+        } else if (res.data === "Make sure email and password are correct") {
+          alert("Make sure email and password are correct ");
         }
       })
       .catch((e) => {
         console.log(e);
-        if (e) {
-          alert("already exist");
-        }
       });
   };
 
-  const [user2, setUser2] = useState();
-  const [password2, setPassword2] = useState();
-  const [sendEmailVerification, setSendEmailVerification] = useState();
+  const [user1, setUser1] = useState();
+  const [password1, setPassword1] = useState();
   const [timer, setTimer] = useState(null);
-
   return (
     <Level>
       <Level.Item textAlign="centered">
@@ -69,19 +67,18 @@ const SignUpForm = (props) => {
         >
           <Card>
             <Section backgroundColor="primary">
-              <Title style={{ color: "white" }}>Plugit Support Sign Up</Title>
+              <Title style={{ color: "white" }}>Plugit Support Login</Title>
             </Section>
             <Card.Content>
               <Field>
                 <Control iconLeft iconRight>
                   <Input
-                    // enabled={loading}
                     type="email"
                     placeholder="Email"
-                    onChange={(e) => {
-                      setUser2(e.target.value);
-                    }}
+                    value={user1}
+                    onChange={(e:any) => setUser1(e.target.value)}
                   />
+
                   <Icon size="small" align="left">
                     <FontAwesomeIcon icon={faEnvelope} />
                   </Icon>
@@ -95,32 +92,35 @@ const SignUpForm = (props) => {
                   <Input
                     type="password"
                     placeholder="Password"
-                    onChange={(e) => setPassword2(e.target.value)}
-                    value={password2}
+                    onChange={(e:any) => setPassword1(e.target.value)}
+                    value={password1}
                   />
+
                   <Icon size="small" align="left">
                     <FontAwesomeIcon icon={faLock} />
                   </Icon>
                 </Control>
               </Field>
               <Field>
-                <Control iconLeft>
-                  <Input
-                    type="email"
-                    placeholder="Send Email Verification"
-                    onChange={(e) => setSendEmailVerification(e.target.value)}
-                    value={sendEmailVerification}
-                  />
-                  <Icon size="small" align="left">
-                    <FontAwesomeIcon icon={faArrowRight} />
-                  </Icon>
-                </Control>
-              </Field>
-              <Field>
                 <Control>
                   <Label>
-                    <Checkbox />
+                    <Checkbox
+                    //  disabled={loading}
+                    />{" "}
                     Remember me
+                  </Label>
+                  <Label>
+                    <Link
+                      style={{
+                        paddingLeft: 175,
+                        top: 120,
+                        right: 85,
+                        position: "relative",
+                      }}
+                      to="/SignUpForm"
+                    >
+                      Create New Account
+                    </Link>
                   </Label>
                 </Control>
               </Field>
@@ -128,11 +128,11 @@ const SignUpForm = (props) => {
                 <Control>
                   <Button
                     onClick={() => {
-                      signUpHandler();
+                      loginHandler();
                     }}
                     color="primary"
                   >
-                    SignUp
+                    Login
                   </Button>
                 </Control>
               </Field>
@@ -143,4 +143,5 @@ const SignUpForm = (props) => {
     </Level>
   );
 };
-export default SignUpForm;
+
+export default LoginForm;

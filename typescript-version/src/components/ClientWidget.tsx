@@ -3,8 +3,8 @@ import { Widget } from "react-chat-widget";
 import flippedimage from "../assets/images/normalImage.png";
 import normalimage from "../assets/images/flippedImage.png";
 
-function ClientWidget(props) {
-  const getCustomLauncher = (handleToggle) => {
+function ClientWidget(props:any) {
+  const getCustomLauncher = (handleToggle:any) => {
     if (props.isWidget) {
       return (
         <img
@@ -35,8 +35,8 @@ function ClientWidget(props) {
   return (
     <div>
       <Widget
-        handleNewUserMessage={(e) => props.sendMessage("okay", "Client", e)}
-        launcher={(handleToggle) => getCustomLauncher(handleToggle)}
+        handleNewUserMessage={(e:any) => props.sendMessage("okay", "Client", e)}
+        launcher={(handleToggle:any) => getCustomLauncher(handleToggle)}
         title="Plugit Chat Support"
         subtitle="Welcome To Yoonit Customer Service"
         senderPlaceHolder="press send button or enter to send a message"

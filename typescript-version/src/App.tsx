@@ -130,7 +130,7 @@ const App = () => {
     <div>
       {!connection ? (
         <div>
-          <Home joinRoom={joinRoom} />
+          <Home  />
         </div>
       ) : (
         <div>

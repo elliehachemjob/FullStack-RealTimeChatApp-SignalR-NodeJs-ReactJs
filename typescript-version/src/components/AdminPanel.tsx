@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 
-import "../App.css";
+// import "../App.css";
 import { useSelector, useDispatch } from "react-redux";
 import {
   adminMsgSelector,
   clientMsgSelector,
 } from "../store/messges/messagesReducer";
-
 import styles from "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
 import {
   MainContainer,
@@ -26,7 +25,7 @@ import {
   ExpansionPanel,
 } from "@chatscope/chat-ui-kit-react";
 
-const AdminPanel = (props) => {
+const AdminPanel = (props:any) => {
   let adminMsgs = useSelector(adminMsgSelector);
   let clientMsgs = useSelector(clientMsgSelector);
 
@@ -36,7 +35,7 @@ const AdminPanel = (props) => {
   const CustomMessageBoxClient = () => {
     return (
       <div>
-        {clientMsgs.map((m) => (
+        {clientMsgs.map((m:any) => (
           <div>
             <Message
               model={{
@@ -52,7 +51,7 @@ const AdminPanel = (props) => {
           </div>
         ))}
         <div>
-          {adminMsgs.map((m) => (
+          {adminMsgs.map((m:any) => (
             <div>
               <Message
                 model={{
@@ -435,7 +434,7 @@ const AdminPanel = (props) => {
             onAttachClick={() => {
               alert("use library/function to upload here");
             }}
-            onChange={(e) => {
+            onChange={(e:any) => {
               setAdminMessage(e);
             }}
             placeholder="Type message here"
