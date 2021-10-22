@@ -18,7 +18,8 @@ import { Message, Avatar, Conversation } from "@chatscope/chat-ui-kit-react";
 // import LoginForm from "./components/LoginForm";
 import LoginForm from "./classComponents/LoginForm";
 // import SignUpForm from "./components/SignUpForm";
-import ClientWidget from "./components/ClientWidget";
+// import ClientWidget from "./components/ClientWidget";
+import ClientWidget from "./classComponents/ClientWidget";
 import AdminPanel from "./components/AdminPanel";
 import SignUpForm from "./classComponents/SignUpForm";
 
