@@ -33,8 +33,8 @@ const App:React.FC<any>= ():any => {
   const [connection, setConnection] = useState<any>();
   const [users, setUsers] = useState<any>([]);
   const [adminResponder, setAdminResponder] = useState<any>();
-  const [username, setUsername] = useState<any>("");
-  const [clientResponder, setClientResponder] = useState<any>("");
+  const [username, setUsername] = useState<string>("");
+  const [clientResponder, setClientResponder] = useState<string>("");
   const [clientMessageArray, setClientMessageArray] = useState<any>([]);
   const [adminMessageArray, setAdminMessageArray] = useState<any[]>([]);
 

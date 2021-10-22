@@ -26,12 +26,12 @@ import {
 
 interface Props{
   username:string,
-  setUsername:any,
-  setClientResponder:any,
+  setUsername:(username: string)=>void,
+  setClientResponder:(response: string)=>void;
   chatListMapping:any,
-  clientMessageArray:any,
-  adminMessageArray:any,
-  sendMessage:any
+  clientMessageArray:any[],
+  adminMessageArray:any[],
+  sendMessage:(user3:any, isAdmin:any, message:any)=>any
   }
 
 
