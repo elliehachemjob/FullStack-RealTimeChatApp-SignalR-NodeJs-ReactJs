@@ -23,7 +23,24 @@ import {
   ExpansionPanel,
 } from "@chatscope/chat-ui-kit-react";
 
-const AdminPanel = (props:any) => {
+
+interface Props{
+  username:string,
+  setUsername:any,
+  setClientResponder:any,
+  chatListMapping:any,
+  clientMessageArray:any,
+  adminMessageArray:any,
+  isWidget?:boolean,
+  setIsWidget?: (active: boolean)=>void;
+  sendMessage?:(user3:any, isAdmin:any, message:any)=>any;
+  }
+
+
+const AdminPanel:React.FC<Props> = (props:any) => {
+  console.log(props)
+
+
   let adminMsgs:any = useSelector(adminMsgSelector);
   let clientMsgs:any = useSelector(clientMsgSelector);
 
