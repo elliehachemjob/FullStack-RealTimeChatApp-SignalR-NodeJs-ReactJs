@@ -19,7 +19,7 @@ import LoginForm from "./components/LoginForm";
 import SignUpForm from "./components/SignUpForm";
 import ClientWidget from "./components/ClientWidget";
 import AdminPanel from "./components/AdminPanel";
-
+import SignUpFormClass from "./classComponents/SignUpFormClass";
 
 const App:React.FC<any>= ():any => {
 
@@ -65,7 +65,7 @@ const App:React.FC<any>= ():any => {
       <BrowserRouter>
         <Switch>
           <Route exact path="/SignUpForm">
-            <SignUpForm joinRoom={joinRoom} />
+            <SignUpFormClass joinRoom={joinRoom} />
           </Route>
           <Route exact path="/">
             <LoginForm joinRoom={joinRoom} />
