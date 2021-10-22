@@ -94,21 +94,19 @@ const AdminPanel:React.FC<Props> = (props:any):any => {
   const [adminMessage, setAdminMessage] = useState<string>("");
   const [msgContainer, setMsgContainer] = useState<any[]>(CustomMessageBoxClient);
 
-  const Jalal = "Jalal";
-  const Ahmad = "Ahmad";
-  const Ellie = "Ellie";
-  const Abas = "Abas";
-  const Rita = "Rita";
-  const Shadi = "Shadi";
-  const Sam = "Sam";
-  const Marios = "Marios";
+const names: string[] = ["Jalal","Ahmad","Ellie","Abas","Rita","Shadi","Sam","Marios"]
+
+const msgs: string[][] = [["hey", "How is the project going"],["I talked to you yesterday", "Did you do redux"],["Good morning", "There is an issue here"],["Issue", "ticket 2021"],["There is a customer complaining", "need help"], [
+  "How are you",
+  "what is happening",
+  "was calling you from mins ",
+]]
 
   const CustomMessageBoxClientJalal:any = ():any => {
-    const jalalMsg:string[] = ["hey", "How is the project going"];
 
     return (
       <div>
-        {jalalMsg.map((m) => (
+        {msgs[0].map((m) => (
           <div>
             <Message
               model={{
@@ -128,11 +126,10 @@ const AdminPanel:React.FC<Props> = (props:any):any => {
   };
 
   const CustomMessageBoxClientAhmad:any = ():any => {
-    const ahmadMsg = ["I talked to you yesterday", "Did you do redux"];
 
     return (
       <div>
-        {ahmadMsg.map((m) => (
+        {msgs[1].map((m) => (
           <div>
             <Message
               model={{
@@ -152,11 +149,10 @@ const AdminPanel:React.FC<Props> = (props:any):any => {
   };
 
   const CustomMessageBoxClientEllie:any = ():any => {
-    const ellieMsg = ["Good morning", "There is an issue here"];
 
     return (
       <div>
-        {ellieMsg.map((m) => (
+        {msgs[2].map((m) => (
           <div>
             <Message
               model={{
@@ -176,11 +172,10 @@ const AdminPanel:React.FC<Props> = (props:any):any => {
   };
 
   const CustomMessageBoxClientAbas:any = ():any => {
-    const abasMsg = ["Issue", "ticket 2021"];
 
     return (
       <div>
-        {abasMsg.map((m) => (
+        {msgs[3].map((m) => (
           <div>
             <Message
               model={{
@@ -200,11 +195,10 @@ const AdminPanel:React.FC<Props> = (props:any):any => {
   };
 
   const CustomMessageBoxClientRita:any = ():any => {
-    const ritaMsg = ["There is a customer complaining", "need help"];
 
     return (
       <div>
-        {ritaMsg.map((m) => (
+        {msgs[4].map((m) => (
           <div>
             <Message
               model={{
@@ -224,13 +218,11 @@ const AdminPanel:React.FC<Props> = (props:any):any => {
   };
 
   const CustomMessageBoxClientShadi:any = ():any => {
-    const shadiMsg = ["In the row", "how is the project going"];
 
-    const abasMsg = ["Issue", "ticket 2021"];
 
     return (
       <div>
-        {shadiMsg.map((m) => (
+        {msgs[5].map((m) => (
           <div>
             <Message
               model={{
@@ -250,12 +242,10 @@ const AdminPanel:React.FC<Props> = (props:any):any => {
   };
 
   const CustomMessageBoxClientSam:any= ():any => {
-    const samMsg = ["No Message Here"];
-
 
     return (
       <div>
-        {samMsg.map((m) => (
+        {msgs[6].map((m) => (
           <div>
             <Message
               model={{
@@ -275,17 +265,10 @@ const AdminPanel:React.FC<Props> = (props:any):any => {
   };
 
   const CustomMessageBoxClientMarios:any = ():any => {
-    const mariosMsg = [
-      "How are you",
-      "what is happening",
-      "was calling you from mins ",
-    ];
-
-    const abasMsg = ["Issue", "ticket 2021"];
-
+  
     return (
       <div>
-        {mariosMsg.map((m) => (
+        {msgs[7].map((m) => (
           <div>
             <Message
               model={{
@@ -316,106 +299,106 @@ const AdminPanel:React.FC<Props> = (props:any):any => {
           <Search placeholder="Search..." />
           <ConversationList>
             <Conversation
-              name={Jalal}
-              lastSenderName={Jalal}
+              name={names[0]}
+              lastSenderName={names[0]}
               info="Yes i can do it for you"
               onClick={() => {
-                props.setUsername(Jalal);
+                props.setUsername(names[0]);
                 setMsgContainer(CustomMessageBoxClientJalal);
               }}
             >
-              <Avatar src={avatarIco} name={Jalal} status="available" />
+              <Avatar src={avatarIco} name={names[0]} status="available" />
             </Conversation>
 
             <Conversation
-              name={Ahmad}
-              lastSenderName={Ahmad}
+              name={names[1]}
+              lastSenderName={names[1]}
               info="Yes i can do it for you"
               onClick={() => {
                 props.setClientResponder("");
-                props.setUsername(Ahmad);
+                props.setUsername(names[1]);
                 setMsgContainer(CustomMessageBoxClientAhmad);
               }}
             >
-              <Avatar src={avatarIco} name={Ahmad} status="dnd" />
+              <Avatar src={avatarIco} name={names[1]} status="dnd" />
             </Conversation>
 
             <Conversation
-              name={Ellie}
-              lastSenderName={Ellie}
+              name={names[2]}
+              lastSenderName={names[2]}
               info="Yes i can do it for you"
               unreadCnt={3}
               onClick={() => {
                 props.setClientResponder("");
-                props.setUsername(Ellie);
+                props.setUsername(names[2]);
                 setMsgContainer(CustomMessageBoxClientEllie);
               }}
             >
-              <Avatar src={avatarIco} name={Ellie} status="available" />
+              <Avatar src={avatarIco} name={names[2]} status="available" />
             </Conversation>
 
             <Conversation
-              name={Abas}
-              lastSenderName={Abas}
+              name={names[3]}
+              lastSenderName={names[3]}
               info="Yes i can do it for you"
               onClick={() => {
                 props.setClientResponder("");
-                props.setUsername(Abas);
+                props.setUsername(names[3]);
                 setMsgContainer(CustomMessageBoxClientAbas);
               }}
             >
-              <Avatar src={avatarIco} name={Abas} status="dnd" />
+              <Avatar src={avatarIco} name={names[3]} status="dnd" />
             </Conversation>
 
             <Conversation
-              name={Rita}
-              lastSenderName={Rita}
+              name={names[4]}
+              lastSenderName={names[4]}
               info="Yes i can do it for you"
               onClick={() => {
                 props.setClientResponder("");
-                props.setUsername(Abas);
+                props.setUsername(names[4]);
                 setMsgContainer(CustomMessageBoxClientRita);
               }}
             >
-              <Avatar src={avatarIco} name={Rita} status="dnd" />
+              <Avatar src={avatarIco} name={names[4]} status="dnd" />
             </Conversation>
             <Conversation
-              name={Shadi}
-              lastSenderName={Shadi}
+              name={names[5]}
+              lastSenderName={names[5]}
               info="Yes i can do it for you"
               onClick={() => {
                 props.setClientResponder("");
-                props.setUsername(Shadi);
+                props.setUsername(names[5]);
                 setMsgContainer(CustomMessageBoxClientShadi);
               }}
             >
-              <Avatar src={avatarIco} name={Shadi} status="dnd" />
+              <Avatar src={avatarIco} name={names[5]} status="dnd" />
             </Conversation>
 
             <Conversation
-              name={Sam}
-              lastSenderName={Sam}
+              name={names[6]}
+              lastSenderName={names[6]}
               info="Yes i can do it for you"
               onClick={() => {
                 props.setClientResponder("");
-                props.setUsername(Sam);
+                props.setUsername(names[6]);
                 setMsgContainer(CustomMessageBoxClientSam);
               }}
             >
-              <Avatar src={avatarIco} name={Sam} status="dnd" />
+              <Avatar src={avatarIco} name={names[6]} status="dnd" />
             </Conversation>
 
             <Conversation
-              name={Marios}
-              lastSenderName={Marios}
+              name={names[7]}
+              lastSenderName={names[7]}
               info="Yes i can do it for you"
               onClick={() => {
                 props.setClientResponder("");
-                props.setUsername(Marios);
+                props.setUsername(names[7]);
                 setMsgContainer(CustomMessageBoxClientMarios);
               }}
             >
-              <Avatar src={avatarIco} name={Marios} status="dnd" />
+              <Avatar src={avatarIco} name={names[7]} status="dnd" />
             </Conversation>
             {props.chatListMapping}
           </ConversationList>
