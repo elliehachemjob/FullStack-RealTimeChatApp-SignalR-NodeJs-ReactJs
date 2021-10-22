@@ -24,7 +24,7 @@ import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
 
 
 interface Props{
-  joinRoom:any
+  joinRoom:(user:string)=>Promise<void>
   }
 
 

@@ -2,7 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import messagesReducer from "./messges/messagesReducer";
 // import { autoRehydrate, persistStore } from "redux-persist";
 
-const store = configureStore({
+const store:any = configureStore({
   reducer: {
     messagesSaved: messagesReducer,
   },

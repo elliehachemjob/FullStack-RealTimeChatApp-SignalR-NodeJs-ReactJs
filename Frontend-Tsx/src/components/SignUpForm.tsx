@@ -26,7 +26,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
 interface Props{
-  joinRoom:any
+  joinRoom:(user:string)=>Promise<void>
+
   }
 
 

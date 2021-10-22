@@ -23,13 +23,13 @@ export const slice = createSlice({
     //   incrementByAmount: (state, action) => {
     //     state.value += action.payload;
     //   },
-    clearMessages: (state) => {
+    clearMessages: (state:any) => {
       state.value = [];
     },
-    adminMsgsDispatcher: (state, action) => {
+    adminMsgsDispatcher: (state:any, action) => {
       state.adminMsgs = [...state.adminMsgs, ...action.payload];
     },
-    clientMsgsDispatcher: (state, action) => {
+    clientMsgsDispatcher: (state:any, action) => {
       state.clientMsgs = [];
     },
   },
@@ -42,8 +42,8 @@ export const {
   clientMsgsDispatcher,
 } = slice.actions;
 
-export const storedMessages = (state:any) => state.messagesSaved.value;
-export const adminMsgSelector = (state:any) => state.messagesSaved.adminMsgs;
-export const clientMsgSelector = (state:any) => state.messagesSaved.clientMsgs;
+export const storedMessages:any = (state:any) => state.messagesSaved.value;
+export const adminMsgSelector:any = (state:any) => state.messagesSaved.adminMsgs;
+export const clientMsgSelector:any = (state:any) => state.messagesSaved.clientMsgs;
 
 export default slice.reducer;
