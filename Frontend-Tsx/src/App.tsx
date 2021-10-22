@@ -15,11 +15,12 @@ import {
 import { renderCustomComponent } from "react-chat-widget";
 import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
 import { Message, Avatar, Conversation } from "@chatscope/chat-ui-kit-react";
-import LoginForm from "./components/LoginForm";
-import SignUpForm from "./components/SignUpForm";
+// import LoginForm from "./components/LoginForm";
+import LoginForm from "./classComponents/LoginForm";
+// import SignUpForm from "./components/SignUpForm";
 import ClientWidget from "./components/ClientWidget";
 import AdminPanel from "./components/AdminPanel";
-import SignUpFormClass from "./classComponents/SignUpFormClass";
+import SignUpForm from "./classComponents/SignUpForm";
 
 const App:React.FC<any>= ():any => {
 
@@ -65,7 +66,7 @@ const App:React.FC<any>= ():any => {
       <BrowserRouter>
         <Switch>
           <Route exact path="/SignUpForm">
-            <SignUpFormClass joinRoom={joinRoom} />
+            <SignUpForm joinRoom={joinRoom} />
           </Route>
           <Route exact path="/">
             <LoginForm joinRoom={joinRoom} />

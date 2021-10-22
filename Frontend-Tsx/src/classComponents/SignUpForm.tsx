@@ -32,7 +32,7 @@ interface Props{
     }
 
 
-class  SignUpFormClass extends React.Component<Props> {
+class  SignUpForm extends React.Component<Props> {
      
         state = {
              user2: "",
@@ -160,4 +160,4 @@ class  SignUpFormClass extends React.Component<Props> {
   );
 }
 }
-export default SignUpFormClass;
+export default SignUpForm;
