@@ -35,7 +35,7 @@ interface Props{
   }
 
 
-const AdminPanel:React.FC<Props> = (props:any) => {
+const AdminPanel:React.FC<Props> = (props:any):any => {
   console.log(props)
 
 

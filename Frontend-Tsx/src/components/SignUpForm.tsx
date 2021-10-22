@@ -30,7 +30,7 @@ interface Props{
   }
 
 
-const SignUpForm:React.FC<Props> = (props:any) => {
+const SignUpForm:React.FC<Props> = (props:any):any => {
   const signUpHandler = () => {
     axios
       .post(`http://localhost:1589/api/users`, {

@@ -14,7 +14,7 @@ interface Props{
 
 
 
-const  ClientWidget:React.FC<Props>=(props:any)=> {
+const  ClientWidget:React.FC<Props>=(props:any):any=> {
   const getCustomLauncher = (handleToggle:any) => {
     if (props.isWidget) {
       return (

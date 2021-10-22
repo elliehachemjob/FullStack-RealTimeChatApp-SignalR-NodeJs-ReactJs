@@ -29,7 +29,7 @@ interface Props{
 
 
 
-const LoginForm:React.FC<Props> = (props:any) => {
+const LoginForm:React.FC<Props> = (props:any):any=> {
   
   const loginHandler = () => {
     axios
