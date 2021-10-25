@@ -15,11 +15,10 @@ import {
 import { renderCustomComponent } from "react-chat-widget";
 import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
 import { Message, Avatar, Conversation } from "@chatscope/chat-ui-kit-react";
-import LoginForm from "./components/LoginForm";
-import SignUpForm from "./components/SignUpForm";
-import ClientWidget from "./components/ClientWidget";
-import AdminPanel from "./components/AdminPanel";
-
+import LoginForm from "./classComponents/LoginForm";
+import ClientWidget from "./classComponents/ClientWidget";
+import AdminPanel from "./classComponents/AdminPanel";
+import SignUpForm from "./classComponents/SignUpForm";
 
 const App:React.FC<any>= ():any => {
 
