@@ -119,7 +119,7 @@ interface Props{
               model={{
                 message: m,
                 sentTime: "15 mins ago",
-                sender: props.username,
+                sender: this.props.username,
                 direction: "outgoing",
                 position: "single",
               }}
@@ -133,6 +133,7 @@ interface Props{
   }
 
    CustomMessageBoxAhmad =()=> {
+     return(
       <div>
         {this.msgs[1].map((m) => (
           <div>
@@ -149,9 +150,8 @@ interface Props{
             </Message>
           </div>
         ))}
-      </div>
-    );
-  }
+      </div>)}
+    
 
    CustomMessageBoxEllie =()=> {
     return (
@@ -429,7 +429,7 @@ render(){
                 fontSize: "1.2em",
               }}
             >
-              {msgContainer}
+              {this.state.msgContainer}
             </MessageList.Content>
           </MessageList>
           <MessageInput
@@ -442,7 +442,7 @@ render(){
             }}
             placeholder="Type message here"
             onSend={() => {
-              this.props.sendMessage("Admin", "Admin", adminMessage);
+              this.props.sendMessage("Admin", "Admin", this.state.adminMessage);
             }}
           />
         </ChatContainer>
