@@ -8,14 +8,14 @@ import { ClientWidget } from "../components/ClientWidget";
 //   return <ClientWidget />;
 // });
 export default {
-  title: "YourComponent",
+  title: "ClientWidget",
   component: ClientWidget,
 };
 
 const ClientWidgetTemplate = (args) => <ClientWidget {...args} />;
 
-export const green = ClientWidgetTemplate.bind({});
+export const FullOptions = ClientWidgetTemplate.bind({});
 
-green.args = {
+FullOptions.args = {
   isWidget: false,
 };
