@@ -3,6 +3,7 @@ import "./App.css";
 import { Widget } from "react-chat-widget";
 import flippedimage from "./normalImage.png";
 import normalimage from "./flippedImage.png";
+import PropsTypes from "prop-types";
 
 interface Props {
   isWidget: boolean;
