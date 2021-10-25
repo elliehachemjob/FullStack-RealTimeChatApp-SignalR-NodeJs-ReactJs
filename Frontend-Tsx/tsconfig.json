@@ -22,8 +22,11 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
+  "outDir": "./dist",
+  "declaration": true,
   "include": [
-    "src"
-  ]
+    "src/**/*"
+  ],
+  
 
 }
