@@ -1,7 +1,8 @@
 import React from "react";
+import "./App.css";
 import { Widget } from "react-chat-widget";
-import flippedimage from "../assets/images/normalImage.png";
-import normalimage from "../assets/images/flippedImage.png";
+import flippedimage from "./normalImage.png";
+import normalimage from "./flippedImage.png";
 
 interface Props {
   isWidget: boolean;
@@ -13,7 +14,7 @@ interface Props {
   ) => Promise<void>;
 }
 
-const ClientWidget: React.FC<Props> = (props: any): any => {
+export const ClientWidget: React.FC<Props> = (props: any): any => {
   const getCustomLauncher = (handleToggle: any) => {
     if (props.isWidget) {
       return (
@@ -56,5 +57,3 @@ const ClientWidget: React.FC<Props> = (props: any): any => {
     </div>
   );
 };
-
-export default ClientWidget;
