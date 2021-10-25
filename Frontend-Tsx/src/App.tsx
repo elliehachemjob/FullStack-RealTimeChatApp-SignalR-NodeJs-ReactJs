@@ -20,7 +20,10 @@ import LoginForm from "./classComponents/LoginForm";
 // import SignUpForm from "./components/SignUpForm";
 // import ClientWidget from "./components/ClientWidget";
 import ClientWidget from "./classComponents/ClientWidget";
-import AdminPanel from "./components/AdminPanel";
+
+// import AdminPanel from "./components/AdminPanel";
+import AdminPanel from "./classComponents/AdminPanel";
+
 import SignUpForm from "./classComponents/SignUpForm";
 
 const App:React.FC<any>= ():any => {

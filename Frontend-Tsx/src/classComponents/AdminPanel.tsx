@@ -1,9 +1,10 @@
 import React, { Component, useState } from "react";
 import "../App.css";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch,connect } from "react-redux";
 import {
   adminMsgSelector,
   clientMsgSelector,
+  messageSave
 } from "../store/messges/messagesReducer";
 import {
   MainContainer,
@@ -41,11 +42,18 @@ interface Props{
   }
 
 
+  
+  function  mapStateToProps(state:any) {
+    return {
+      clientMsgs: state.messagesSaved.clientMsgs,
+      adminMsgs: state.messagesSaved.adminMsgs,
+    }
+  }
+
+
+
   class  AdminPanel extends React.Component<Props> {
 
-
-   adminMsgs:message[] = useSelector(adminMsgSelector);
-   clientMsgs:message[] = useSelector(clientMsgSelector);
 
 
    avatarIco:string =
@@ -55,6 +63,7 @@ interface Props{
     
     return (
       <div>
+        {/* @ts-ignore */}
         {this.clientMsgs.map((m:any) => (
           <div>
             <Message
@@ -71,7 +80,8 @@ interface Props{
           </div>
         ))}
         <div>
-          {this.adminMsgs.map((m:any) => (
+        {/* @ts-ignore */}
+        {this.adminMsgs.map((m:any) => (
             <div>
               <Message
                 model={{
@@ -484,4 +494,7 @@ render(){
   )
 }}
 
-export default AdminPanel;
+export default connect(
+  mapStateToProps,
+)(AdminPanel)
+
