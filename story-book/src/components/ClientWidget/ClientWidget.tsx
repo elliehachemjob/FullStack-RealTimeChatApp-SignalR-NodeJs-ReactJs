@@ -3,6 +3,7 @@ import "./App.css";
 import { Widget } from "react-chat-widget";
 import flippedimage from "./normalImage.png";
 import normalimage from "./flippedImage.png";
+import PropTypes from "prop-types";
 
 interface Props {
   isWidget: boolean;
@@ -15,6 +16,10 @@ interface Props {
 }
 
 export const ClientWidget: React.FC<Props> = (props: any): any => {
+  // ClientWidget.propTypes = {
+  //   isWidget: PropTypes.bool.isRequired,
+  // };
+
   const getCustomLauncher = (handleToggle: any) => {
     if (props.isWidget) {
       return (
