@@ -36,6 +36,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "@fortawesome/react-fontawesome": "^0.1.16",
+    "@types/storybook__react": "^5.2.1",
     "axios": "^0.23.0",
     "prop-types": "^15.7.2",
     "rbx": "^2.2.0",
