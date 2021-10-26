@@ -1,5 +1,4 @@
 import React from "react";
-import { storiesOf } from "@storybook/react";
 import { AdminPanel } from "../components/AdminPanel";
 
 export default {
