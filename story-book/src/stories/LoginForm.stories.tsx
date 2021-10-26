@@ -2,8 +2,13 @@ import React from "react";
 import { storiesOf } from "@storybook/react";
 import { LoginForm } from "../components/Forms";
 
-const stories = storiesOf("LoginForm", module);
+export default {
+  title: "Forms/LoginForm",
+  component: LoginForm,
+};
 
-stories.add("LoginForm", () => {
-  return <LoginForm />;
-});
+const LoginFormTemplate = (args: any) => <LoginForm {...args} />;
+
+export const Default = LoginFormTemplate.bind({});
+
+Default.args = {};

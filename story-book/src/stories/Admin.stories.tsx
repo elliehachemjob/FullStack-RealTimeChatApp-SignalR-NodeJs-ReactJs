@@ -9,7 +9,7 @@ import { AdminPanel } from "../components/AdminPanel";
 // });
 
 export default {
-  title: "AdminPanel",
+  title: "Panels/AdminPanel",
   component: AdminPanel,
   argTypes: {
     isWidget: {
@@ -26,8 +26,8 @@ export default {
 
 const AdminWidgetTemplate = (args: any) => <AdminPanel {...args} />;
 
-export const FullOptions = AdminWidgetTemplate.bind({});
+export const Default = AdminWidgetTemplate.bind({});
 
-FullOptions.args = {
+Default.args = {
   username: "",
 };

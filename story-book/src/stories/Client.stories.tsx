@@ -1,9 +1,8 @@
 import React from "react";
-import { storiesOf } from "@storybook/react";
 import { ClientWidget } from "../components/ClientWidget";
 
 export default {
-  title: "ClientWidget",
+  title: "Widgets/ClientWidget",
   component: ClientWidget,
   argTypes: {
     isWidget: {
@@ -20,8 +19,8 @@ export default {
 
 const ClientWidgetTemplate = (args: any) => <ClientWidget {...args} />;
 
-export const FullOptions = ClientWidgetTemplate.bind({});
+export const Default = ClientWidgetTemplate.bind({});
 
-FullOptions.args = {
+Default.args = {
   isWidget: false,
 };
