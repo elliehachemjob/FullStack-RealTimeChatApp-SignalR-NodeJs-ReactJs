@@ -14,6 +14,26 @@ export default {
         },
       },
     },
+    setIsWidget: {
+      description: "State To Set the Widget Value",
+      table: {
+        type: {
+          summary: "Click For Summary",
+          detail: "There is Either False Or True",
+        },
+      },
+    },
+
+    sendMessage: {
+      description: "You need to set in Singalr",
+      table: {
+        type: {
+          summary: "To send a message to user ",
+          detail:
+            "props provided are user3: string,isAdmin: string ,message: string, but again you can change it anytime",
+        },
+      },
+    },
   },
 };
 
