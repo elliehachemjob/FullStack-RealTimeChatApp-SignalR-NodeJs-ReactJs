@@ -31,35 +31,40 @@ interface Props {
   setPassword: (active: string) => void;
   loginHandler: () => void;
   title?: string;
-  type: string;
-  placeholder: string;
+  fieldOneType?: string;
+  placeholder?: string;
+  containerStyle?: {};
 }
 
 export const LoginForm: React.FC<Props> = (props: any): any => {
+  const defaultStyle = {
+    maxWidth: 400,
+    height: '100vh',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+  };
+
   return (
     <Level>
       <Level.Item textAlign="centered">
         <Container
-          style={{
-            maxWidth: 400,
-            height: '100vh',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-          }}
+          style={props.containerStyle ? props.containerStyle : defaultStyle}
         >
           <Card>
             <Section backgroundColor="primary">
               <Title style={{ color: 'white' }}>
-                {props.title ? props.title : 'No title'}
+                {props.title ? props.title : 'Plugit Support Login'}
               </Title>
             </Section>
             <Card.Content>
               <Field>
                 <Control iconLeft iconRight>
                   <Input
-                    type={props.type}
-                    placeholder={props.placeholder}
+                    type={props.fieldOneType ? props.fieldOneType : 'email'}
+                    placeholder={
+                      props.placeholder ? props.placeholder : 'email'
+                    }
                     value={props.user}
                     onChange={(e: any) => props.setUser(e.target.value)}
                   />
