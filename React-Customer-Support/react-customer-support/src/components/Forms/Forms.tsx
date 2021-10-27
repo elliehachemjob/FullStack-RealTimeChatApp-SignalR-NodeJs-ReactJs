@@ -51,6 +51,10 @@ interface Props {
   checkIconAlign?: string;
   faEnvelopeSize?: string;
   faEnvelopeAlign?: string;
+  sendEmailVerification?: string;
+  setSendEmailVerification: string;
+  fieldThreeType?: string;
+  fieldThreePlaceholder: string;
 }
 
 export const LoginForm: React.FC<Props> = (props: any): any => {
@@ -208,7 +212,7 @@ export const SignUpForm: React.FC<Props> = (props: any): any => {
               <Title
                 style={props.titleColor ? props.titleColor : { color: 'white' }}
               >
-                {props.title ? props.title : 'Plugit Support Login'}
+                {props.title ? props.title : 'Plugit Support Sign Up'}
               </Title>
             </Section>
             <Card.Content>
@@ -283,8 +287,14 @@ export const SignUpForm: React.FC<Props> = (props: any): any => {
               <Field>
                 <Control iconLeft>
                   <Input
-                    type="email"
-                    placeholder="Send Email Verification"
+                    type={
+                      props.fieldThreeType ? props.fieldThreeType : 'password'
+                    }
+                    placeholder={
+                      props.fieldThreePlaceholder
+                        ? props.fieldThreePlaceholder
+                        : 'Send Email Verification'
+                    }
                     onChange={(e: any) =>
                       props.setSendEmailVerification(e.target.value)
                     }
@@ -314,7 +324,7 @@ export const SignUpForm: React.FC<Props> = (props: any): any => {
                   >
                     {props.loginHandlertitle
                       ? props.loginHandlertitle
-                      : 'Login'}
+                      : 'SignUp'}
                   </Button>
                 </Control>
               </Field>
