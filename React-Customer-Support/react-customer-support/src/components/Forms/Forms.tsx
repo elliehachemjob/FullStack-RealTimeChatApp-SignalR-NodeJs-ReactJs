@@ -30,7 +30,9 @@ interface Props {
   password: string;
   setPassword: (active: string) => void;
   loginHandler: () => void;
-  title: string;
+  title?: string;
+  type: string;
+  placeholder: string;
 }
 
 export const LoginForm: React.FC<Props> = (props: any): any => {
@@ -48,14 +50,16 @@ export const LoginForm: React.FC<Props> = (props: any): any => {
         >
           <Card>
             <Section backgroundColor="primary">
-              <Title style={{ color: 'white' }}>{props.title}</Title>
+              <Title style={{ color: 'white' }}>
+                {props.title ? props.title : 'No title'}
+              </Title>
             </Section>
             <Card.Content>
               <Field>
                 <Control iconLeft iconRight>
                   <Input
-                    type="email"
-                    placeholder="Email"
+                    type={props.type}
+                    placeholder={props.placeholder}
                     value={props.user}
                     onChange={(e: any) => props.setUser(e.target.value)}
                   />
