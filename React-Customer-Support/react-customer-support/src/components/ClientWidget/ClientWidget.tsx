@@ -7,11 +7,15 @@ import normalimage from './flippedImage.png';
 interface Props {
   isWidget: boolean;
   setIsWidget: (active: boolean) => void;
-  sendMessage: (
-    user3: string,
-    isAdmin: string,
-    message: string
-  ) => Promise<void>;
+  sendMessage?: (user: string, isAdmin: string) => Promise<void>;
+  normalimage?: string;
+  flippedimage?: string;
+  normalimageAlt?: string;
+  flippedimageAlt?: string;
+  normalImageStyle?: {};
+  flippedImageStyle?: {};
+  title?: string;
+  subtitle?: string;
 }
 
 export const ClientWidget: React.FC<Props> = (props: any): any => {
@@ -19,9 +23,11 @@ export const ClientWidget: React.FC<Props> = (props: any): any => {
     if (props.isWidget) {
       return (
         <img
-          src={normalimage}
-          alt="imageNot working"
-          className="rcw-launcher "
+          src={props.normalimage ? props.normalimage : normalimage}
+          alt={props.normalimageAlt ? props.normalimageAlt : 'imageNot working'}
+          className={
+            props.normalImageStyle ? props.normalImageStyle : 'rcw-launcher'
+          }
           onClick={() => {
             handleToggle();
             props.setIsWidget(false);
@@ -31,9 +37,13 @@ export const ClientWidget: React.FC<Props> = (props: any): any => {
     } else {
       return (
         <img
-          src={flippedimage}
-          alt="imageNot working"
-          className="rcw-launcher "
+          src={props.flippedimage ? props.flippedimage : flippedimage}
+          alt={
+            props.flippedimageAlt ? props.flippedimageAlt : 'imageNot working'
+          }
+          className={
+            props.flippedImageStyle ? props.flippedImageStyle : 'rcw-launcher'
+          }
           onClick={() => {
             handleToggle();
             props.setIsWidget(true);
@@ -47,11 +57,13 @@ export const ClientWidget: React.FC<Props> = (props: any): any => {
     <div>
       <Widget
         handleNewUserMessage={(e: any) =>
-          props.sendMessage('okay', 'Client', e)
+          props.sendMessage(props.user, props.isAdmin, e)
         }
         launcher={(handleToggle: any) => getCustomLauncher(handleToggle)}
-        title="Plugit Chat Support"
-        subtitle="Welcome To Yoonit Customer Service"
+        title={props.title ? props.title : 'Plugit Chat Support'}
+        subtitle={
+          props.subtitle ? props.subtitle : 'Welcome To Yoonit Customer Service'
+        }
         senderPlaceHolder="press send button or enter to send a message"
       />
     </div>
