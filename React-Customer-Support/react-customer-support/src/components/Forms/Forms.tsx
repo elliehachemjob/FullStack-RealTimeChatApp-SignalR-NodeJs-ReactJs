@@ -21,6 +21,7 @@ import {
   faArrowRight,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import './App.css';
 
 interface Props {
   joinRoom: (user: string) => Promise<void>;
