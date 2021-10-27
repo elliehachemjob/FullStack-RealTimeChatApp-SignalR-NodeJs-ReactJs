@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React from 'react';
 import {
   Field,
   Control,
@@ -29,7 +28,7 @@ interface Props {
   setUser: (active: string) => void;
   password: string;
   setPassword: (active: string) => void;
-  loginHandler: () => void;
+  loginHandler?: () => void;
   title?: string;
   fieldOneType?: string;
   fieldOnePlaceholder?: string;
@@ -38,6 +37,7 @@ interface Props {
   fieldTwoIcon?: any;
   textAlign?: string;
   loginHandlertitle?: string;
+  signUpHandlertitle?: string;
   rememberMe?: string;
   checkIcon?: any;
   titleColor?: string;
@@ -52,9 +52,10 @@ interface Props {
   faEnvelopeSize?: string;
   faEnvelopeAlign?: string;
   sendEmailVerification?: string;
-  setSendEmailVerification: string;
+  setSendEmailVerification?: (active: string) => void;
   fieldThreeType?: string;
-  fieldThreePlaceholder: string;
+  fieldThreePlaceholder?: string;
+  signUpHandler?: () => void;
 }
 
 export const LoginForm: React.FC<Props> = (props: any): any => {
@@ -318,12 +319,12 @@ export const SignUpForm: React.FC<Props> = (props: any): any => {
                 <Control>
                   <Button
                     onClick={() => {
-                      props.loginHandler();
+                      props.signUpHandler();
                     }}
                     color="primary"
                   >
-                    {props.loginHandlertitle
-                      ? props.loginHandlertitle
+                    {props.signUpHandlertitle
+                      ? props.signUpHandlertitle
                       : 'SignUp'}
                   </Button>
                 </Control>
