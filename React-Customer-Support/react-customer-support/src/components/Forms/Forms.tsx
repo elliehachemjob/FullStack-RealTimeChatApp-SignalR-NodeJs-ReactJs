@@ -47,8 +47,10 @@ interface Props {
   titleBackground?: string;
   fieldTwoType?: string;
   fieldTwoPlaceholder?: string;
-  checkIconSize: string;
-  checkIconAlign: string;
+  checkIconSize?: string;
+  checkIconAlign?: string;
+  faEnvelopeSize?: string;
+  faEnvelopeAlign?: string;
 }
 
 export const LoginForm: React.FC<Props> = (props: any): any => {
@@ -97,7 +99,12 @@ export const LoginForm: React.FC<Props> = (props: any): any => {
                     onChange={(e: any) => props.setUser(e.target.value)}
                   />
 
-                  <Icon size="small" align="left">
+                  <Icon
+                    size={props.faEnvelopeSize ? props.faEnvelopeSize : 'small'}
+                    align={
+                      props.faEnvelopeAlign ? props.faEnvelopeAlign : 'left'
+                    }
+                  >
                     <FontAwesomeIcon
                       icon={
                         props.fieldOneIcon ? props.fieldOneIcon : faEnvelope
@@ -132,7 +139,10 @@ export const LoginForm: React.FC<Props> = (props: any): any => {
                     onChange={(e: any) => props.setPassword(e.target.value)}
                     value={props.password}
                   />
-                  <Icon size="small" align="left">
+                  <Icon
+                    size={props.faLockSize ? props.faLockSize : 'small'}
+                    align={props.faLockAlign ? props.faLockAlign : 'left'}
+                  >
                     <FontAwesomeIcon
                       icon={props.fieldTwoIcon ? props.fieldTwoIcon : faLock}
                     />
