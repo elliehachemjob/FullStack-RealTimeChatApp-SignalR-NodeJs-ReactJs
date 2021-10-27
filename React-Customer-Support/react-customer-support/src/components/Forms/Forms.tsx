@@ -47,6 +47,8 @@ interface Props {
   titleBackground?: string;
   fieldTwoType?: string;
   fieldTwoPlaceholder?: string;
+  checkIconSize: string;
+  checkIconAlign: string;
 }
 
 export const LoginForm: React.FC<Props> = (props: any): any => {
@@ -102,7 +104,12 @@ export const LoginForm: React.FC<Props> = (props: any): any => {
                       }
                     />
                   </Icon>
-                  <Icon size="small" align="right">
+                  <Icon
+                    size={props.checkIconSize ? props.checkIconSize : 'small'}
+                    align={
+                      props.checkIconAlign ? props.checkIconAlign : 'right'
+                    }
+                  >
                     <FontAwesomeIcon
                       icon={props.checkIcon ? props.checkIcon : faCheck}
                     />
