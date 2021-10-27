@@ -32,40 +32,64 @@ interface Props {
   loginHandler: () => void;
   title?: string;
   fieldOneType?: string;
-  placeholder?: string;
+  fieldOnePlaceholder?: string;
   containerStyle?: {};
   fieldOneIcon?: any;
-  fieldTowIcon?: any;
+  fieldTwoIcon?: any;
+  textAlign?: string;
+  loginHandlertitle?: string;
+  rememberMe?: string;
+  checkIcon?: any;
+  titleColor?: string;
+  emailIconLeft?: boolean;
+  emailIconRight?: boolean;
+  passwordIconLeft?: boolean;
+  titleBackground?: string;
+  fieldTwoType?: string;
+  fieldTwoPlaceholder?: string;
 }
 
 export const LoginForm: React.FC<Props> = (props: any): any => {
-  const defaultStyle = {
-    maxWidth: 400,
-    height: '100vh',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-  };
-
   return (
     <Level>
-      <Level.Item textAlign="centered">
+      <Level.Item textAlign={props.textAlign ? props.textAlign : 'centered'}>
         <Container
-          style={props.containerStyle ? props.containerStyle : defaultStyle}
+          style={
+            props.containerStyle
+              ? props.containerStyle
+              : {
+                  maxWidth: 400,
+                  height: '100vh',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'center',
+                }
+          }
         >
           <Card>
-            <Section backgroundColor="primary">
-              <Title style={{ color: 'white' }}>
+            <Section
+              backgroundColor={
+                props.titleBackground ? props.titleBackground : 'primary'
+              }
+            >
+              <Title
+                style={props.titleColor ? props.titleColor : { color: 'white' }}
+              >
                 {props.title ? props.title : 'Plugit Support Login'}
               </Title>
             </Section>
             <Card.Content>
               <Field>
-                <Control iconLeft iconRight>
+                <Control
+                  iconLeft={props.emailIconLeft ? props.emailIconLeft : true}
+                  iconRight={props.emailIconRight ? props.emailIconRight : true}
+                >
                   <Input
                     type={props.fieldOneType ? props.fieldOneType : 'email'}
                     placeholder={
-                      props.placeholder ? props.placeholder : 'email'
+                      props.fieldOnePlaceholder
+                        ? props.fieldOnePlaceholder
+                        : 'email'
                     }
                     value={props.user}
                     onChange={(e: any) => props.setUser(e.target.value)}
@@ -80,22 +104,31 @@ export const LoginForm: React.FC<Props> = (props: any): any => {
                   </Icon>
                   <Icon size="small" align="right">
                     <FontAwesomeIcon
-                      icon={props.fieldTowIcon ? props.fieldTowIcon : faCheck}
+                      icon={props.checkIcon ? props.checkIcon : faCheck}
                     />
                   </Icon>
                 </Control>
               </Field>
               <Field>
-                <Control iconLeft>
+                <Control
+                  iconLeft={
+                    props.passwordIconLeft ? props.passwordIconLeft : true
+                  }
+                >
                   <Input
-                    type="password"
-                    placeholder="Password"
+                    type={props.fieldTwoType ? props.fieldTwoType : 'password'}
+                    placeholder={
+                      props.fieldTwoPlaceholder
+                        ? props.fieldTwoPlaceholder
+                        : 'password'
+                    }
                     onChange={(e: any) => props.setPassword(e.target.value)}
                     value={props.password}
                   />
-
                   <Icon size="small" align="left">
-                    <FontAwesomeIcon icon={faLock} />
+                    <FontAwesomeIcon
+                      icon={props.fieldTwoIcon ? props.fieldTwoIcon : faLock}
+                    />
                   </Icon>
                 </Control>
               </Field>
@@ -103,7 +136,7 @@ export const LoginForm: React.FC<Props> = (props: any): any => {
                 <Control>
                   <Label>
                     <Checkbox />
-                    Remember me
+                    {props.rememberMe ? props.rememberMe : 'Remember me'}
                   </Label>
                   <Label></Label>
                 </Control>
@@ -116,7 +149,9 @@ export const LoginForm: React.FC<Props> = (props: any): any => {
                     }}
                     color="primary"
                   >
-                    Login
+                    {props.loginHandlertitle
+                      ? props.loginHandlertitle
+                      : 'Login'}
                   </Button>
                 </Control>
               </Field>
