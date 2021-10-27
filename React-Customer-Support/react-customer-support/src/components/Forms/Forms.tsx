@@ -1,6 +1,5 @@
-import React, { useState } from "react";
-import axios from "axios";
-import "./App.css";
+import React, { useState } from 'react';
+import axios from 'axios';
 import {
   Field,
   Control,
@@ -14,14 +13,14 @@ import {
   Label,
   Checkbox,
   Button,
-} from "rbx";
+} from 'rbx';
 import {
   faCheck,
   faEnvelope,
   faLock,
   faArrowRight,
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 interface Props {
   joinRoom: (user: string) => Promise<void>;
@@ -38,12 +37,12 @@ export const LoginForm: React.FC<Props> = (props: any): any => {
       .then((res) => {
         console.log(` data is ${JSON.stringify(res)}`);
         // @ts-ignore
-        if (res.data === "Logged In Successfully") {
-          alert("sucess");
+        if (res.data === 'Logged In Successfully') {
+          alert('sucess');
           props.joinRoom(user1);
           // @ts-ignore
-        } else if (res.data === "Make sure email and password are correct") {
-          alert("Make sure email and password are correct ");
+        } else if (res.data === 'Make sure email and password are correct') {
+          alert('Make sure email and password are correct ');
         }
       })
       .catch((e) => {
@@ -59,15 +58,15 @@ export const LoginForm: React.FC<Props> = (props: any): any => {
         <Container
           style={{
             maxWidth: 400,
-            height: "100vh",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
+            height: '100vh',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
           }}
         >
           <Card>
             <Section backgroundColor="primary">
-              <Title style={{ color: "white" }}>Plugit Support Login</Title>
+              <Title style={{ color: 'white' }}>Plugit Support Login</Title>
             </Section>
             <Card.Content>
               <Field>
@@ -106,7 +105,7 @@ export const LoginForm: React.FC<Props> = (props: any): any => {
                   <Label>
                     <Checkbox
                     //  disabled={loading}
-                    />{" "}
+                    />{' '}
                     Remember me
                   </Label>
                   <Label></Label>
@@ -143,18 +142,18 @@ export const SignUpForm: React.FC<Props> = (props: any): any => {
       .then((res) => {
         console.log(` data is ${JSON.stringify(res)}`);
         // @ts-ignore
-        if (res.data === "Added Successfully") {
-          alert("register success");
+        if (res.data === 'Added Successfully') {
+          alert('register success');
           props.joinRoom(user2);
           // @ts-ignore
-        } else if (res.data === "Email Already Exist") {
-          alert("email already exist");
+        } else if (res.data === 'Email Already Exist') {
+          alert('email already exist');
         }
       })
       .catch((e) => {
         console.log(e);
         if (e) {
-          alert("already exist");
+          alert('already exist');
         }
       });
   };
@@ -169,15 +168,15 @@ export const SignUpForm: React.FC<Props> = (props: any): any => {
         <Container
           style={{
             maxWidth: 400,
-            height: "100vh",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
+            height: '100vh',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
           }}
         >
           <Card>
             <Section backgroundColor="primary">
-              <Title style={{ color: "white" }}>Plugit Support Sign Up</Title>
+              <Title style={{ color: 'white' }}>Plugit Support Sign Up</Title>
             </Section>
             <Card.Content>
               <Field>
