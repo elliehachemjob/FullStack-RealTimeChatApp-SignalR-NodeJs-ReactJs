@@ -1688,6 +1688,14 @@
     "@rollup/pluginutils" "^3.1.0"
     "magic-string" "^0.25.7"
 
+"@rollup/plugin-replace@^3.0.0":
+  "integrity" "sha512-3c7JCbMuYXM4PbPWT4+m/4Y6U60SgsnDT/cCyAyUKwFHg7pTSfsSQzIpETha3a3ig6OdOKzZz87D9ZXIK3qsDg=="
+  "resolved" "https://registry.npmjs.org/@rollup/plugin-replace/-/plugin-replace-3.0.0.tgz"
+  "version" "3.0.0"
+  dependencies:
+    "@rollup/pluginutils" "^3.1.0"
+    "magic-string" "^0.25.7"
+
 "@rollup/pluginutils@^3.0.8", "@rollup/pluginutils@^3.0.9", "@rollup/pluginutils@^3.1.0":
   "integrity" "sha512-GksZ6pr6TpIjHm8h9lSQ8pi8BE9VeubNT0OMJ3B5uZJ8pz73NPiqOtCog/x2/QzM1ENChPKxMDhiQuRHsqc+lg=="
   "resolved" "https://registry.npmjs.org/@rollup/pluginutils/-/pluginutils-3.1.0.tgz"
