@@ -34,6 +34,8 @@ interface Props {
   fieldOneType?: string;
   placeholder?: string;
   containerStyle?: {};
+  fieldOneIcon?: any;
+  fieldTowIcon?: any;
 }
 
 export const LoginForm: React.FC<Props> = (props: any): any => {
@@ -70,10 +72,16 @@ export const LoginForm: React.FC<Props> = (props: any): any => {
                   />
 
                   <Icon size="small" align="left">
-                    <FontAwesomeIcon icon={faEnvelope} />
+                    <FontAwesomeIcon
+                      icon={
+                        props.fieldOneIcon ? props.fieldOneIcon : faEnvelope
+                      }
+                    />
                   </Icon>
                   <Icon size="small" align="right">
-                    <FontAwesomeIcon icon={faCheck} />
+                    <FontAwesomeIcon
+                      icon={props.fieldTowIcon ? props.fieldTowIcon : faCheck}
+                    />
                   </Icon>
                 </Control>
               </Field>
