@@ -41,9 +41,9 @@ interface Props {
   rememberMe?: string;
   checkIcon?: any;
   titleColor?: string;
-  emailIconLeft?: boolean;
-  emailIconRight?: boolean;
-  passwordIconLeft?: boolean;
+  fieldOneLeft?: boolean;
+  fieldOneRight?: boolean;
+  fieldTwoIconLeft?: boolean;
   titleBackground?: string;
   fieldTwoType?: string;
   fieldTwoPlaceholder?: string;
@@ -85,8 +85,10 @@ export const LoginForm: React.FC<Props> = (props: any): any => {
             <Card.Content>
               <Field>
                 <Control
-                  iconLeft={props.emailIconLeft ? props.emailIconLeft : true}
-                  iconRight={props.emailIconRight ? props.emailIconRight : true}
+                  iconLeft={props.fieldOneIconLeft ? props.emailIconLeft : true}
+                  iconRight={
+                    props.fieldOneIconRight ? props.fieldOneIconRight : true
+                  }
                 >
                   <Input
                     type={props.fieldOneType ? props.fieldOneType : 'email'}
@@ -126,7 +128,7 @@ export const LoginForm: React.FC<Props> = (props: any): any => {
               <Field>
                 <Control
                   iconLeft={
-                    props.passwordIconLeft ? props.passwordIconLeft : true
+                    props.fieldTwoIconLeft ? props.fieldTwoIconLeft : true
                   }
                 >
                   <Input
