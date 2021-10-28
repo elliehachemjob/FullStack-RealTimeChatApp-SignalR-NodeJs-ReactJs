@@ -12,4 +12,8 @@ export * from './components/VoiceCall';
 
 export * from './components/VideoCall';
 
+export * from './components/ExpansionAdminPanel';
+
 export * from './components/SidebarExpansion';
+
+export * from './components/SidebarAdminPanel';
