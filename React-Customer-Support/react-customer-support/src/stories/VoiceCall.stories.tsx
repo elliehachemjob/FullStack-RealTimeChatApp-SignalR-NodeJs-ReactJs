@@ -2,7 +2,7 @@ import React from 'react';
 import { VoiceCall } from '../components/VoiceCall';
 
 export default {
-  title: 'Extra/AdminPanel',
+  title: 'Extra/VoiceCall',
   component: VoiceCall,
   argTypes: {
     username: {
