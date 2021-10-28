@@ -20,22 +20,15 @@ import {
 } from '@chatscope/chat-ui-kit-react';
 
 interface Props {
-  username: string;
-  chatListAppend: any[];
-  sendMessage: (
-    user: string,
-    isAdmin: string,
-    message: string
-  ) => Promise<void>;
-  avatarIco: string;
-  onAttachClick: () => void;
-  onChange: () => void;
-  sidebarPosition: string;
-  sidebarScrollable: boolean;
-  mainDivstyle: {};
-  messageListContentStyle: {};
+  onClick: () => any;
 }
 
 export const VoiceCall: React.FC<Props> = (props: any): any => {
-  return <div>Voice Call Component</div>;
+  return (
+    <VoiceCallButton
+      onClick={() => {
+        props.onClick();
+      }}
+    />
+  );
 };
