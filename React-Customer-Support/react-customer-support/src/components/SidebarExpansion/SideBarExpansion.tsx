@@ -63,11 +63,11 @@ export const SidebarExpansion: React.FC<Props> = (props: any): any => {
             ? 'dynamic data'
             : props.expanstionPanelData3}
         </p>
-        <p>
-          onClick=
-          {() => {
+        <p
+          onClick={() => {
             props.onClickExpanstionPanelData4;
           }}
+        >
           {!props.expanstionPanelData4
             ? 'dynamic data'
             : props.expanstionPanelData4}
