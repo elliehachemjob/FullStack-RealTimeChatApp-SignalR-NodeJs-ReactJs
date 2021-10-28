@@ -39,7 +39,7 @@ interface Props {
   clientMsgs: any[];
 }
 
-export const AdminPanel: React.FC<Props> = (props: any): any => {
+export const AdminPanelFilled: React.FC<Props> = (props: any): any => {
   interface message {
     message: string;
   }
