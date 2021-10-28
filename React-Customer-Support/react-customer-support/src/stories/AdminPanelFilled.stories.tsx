@@ -8,6 +8,13 @@ export default {
     username: {
       description: 'Sets The Username Of The Header',
     },
+    table: {
+      type: {
+        summary: 'Click For Summary',
+        detail:
+          'The component is set to take the state of the user and password then it use them to connect to api using axios after the confirmation of password in database it then uses the joinroom prop method which allow you to join room/connect  ',
+      },
+    },
   },
 };
 
