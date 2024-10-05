@@ -92,6 +92,19 @@ const testButton = ()=>{
       {/* <button   className='btn9'  variant='danger' onClick={()=>{setChat(chatBox=>[...chatBox , <Chat/>])}}>Test Button</button> */}
       
   </div>
+      <div>
+      <button   className='btn5'  variant='danger' onClick={() => closeConnection()}>Leave Chat</button>
+      <button   className='btn6'  variant='danger' onClick={() => getId(message)}>Get Id</button>
+      <button   className='btn7'  variant='danger' onClick={()=>{dispatch(clearMessages())}}>Clear Messages</button>
+      <button   className='btn8'  variant='danger' onClick={generateDownload}>Download Messages</button>
+      <button   className='btn9'  variant='danger' onClick={()=>{setChatBox(chatBox=>[...chatBox , 
+             <div className="className='chat'"> <MessageBox/>
+             <SendPrivateMsgForm/></div>
+            
+          ])}}>Test Button</button>
+      {/* <button   className='btn9'  variant='danger' onClick={()=>{setChat(chatBox=>[...chatBox , <Chat/>])}}>Test Button</button> */}
+      
+  </div>
   
   <div className='chat'>
       <MessageBox/>
